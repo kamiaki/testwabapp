@@ -11,13 +11,19 @@
 
 <script>
     import {useRouter} from 'vue-router'
+    import {useStore} from 'vuex'
 
     export default {
         name: "TestMain",
         setup() {
             const router = useRouter()
+            const store = useStore()
 
             function router1() {
+                store.state.vuexTest.testValue = new Date().getTime()
+                alert(store.state.vuexTest.testValue)
+                alert(store.state.isShowLoginWindow)
+
                 router.push({
                     name: 'Test1'
                 })
