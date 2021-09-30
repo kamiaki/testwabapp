@@ -31,7 +31,6 @@
             }
 
             function router2() {
-                // get('http://127.0.0.1:8081/test/network/v1/getTestResultGraphicData',
                 get('/network/v1/getTestResultGraphicData',
                     {}, {params: null}).then(result => {
                   console.info(result)
