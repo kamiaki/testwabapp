@@ -42,15 +42,15 @@ initAxios.interceptors.response.use(response => {
     let msgText = err.response.status in httpCode ? httpCode[err.response.status] : err.response.data.message
     if (err.response.status === 403) {
         msgText = '操作权限不足'
-        alert({ message: msgText, type: 'warning' })
+        console.info({ message: msgText, type: 'warning' })
     } else {
-        alert({ message: msgText, type: 'error' })
+        console.info({ message: msgText, type: 'error' })
     }
     return Promise.reject(err)
   } else {
     let msgText
       msgText = '请求超时'
-      alert({ message: msgText, type: 'error' })
+      console.info({ message: msgText, type: 'error' })
     return Promise.reject(new Error(msgText))
   }
 })
