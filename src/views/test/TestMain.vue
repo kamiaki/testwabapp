@@ -12,6 +12,7 @@
 <script>
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
+    import {get} from '../../utils/ajax/request'
 
     export default {
         name: "TestMain",
@@ -28,11 +29,19 @@
                     name: 'Test1'
                 })
             }
+
             function router2() {
+                get('/getTestResultGraphicData',
+                    {}, {params: null}).then(result => {
+                  console.info(result)
+                }).catch((e) => {
+                    console.info('异常',e)
+                })
                 router.push({
                     name: 'Test2'
                 })
             }
+
             return {
                 router1,
                 router2
