@@ -8,7 +8,7 @@ module.exports = {
             changeOrigin: true,
             ws: true,
             pathRewrite: {
-                '^/test': '/'
+                '^/test': '/test'
             }
         }
     }
