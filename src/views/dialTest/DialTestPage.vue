@@ -1,5 +1,6 @@
 <template>
     <div>拨测页面</div>
+    <router-view/>
 </template>
 
 <script>

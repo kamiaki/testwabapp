@@ -1,7 +1,6 @@
 <template>
     <TitleHead></TitleHead>
-    <div v-for="(item,i) in list">--索引值--{{i}}   --每一项--{{item}}</div>
-    <van-button type="primary">主要按钮</van-button>
+    <router-view/>
     <FootNav></FootNav>
 </template>
 
@@ -16,13 +15,7 @@
             TitleHead, FootNav
         },
         setup(){
-            let list = reactive([])
-
-            for (let i = 0; i < 100; i++) {
-                list.push(i)
-            }
-
-            return {list}
+            return {}
         }
     }
 </script>

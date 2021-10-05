@@ -11,7 +11,7 @@ const routerContentPage = [
         path: '/DialTestPage',
         name: 'DialTestPage',
         component: DialTestPage,
-        redirect: '/MainPage/DialTestPage/AutoTestPage',
+        // redirect: '/MainPage/DialTestPage/AutoTestPage',
         children: [
             {
                 path: '/AutoTestPage',
