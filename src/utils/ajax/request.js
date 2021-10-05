@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { getBaseUrl, httpCode } from './baseConfig'
+import store from '/@/vuex/vuexValues'// vuex
 
+console.info(store.state.bigTitle)
 // 进度条窗口 axios 配置参数 showLoading:true 然后dom加入Loading类，就可以使用了
 let elementMsgStack = []
 
