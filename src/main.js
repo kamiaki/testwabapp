@@ -9,4 +9,4 @@ import 'animate.css'
 const app = createApp(App)
 app.use(routerIndex)
 app.use(vuexValues)
-app.mount('#app')
+app.mount('#aki_app')

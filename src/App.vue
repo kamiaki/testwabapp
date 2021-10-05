@@ -1,10 +1,5 @@
 <template>
     <div class="my_background" :style="{backgroundImage: bgImageUrl}">
-        <br>
-        <br>
-        <div>111</div>
-        <br>
-        <br>
         <router-view/>
         <!--    图表显示按钮-->
         <transition
@@ -27,9 +22,7 @@
             //
             const store = useStore()
             let bgImageUrl = `url(${bgImage})`
-            console.info(bgImage)
-            console.info(bgImageUrl)
-            //
+            // 键盘开启测试模式
             function turnOnAndOffTheTest(e) {
                 keyboardEvents.turnOnAndOffTheTest(e, store)
             }
@@ -45,22 +38,28 @@
     }
 </script>
 
-<style>
+<style lang="less">
+    body {
+        color: black;
+        font-family: 微软雅黑;
+        font-weight: 600;
+    }
+
     .my_background {
         height: 100%;
         background-repeat: no-repeat;
         background-position: center center;
         background-size: 100% 100%;
-    }
 
-    .div_test {
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        background: black;
-        padding: 10px;
-        border-radius: 15px;
-        font-size: 20px;
-        z-index: 99999;
+        .div_test {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: black;
+            padding: 10px;
+            border-radius: 15px;
+            font-size: 20px;
+            z-index: 99999;
+        }
     }
 </style>
