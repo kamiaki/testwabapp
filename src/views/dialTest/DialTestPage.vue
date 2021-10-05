@@ -4,7 +4,7 @@
               @click-tab="onClickTab"
     >
         <van-tab title="自动" name="自动">
-            <AutoTestPage></AutoTestPage>
+            <AutoTestPage @hello="hello" msg="哈哈哈"></AutoTestPage>
         </van-tab>
         <van-tab title="手动" name="手动">
             <ManualTestPage></ManualTestPage>
@@ -27,7 +27,10 @@
             const onClickTab = function (data) {
                console.info(data)
             };
-            return {active, onClickTab};
+            function hello(val) {
+                alert(val)
+            }
+            return {active, onClickTab, hello};
         }
     }
 </script>
