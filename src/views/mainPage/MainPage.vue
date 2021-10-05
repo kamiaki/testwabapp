@@ -6,9 +6,9 @@
 </template>
 
 <script>
+    import {reactive} from 'vue'
     import TitleHead from '/@/views/mainPage/TitleHead.vue'
     import FootNav from '/@/views/mainPage/FootNav.vue'
-    import {reactive} from 'vue'
 
     export default {
         name: "MainPage",
