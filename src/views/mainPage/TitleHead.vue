@@ -2,8 +2,8 @@
     <van-nav-bar
             title="拨测系统"
             @click-right="onClickRight"
-            fixed="true"
-            placeholder="true"
+            :fixed="true"
+            :placeholder="true"
     >
         <template #right>
             <van-icon name="point-gift-o" size="18"/>
@@ -25,6 +25,5 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
 </style>
