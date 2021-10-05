@@ -20,14 +20,18 @@
     export default {
         name: 'App',
         setup() {
-            window.addEventListener('keydown', turnOnAndOffTheTest, false)
-
+            //
             const store = useStore()
 
+            //
             function turnOnAndOffTheTest(e) {
                 keyboardEvents.turnOnAndOffTheTest(e, store)
             }
 
+            //
+            window.addEventListener('keydown', turnOnAndOffTheTest, false)
+
+            //
             return {store, turnOnAndOffTheTest}
 
         }
