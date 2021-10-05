@@ -16,7 +16,7 @@
         name: "TitlePage",
         setup() {
             const onClickRight = function () {
-                alert('更多')
+                alert('此功能还未上线')
             };
             return {
                 onClickRight,

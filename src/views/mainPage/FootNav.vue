@@ -20,13 +20,18 @@
             const router = useRouter()
             const active = ref('拨测');
 
-            function change(active) {
-                switch (active) {
+            function change(a) {
+                switch (a) {
                     case '拨测':
                         router.push({name: 'DialTestPage'})
                         break;
                     case '查询':
                         router.push({path: '/MainPage/QueryPage'})
+                        break;
+                    case '更多':
+                        alert('此功能还未上线...')
+                        active.value = '拨测'
+                        router.push({path: 'DialTestPage'})
                         break;
                 }
             }
