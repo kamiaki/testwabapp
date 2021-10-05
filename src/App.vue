@@ -1,5 +1,6 @@
 <template>
     <div class="my_background" :style="{backgroundImage: bgImageUrl}">
+        <div>{{isTest.state.isTest}}</div>
         <router-view/>
         <!--    图表显示按钮-->
         <transition
@@ -11,12 +12,10 @@
 </template>
 
 <script>
-    import keyboardEvents from './keyboardEvents'
     import {useStore} from 'vuex'
-    import {ref, onBeforeUnmount} from 'vue'
+    import {ref} from 'vue'
     import bgImage2 from '/@/assets/background/bg2.png'
-    import bgImage1 from '/@/assets/background/bg1.png'
-    import utils from 'aki_js_utils'
+    import turnOnAndOff from '/@/hooks/turnOnAndOffTheTest'
 
     export default {
         name: 'App',
@@ -24,37 +23,15 @@
             //
             const store = useStore()
             let bgImageUrl = ref(`url(${bgImage2})`)
-
-            // 键盘开启测试模式
-            function turnOnAndOffTheTest(e) {
-                keyboardEvents.turnOnAndOffTheTest(e, store)
-            }
-
-            (function changeBG() {
-                const n = utils.randomFlow(0, 1, 0)
-                if (n > 0) {
-                    bgImageUrl.value = `url(${bgImage1})`
-                } else {
-                    bgImageUrl.value = `url(${bgImage2})`
-                }
-                setTimeout(() => {
-                    changeBG()
-                }, 2000)
-            })()
-            //
-            window.addEventListener('keydown', turnOnAndOffTheTest, false)
-            onBeforeUnmount(() => {
-                window.removeEventListener('keydown', turnOnAndOffTheTest)
-            })
-            //
-            return {store, bgImageUrl}
+            let isTest = turnOnAndOff()
+            return {store, bgImageUrl, isTest}
         }
     }
 </script>
 
 <style lang="less">
     body {
-        color: black;
+        color: #000000;
         font-family: 微软雅黑;
         font-weight: 600;
     }
@@ -69,7 +46,7 @@
             position: absolute;
             top: 30px;
             left: 30px;
-            background: black;
+            background: #e3e3e3;
             padding: 10px;
             border-radius: 15px;
             font-size: 20px;
