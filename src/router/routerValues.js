@@ -1,4 +1,5 @@
 import routerTestMain from './test/routerTestMain'
+import routerMainPage from './mainPage/mainPage'
 import {createRouter, createWebHistory, createWebHashHistory} from "vue-router"
 
 // 主路由配置
@@ -6,9 +7,10 @@ const routes = [
     {
         path: '/',
         name: '',
-        redirect: '/TestMain'
+        redirect: '/MainPage'
     },
-    ...routerTestMain
+    ...routerTestMain,
+    ...routerMainPage
 ]
 
 
