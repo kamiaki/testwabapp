@@ -8,17 +8,17 @@ const QueryTestPage = () => import('/@/views/dialTest/query/queryTest/QueryTestP
 const routerContentPage = [
     // 拨测页面
     {
-        path: '/DialTestPage',
+        path: 'DialTestPage',
         name: 'DialTestPage',
         component: DialTestPage,
-        redirect: '/AutoTestPage',
+        redirect: '/MainPage/DialTestPage/AutoTestPage',
         children: [
             {
-                path: '/AutoTestPage',
+                path: 'AutoTestPage',
                 name: 'AutoTestPage',
                 component: AutoTestPage
             }, {
-                path: '/ManualTestPage',
+                path: 'ManualTestPage',
                 name: 'ManualTestPage',
                 component: ManualTestPage
             }
@@ -26,18 +26,18 @@ const routerContentPage = [
     },
     // 查询页面
     {
-        path: '/QueryPage',
+        path: 'QueryPage',
         name: 'QueryPage',
         component: QueryPage,
-        redirect: '/QueryTestPage',
+        redirect: '/MainPage/QueryPage/QueryTestPage',
         children: [
             {
-                path: '/QueryTestPage',
+                path: 'QueryTestPage',
                 name: 'QueryTestPage',
                 component: QueryTestPage
             },
             {
-                path: '/QueryAlertPage',
+                path: 'QueryAlertPage',
                 name: 'QueryAlertPage',
                 component: QueryAlertPage
             }
