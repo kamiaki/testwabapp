@@ -1,6 +1,5 @@
 <template>
     <div class="my_background" :style="{backgroundImage: bgImageUrl}">
-        <div>{{isTest.state.isTest}}</div>
         <router-view/>
         <!--    图表显示按钮-->
         <transition
