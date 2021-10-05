@@ -1,7 +1,7 @@
 const vuexTest = {
   namespaced: true,
   state: {
-    testValue: 1112321321,
+    testValue: '你好我是测试数据',
   }
 }
 

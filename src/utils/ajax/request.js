@@ -2,12 +2,15 @@ import axios from 'axios'
 import { getBaseUrl, httpCode } from './baseConfig'
 import store from '/@/vuex/vuexValues'// vuex
 
-console.info(store.state.bigTitle)
 // 进度条窗口 axios 配置参数 showLoading:true 然后dom加入Loading类，就可以使用了
 let elementMsgStack = []
 
 const timeout = () => {
-    return 1000 * 5
+  if (store.state.isTest) {
+    return 1000 * 1
+  } else {
+    return 1000 * 60 * 2
+  }
 }
 
 /**
@@ -43,16 +46,22 @@ initAxios.interceptors.response.use(response => {
   if (err.response) {
     let msgText = err.response.status in httpCode ? httpCode[err.response.status] : err.response.data.message
     if (err.response.status === 403) {
+      if (!store.state.isTest) {
         msgText = '操作权限不足'
-        console.info({ message: msgText, type: 'warning' })
+        alert(msgText)
+      }
     } else {
-        console.info({ message: msgText, type: 'error' })
+      if (!store.state.isTest) {
+        alert(msgText)
+      }
     }
     return Promise.reject(err)
   } else {
     let msgText
+    if (!store.state.isTest) {
       msgText = '请求超时'
-      console.info({ message: msgText, type: 'error' })
+      alert(msgText)
+    }
     return Promise.reject(new Error(msgText))
   }
 })
