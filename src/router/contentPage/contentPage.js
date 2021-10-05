@@ -11,7 +11,7 @@ const routerContentPage = [
         path: '/DialTestPage',
         name: 'DialTestPage',
         component: DialTestPage,
-        // redirect: '/MainPage/DialTestPage/AutoTestPage',
+        redirect: '/AutoTestPage',
         children: [
             {
                 path: '/AutoTestPage',
@@ -29,7 +29,7 @@ const routerContentPage = [
         path: '/QueryPage',
         name: 'QueryPage',
         component: QueryPage,
-        redirect: '/MainPage/QueryPage/QueryTestPage',
+        redirect: '/QueryTestPage',
         children: [
             {
                 path: '/QueryTestPage',
