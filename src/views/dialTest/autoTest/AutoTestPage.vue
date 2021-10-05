@@ -4,6 +4,8 @@
 </template>
 
 <script>
+    import {ref, onMounted, onBeforeUnmount} from 'vue'
+
     export default {
         name: "AutoTestPage",
         setup() {
@@ -11,6 +13,14 @@
             for (let i = 0; i < 100; i++) {
                 list.push(i)
             }
+
+            onMounted(() => {
+                console.info('auto_onMounted')
+            })
+            onBeforeUnmount(() => {
+                console.info('auto_onBeforeUnmount')
+            })
+
             return {list}
         }
     }

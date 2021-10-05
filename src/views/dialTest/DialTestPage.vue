@@ -3,10 +3,10 @@
               sticky swipeable
               @click-tab="onClickTab"
     >
-        <van-tab title="自动拨测" name="自动拨测">
+        <van-tab title="自动" name="自动">
             <AutoTestPage></AutoTestPage>
         </van-tab>
-        <van-tab title="手动拨测" name="手动拨测">
+        <van-tab title="手动" name="手动">
             <ManualTestPage></ManualTestPage>
         </van-tab>
     </van-tabs>
