@@ -6,7 +6,7 @@ module.exports = {
     // 反向代理
     proxy: {
         '/test': {
-            target: 'http://localhost:8081/',
+            target: 'http://localhost:80',
             changeOrigin: true,
             ws: true,
             pathRewrite: {
