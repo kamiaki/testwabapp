@@ -13,7 +13,7 @@
 <script>
     import keyboardEvents from './keyboardEvents'
     import {useStore} from 'vuex'
-    import {ref, onUnmounted} from 'vue'
+    import {ref, onBeforeUnmount} from 'vue'
     import bgImage2 from '/@/assets/background/bg2.png'
     import bgImage1 from '/@/assets/background/bg1.png'
     import utils from 'aki_js_utils'
@@ -43,7 +43,7 @@
             })()
             //
             window.addEventListener('keydown', turnOnAndOffTheTest, false)
-            onUnmounted(() => {
+            onBeforeUnmount(() => {
                 window.removeEventListener('keydown', turnOnAndOffTheTest)
             })
             //
