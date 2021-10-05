@@ -13,20 +13,35 @@
 <script>
     import keyboardEvents from './keyboardEvents'
     import {useStore} from 'vuex'
-    import {onUnmounted} from 'vue'
-    import bgImage from '/@/assets/background/bg2.png'
+    import {ref, onUnmounted} from 'vue'
+    import bgImage2 from '/@/assets/background/bg2.png'
+    import bgImage1 from '/@/assets/background/bg1.png'
+    import utils from 'aki_js_utils'
 
     export default {
         name: 'App',
         setup() {
             //
             const store = useStore()
-            let bgImageUrl = `url(${bgImage})`
+            let bgImageUrl = ref(`url(${bgImage2})`)
             // 键盘开启测试模式
             function turnOnAndOffTheTest(e) {
                 keyboardEvents.turnOnAndOffTheTest(e, store)
             }
 
+            (function changeBG(){
+                const n = utils.randomFlow(0,1,0)
+                if (n > 0){
+                    bgImageUrl.value =  `url(${bgImage1})`
+                    console.info(1)
+                }else{
+                    bgImageUrl.value =  `url(${bgImage2})`
+                    console.info(2)
+                }
+                setTimeout(()=>{
+                    changeBG()
+                }, 2000)
+            })()
             //
             window.addEventListener('keydown', turnOnAndOffTheTest, false)
             onUnmounted(() => {
