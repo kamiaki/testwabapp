@@ -8,7 +8,7 @@ const routerMainPage = [
         path: '/MainPage',
         name: 'MainPage',
         component: MainPage,
-        redirect: '/MainPage/DialTestPage',
+        redirect: '/MainPage/QueryPage',
         children: [
             ...routerContentPage
         ]

@@ -1,9 +1,9 @@
 const DialTestPage = () => import('/@/views/dialTest/DialTestPage.vue')
 const AutoTestPage = () => import('/@/views/dialTest/autoTest/AutoTestPage.vue')
-const ManualTestPage = () => import('/@/views/dialTest/autoTest/ManualTestPage.vue')
-const QueryPage = () => import('/@/views/dialTest/query/QueryPage.vue')
-const QueryAlertPage = () => import('/@/views/dialTest/query/queryAlert/QueryAlertPage.vue')
-const QueryTestPage = () => import('/@/views/dialTest/query/queryTest/QueryTestPage.vue')
+const ManualTestPage = () => import('/@/views/dialTest/manualTest/ManualTestPage.vue')
+const QueryPage = () => import('/@/views/query/QueryPage.vue')
+const QueryAlertPage = () => import('/@/views/query/queryAlert/QueryAlertPage.vue')
+const QueryTestPage = () => import('/@/views/query/queryTest/QueryTestPage.vue')
 
 const routerContentPage = [
     // 拨测页面
