@@ -33,10 +33,8 @@
                 const n = utils.randomFlow(0,1,0)
                 if (n > 0){
                     bgImageUrl.value =  `url(${bgImage1})`
-                    console.info(1)
                 }else{
                     bgImageUrl.value =  `url(${bgImage2})`
-                    console.info(2)
                 }
                 setTimeout(()=>{
                     changeBG()
