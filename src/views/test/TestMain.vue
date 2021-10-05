@@ -12,7 +12,7 @@
 <script>
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
-    import {get} from '../../utils/ajax/request'
+    import apiTest from '/@/api/apiTest'
 
     export default {
         name: "TestMain",
@@ -30,14 +30,14 @@
                 })
             }
 
-            function router2() {
-                // get('http://127.0.0.1:8081/test/network/v1/getTestResultGraphicData',
-                get('/network/v1/getTestResultGraphicData',
-                    {}, {params: null}).then(result => {
-                  console.info(result)
+            async function router2() {
+                let arrays = {}
+                await apiTest.getTestResultGraphicData({}).then(result => {
+                    arrays = result
                 }).catch((e) => {
-                    console.info('异常',e)
+                    alert(e)
                 })
+                console.info(arrays)
                 router.push({
                     name: 'Test2'
                 })

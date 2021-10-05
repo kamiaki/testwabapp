@@ -1,3 +1,5 @@
+const {resolve} = require('path')
+
 module.exports = {
     hostname: 'localhost',//允许本机
     port: 8088,//设置端口
@@ -11,5 +13,9 @@ module.exports = {
                 '^/test': '/test'
             }
         }
+    },
+    alias: {
+        '/@/': resolve(__dirname, 'src')
     }
 }
+

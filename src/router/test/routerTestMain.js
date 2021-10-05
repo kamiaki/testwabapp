@@ -1,6 +1,6 @@
 import routerTestSon from './routerTestSon'
 
-const TestMain = () => import('../../views/test/TestMain.vue')
+const TestMain = () => import('/@/views/test/TestMain.vue')
 
 const routerTestMain = [
   // 主页

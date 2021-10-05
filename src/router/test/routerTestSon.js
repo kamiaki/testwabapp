@@ -1,5 +1,5 @@
-const Test1 = () => import('../../views/test/Test1.vue')
-const Test2 = () => import('../../views/test/Test2.vue')
+const Test1 = () => import('/@/views/test/Test1.vue')
+const Test2 = () => import('/@/views/test/Test2.vue')
 
 const routerTestSon = [
   {
