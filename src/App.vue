@@ -24,19 +24,20 @@
             //
             const store = useStore()
             let bgImageUrl = ref(`url(${bgImage2})`)
+
             // 键盘开启测试模式
             function turnOnAndOffTheTest(e) {
                 keyboardEvents.turnOnAndOffTheTest(e, store)
             }
 
-            (function changeBG(){
-                const n = utils.randomFlow(0,1,0)
-                if (n > 0){
-                    bgImageUrl.value =  `url(${bgImage1})`
-                }else{
-                    bgImageUrl.value =  `url(${bgImage2})`
+            (function changeBG() {
+                const n = utils.randomFlow(0, 1, 0)
+                if (n > 0) {
+                    bgImageUrl.value = `url(${bgImage1})`
+                } else {
+                    bgImageUrl.value = `url(${bgImage2})`
                 }
-                setTimeout(()=>{
+                setTimeout(() => {
                     changeBG()
                 }, 2000)
             })()
