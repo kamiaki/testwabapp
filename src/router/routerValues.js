@@ -1,5 +1,5 @@
-import routerTestMain from './test/routerTestMain'
-import routerMainPage from './mainPage/mainPage'
+import routerTestMain from '/@/router/test/routerTestMain'
+import routerMainPage from '/@/router/mainPage/mainPage'
 import {createRouter, createWebHistory, createWebHashHistory} from "vue-router"
 
 // 主路由配置
