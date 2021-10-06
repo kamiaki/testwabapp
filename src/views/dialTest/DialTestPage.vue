@@ -4,7 +4,7 @@
               @click-tab="onClickTab"
     >
         <van-tab title="自动" name="自动">
-            <AutoTestPage @hello="hello" msg="哈哈哈"></AutoTestPage>
+            <AutoTestPage></AutoTestPage>
         </van-tab>
         <van-tab title="手动" name="手动">
             <ManualTestPage></ManualTestPage>
