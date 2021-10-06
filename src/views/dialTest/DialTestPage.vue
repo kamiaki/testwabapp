@@ -10,6 +10,8 @@
             <ManualTestPage></ManualTestPage>
         </van-tab>
     </van-tabs>
+
+
 </template>
 
 <script>

@@ -1,10 +1,66 @@
 <template>
-    <div>手动拨测页面</div>
+    <FormManualTest></FormManualTest>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>dsadsads</div>
+    <div>xxxxxxxxxxxxxxx</div>
+    <div>xxxxxxxxxxxxxxx</div>
+    <div>xxxxxxxxxxxxxxx</div>
+    <div>xxxxxxxxxxxxxxx</div>
+    <div>xxxxxxxxxxxxxxx</div>
 </template>
 
 <script>
+    import FormManualTest from '/@/views/dialTest/manualTest/FormManualTest.vue'
+
     export default {
-        name: "ManualTestPage"
+        name: "ManualTestPage",
+        components: {FormManualTest}
     }
 </script>
 
