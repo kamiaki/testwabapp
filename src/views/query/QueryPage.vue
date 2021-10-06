@@ -13,9 +13,10 @@
 </template>
 
 <script>
-    import {ref} from 'vue';
+    import {ref, onMounted} from 'vue';
     import QueryAlertPage from '/@/views/query/queryAlert/QueryAlertPage.vue'
     import QueryTestPage from '/@/views/query/queryTest/QueryTestPage.vue'
+    import {useStore} from 'vuex'
 
     export default {
         name: "QueryPage",
@@ -23,10 +24,17 @@
             QueryAlertPage, QueryTestPage
         },
         setup() {
+            const store = useStore()
+
             const active = ref(0);
             const onClickTab = function (data) {
                 console.info(data)
             };
+
+            onMounted(() => {
+                store.state.vuexMain.tabbarActive = '查询'
+            })
+
             return {active, onClickTab};
         }
     }
