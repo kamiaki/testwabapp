@@ -1,66 +1,15 @@
 <template>
     <FormManualTest></FormManualTest>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>dsadsads</div>
-    <div>xxxxxxxxxxxxxxx</div>
-    <div>xxxxxxxxxxxxxxx</div>
-    <div>xxxxxxxxxxxxxxx</div>
-    <div>xxxxxxxxxxxxxxx</div>
-    <div>xxxxxxxxxxxxxxx</div>
+    <ContentManualTest></ContentManualTest>
 </template>
 
 <script>
     import FormManualTest from '/@/views/dialTest/manualTest/FormManualTest.vue'
+    import ContentManualTest from '/@/views/dialTest/manualTest/ContentManualTest.vue'
 
     export default {
         name: "ManualTestPage",
-        components: {FormManualTest}
+        components: {FormManualTest, ContentManualTest}
     }
 </script>
 
