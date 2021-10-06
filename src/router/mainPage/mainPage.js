@@ -1,5 +1,5 @@
 const MainPage = () => import('/@/views/mainPage/MainPage.vue')
-import routerContentPage from '../contentPage/contentPage'
+import routerContentPage from '/@/router/contentPage/contentPage'
 
 
 const routerMainPage = [
