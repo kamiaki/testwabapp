@@ -9,7 +9,7 @@
 
 <script>
     import {ref, reactive} from 'vue'
-    import { Toast } from 'vant'
+    import {Toast} from 'vant'
     import SwipeAutoTest from "/@/views/dialTest/autoTest/SwipeAutoTest.vue";
     import LampAutoTest from "/@/views/dialTest/autoTest/LampAutoTest.vue";
     import NotifyAutoTest from "/@/views/dialTest/autoTest/NotifyAutoTest.vue";
