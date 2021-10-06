@@ -1,6 +1,6 @@
 <template>
     <van-tabbar
-            v-model="active"
+            v-model="store.state.vuexMain.tabbarActive"
             :placeholder="true"
             @change="change"
     >
@@ -13,12 +13,13 @@
 <script>
     import {ref} from 'vue';
     import {useRouter} from 'vue-router'
+    import {useStore} from 'vuex'
 
     export default {
         name: "FootNav",
         setup() {
             const router = useRouter()
-            const active = ref('拨测');
+            const store = useStore()
 
             function change(a) {
                 switch (a) {
@@ -30,13 +31,13 @@
                         break;
                     case '更多':
                         alert('此功能还未上线...')
-                        active.value = '拨测'
+                        store.state.vuexMain.tabbarActive = '拨测'
                         router.push({path: 'DialTestPage'})
                         break;
                 }
             }
 
-            return {active, change};
+            return {change, store};
         }
     }
 </script>
