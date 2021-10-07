@@ -1,8 +1,9 @@
-import {ref, onMounted, onBeforeUnmount} from 'vue'
+import {ref, onMounted, onBeforeUnmount, toRef} from 'vue'
 import {useStore} from 'vuex'
 
 export default function () {
     const store = useStore()
+    const isTest = toRef(store.state, 'isTest')
 
     function turnOnAndOffTheTest(e) {
         if (e.getModifierState('Control') === true &&
@@ -21,5 +22,5 @@ export default function () {
         window.removeEventListener('keydown', turnOnAndOffTheTest)
     })
 
-    return store
+    return isTest
 }

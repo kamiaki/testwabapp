@@ -5,13 +5,12 @@
         <transition
                 enter-active-class="animate__animated animate__lightSpeedInLeft"
                 leave-active-class="animate__animated animate__lightSpeedOutLeft">
-            <div v-if="store.state.isTest" class="div_test">已开启测试模式</div>
+            <div v-if="isTest" class="div_test">已开启测试模式</div>
         </transition>
     </div>
 </template>
 
 <script>
-    import {useStore} from 'vuex'
     import {ref} from 'vue'
     import bgImage2 from '/@/assets/background/bg2.png'
     import turnOnAndOff from '/@/hooks/turnOnAndOffTheTest'
@@ -20,10 +19,9 @@
         name: 'App',
         setup() {
             //
-            const store = useStore()
             let bgImageUrl = ref(`url(${bgImage2})`)
-            let isTest = turnOnAndOff()
-            return {store, bgImageUrl, isTest}
+            const isTest = turnOnAndOff()
+            return {isTest, bgImageUrl}
         }
     }
 </script>
