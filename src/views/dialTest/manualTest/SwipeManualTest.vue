@@ -9,6 +9,11 @@
             <BarVManualTest></BarVManualTest>
         </van-swipe-item>
     </van-swipe>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </template>
 
 <script>

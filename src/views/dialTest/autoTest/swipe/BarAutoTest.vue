@@ -1,6 +1,4 @@
 <template>
-    <div>大家好我是个柱状图</div>
-    <div>{{barData.name}}</div>
     <div id="myChart" :style="{width: '100%', height: '500px'}"></div>
 
 </template>

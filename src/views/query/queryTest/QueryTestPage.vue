@@ -1,7 +1,5 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <p>刷新次数: {{ count }}</p>
-        <div>查询拨测结果页面</div>
         <FormQueryTest></FormQueryTest>
         <TableQueryTest></TableQueryTest>
     </van-pull-refresh>
@@ -17,7 +15,6 @@
         name: "QueryTestPage",
         components: {FormQueryTest, TableQueryTest},
         setup() {
-            const count = ref(0);
             const loading = ref(false);
             const onRefresh = () => {
                 setTimeout(() => {
@@ -27,7 +24,6 @@
                 }, 1000);
             };
             return {
-                count,
                 loading,
                 onRefresh,
             };
