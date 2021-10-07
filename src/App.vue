@@ -11,13 +11,16 @@
 </template>
 
 <script>
-    import {ref} from 'vue'
+    import * as echarts from 'echarts'
+    import {ref, provide} from 'vue'
     import bgImage2 from '/@/assets/background/bg2.png'
     import turnOnAndOff from '/@/hooks/turnOnAndOffTheTest'
 
     export default {
         name: 'App',
         setup() {
+            provide('ec', echarts)//provide
+
             let bgImageUrl = ref(`url(${bgImage2})`)
             const isTest = turnOnAndOff()
             return {isTest, bgImageUrl}
