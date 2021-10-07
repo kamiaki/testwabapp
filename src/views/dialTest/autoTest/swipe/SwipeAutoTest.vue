@@ -12,8 +12,8 @@
 </template>
 
 <script>
-    import BarAutoTest from "/@/views/dialTest/autoTest/BarAutoTest.vue";
-    import LineAutoTest from "/@/views/dialTest/autoTest/LineAutoTest.vue";
+    import BarAutoTest from "/@/views/dialTest/autoTest/swipe/BarAutoTest.vue";
+    import LineAutoTest from "/@/views/dialTest/autoTest/swipe/LineAutoTest.vue";
 
     export default {
         name: "SwipeAutoTest",

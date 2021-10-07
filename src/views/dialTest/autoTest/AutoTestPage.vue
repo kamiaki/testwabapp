@@ -1,16 +1,15 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <p>刷新次数: {{ count }}</p>
+        <NotifyAutoTest></NotifyAutoTest>
         <SwipeAutoTest></SwipeAutoTest>
         <LampAutoTest></LampAutoTest>
-        <NotifyAutoTest></NotifyAutoTest>
     </van-pull-refresh>
 </template>
 
 <script>
     import {ref, reactive} from 'vue'
     import {Toast} from 'vant'
-    import SwipeAutoTest from "/@/views/dialTest/autoTest/SwipeAutoTest.vue";
+    import SwipeAutoTest from "/@/views/dialTest/autoTest/swipe/SwipeAutoTest.vue";
     import LampAutoTest from "/@/views/dialTest/autoTest/LampAutoTest.vue";
     import NotifyAutoTest from "/@/views/dialTest/autoTest/NotifyAutoTest.vue";
 
@@ -18,17 +17,14 @@
         name: "AutoTestPage",
         components: {SwipeAutoTest, LampAutoTest, NotifyAutoTest},
         setup() {
-            const count = ref(0);
             const loading = ref(false);
             const onRefresh = () => {
                 setTimeout(() => {
                     Toast('刷新成功');
                     loading.value = false;
-                    count.value++;
                 }, 1000);
             };
             return {
-                count,
                 loading,
                 onRefresh,
             };
