@@ -3,10 +3,10 @@
                :autoplay="3000"
                indicator-color="white">
         <van-swipe-item>
-            <BarAutoTest></BarAutoTest>
+            <BarAutoTest :barData="barData"></BarAutoTest>
         </van-swipe-item>
         <van-swipe-item>
-            <LineAutoTest></LineAutoTest>
+            <LineAutoTest :lineData="lineData"></LineAutoTest>
         </van-swipe-item>
     </van-swipe>
 </template>
@@ -17,7 +17,14 @@
 
     export default {
         name: "SwipeAutoTest",
-        components: {BarAutoTest, LineAutoTest}
+        components: {BarAutoTest, LineAutoTest},
+        props: ['echartMsgs'],
+        setup(props) {
+            return {
+                barData: props.echartMsgs.bar,
+                lineData: props.echartMsgs.line
+            }
+        }
     }
 </script>
 
