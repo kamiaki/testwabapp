@@ -30,7 +30,7 @@
 
             const active = ref(0);
             const onClickTab = function (data) {
-               console.info(data)
+                // 点击了tab标签
             };
             function hello(val) {
                 alert(val)

@@ -1,7 +1,7 @@
 <template>
     <div class="my_background" :style="{backgroundImage: bgImageUrl}">
         <router-view/>
-        <!--    图表显示按钮-->
+        <!--开启测试模式提示-->
         <transition
                 enter-active-class="animate__animated animate__lightSpeedInLeft"
                 leave-active-class="animate__animated animate__lightSpeedOutLeft">
@@ -18,7 +18,6 @@
     export default {
         name: 'App',
         setup() {
-            //
             let bgImageUrl = ref(`url(${bgImage2})`)
             const isTest = turnOnAndOff()
             return {isTest, bgImageUrl}
