@@ -1,6 +1,6 @@
 <template>
     <van-grid>
-        <van-grid-item icon="photo-o" :text="item.title" v-for="item in lampMsgs" :key="item"/>
+        <van-grid-item icon="bulb-o" :text="item.title" v-for="item in lampMsgs" :key="item"/>
     </van-grid>
 </template>
 

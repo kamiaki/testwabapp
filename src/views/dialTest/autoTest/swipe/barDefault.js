@@ -9,7 +9,7 @@ export default {
                 right: "5%"
             },
             xAxis: {
-                data: ['消防烟感', '摄像机', '环境烟感', '路灯', '地磁'],
+                data: ['xxx1', 'xxx2', 'xxx3', 'xxx4', 'xxx5'],
                 axisLine: {
                     show: false //隐藏X轴轴线
                 },
@@ -68,7 +68,7 @@ export default {
             ],
             series: [
                 {
-                    name: "设备在线率",
+                    name: "DDDDDDDD",
                     type: "bar",
                     barWidth: 16,
                     itemStyle: {

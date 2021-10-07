@@ -1,8 +1,8 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
         <NotifyAutoTest :notifyMsgs="notifyMsgs"></NotifyAutoTest>
-        <SwipeAutoTest :echartMsgs="echartMsgs"></SwipeAutoTest>
         <LampAutoTest :lampMsgs="lampMsgs"></LampAutoTest>
+        <SwipeAutoTest :echartMsgs="echartMsgs"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
