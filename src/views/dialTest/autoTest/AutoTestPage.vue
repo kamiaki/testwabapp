@@ -2,7 +2,7 @@
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
         <NotifyAutoTest :notifyMsgs="notifyMsgs"></NotifyAutoTest>
         <SwipeAutoTest></SwipeAutoTest>
-        <LampAutoTest></LampAutoTest>
+        <LampAutoTest :lampMsgs="lampMsgs"></LampAutoTest>
     </van-pull-refresh>
 </template>
 
@@ -20,6 +20,11 @@
             const loading = ref(false);
             const resultData = [{title: '标题1', msg: '消息1'}, {title: '标题2', msg: '消息2'}]
             const notifyMsgs = reactive(resultData);
+            const lampDatas = [{title: '移动', state: 0, msg: ''}
+                , {title: '联通', state: 0, msg: ''}
+                , {title: '电信', state: 0, msg: ''}
+                , {title: '域名', state: 0, msg: ''}]
+            const lampMsgs = reactive(lampDatas)
 
             const onRefresh = () => {
                 setTimeout(() => {
@@ -30,7 +35,8 @@
             return {
                 loading,
                 onRefresh,
-                notifyMsgs
+                notifyMsgs,
+                lampMsgs
             };
         }
     }

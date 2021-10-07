@@ -1,15 +1,18 @@
 <template>
     <van-grid>
-        <van-grid-item icon="photo-o" text="移动"/>
-        <van-grid-item icon="photo-o" text="联通"/>
-        <van-grid-item icon="photo-o" text="电信"/>
-        <van-grid-item icon="photo-o" text="域名"/>
+        <van-grid-item icon="photo-o" :text="item.title" v-for="item in lampMsgs" :key="item"/>
     </van-grid>
 </template>
 
 <script>
     export default {
-        name: "LampAutoTest"
+        name: "LampAutoTest",
+        props: ['lampMsgs'],
+        setup(props) {
+            return {
+                lampMsgs: props.lampMsgs
+            }
+        }
     }
 </script>
 

@@ -18,9 +18,9 @@
     export default {
         name: "NotifyAutoTest",
         props: ['notifyMsgs'],
-        setup(prop) {
+        setup(props) {
             return {
-                notifyMsgs: prop.notifyMsgs
+                notifyMsgs: props.notifyMsgs
             }
         }
     }
