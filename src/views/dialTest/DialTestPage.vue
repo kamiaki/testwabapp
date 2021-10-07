@@ -1,5 +1,6 @@
 <template>
-    <van-tabs v-model:active="active" sticky swipeable>
+    <van-tabs v-model:active="active" sticky swipeable
+              @click-tab="onClickTab">
         <van-tab title="自动" name="auto">
             <AutoTestPage></AutoTestPage>
         </van-tab>
@@ -16,6 +17,7 @@
     import AutoTestPage from '/@/views/dialTest/autoTest/AutoTestPage.vue'
     import ManualTestPage from '/@/views/dialTest/manualTest/ManualTestPage.vue'
     import {useStore} from 'vuex'
+    import {Toast} from 'vant'
 
     export default {
         name: "DialTestPage",
@@ -23,15 +25,21 @@
             AutoTestPage, ManualTestPage
         },
         setup() {
+
             const store = useStore()
             const tabbarActive = toRef(store.state.vuexMain, 'tabbarActive')
             const active = ref('auto');
-
+            const onClickTab = function (data) {
+                console.info(data)
+                if ('manual' === data.name){
+                    Toast('下拉即可拨测')
+                }
+            };
             onMounted(() => {
                 tabbarActive.value = '拨测'
             })
 
-            return {active};
+            return {active, onClickTab};
         }
     }
 </script>
