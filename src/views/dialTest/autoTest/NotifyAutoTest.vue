@@ -6,16 +6,23 @@
                 :autoplay="3000"
                 :show-indicators="false"
         >
-            <van-swipe-item>告警1</van-swipe-item>
-            <van-swipe-item>告警2</van-swipe-item>
-            <van-swipe-item>告警3</van-swipe-item>
+            <van-swipe-item v-for="(item, k) in notifyMsgs" :key="item">{{`告警:${item.title}-${item.msg}`}}
+            </van-swipe-item>
         </van-swipe>
     </van-notice-bar>
 </template>
 
 <script>
+    import {toRef, ref, reactive} from 'vue'
+
     export default {
-        name: "NotifyAutoTest"
+        name: "NotifyAutoTest",
+        props: ['notifyMsgs'],
+        setup(prop) {
+            return {
+                notifyMsgs: prop.notifyMsgs
+            }
+        }
     }
 </script>
 

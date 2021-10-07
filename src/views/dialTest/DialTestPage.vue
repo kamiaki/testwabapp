@@ -25,7 +25,7 @@
         setup() {
             const store = useStore()
             const tabbarActive = toRef(store.state.vuexMain, 'tabbarActive')
-            const active = ref('manual');
+            const active = ref('auto');
 
             onMounted(() => {
                 tabbarActive.value = '拨测'

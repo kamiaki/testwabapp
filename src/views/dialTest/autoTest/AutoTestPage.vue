@@ -1,6 +1,6 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <NotifyAutoTest></NotifyAutoTest>
+        <NotifyAutoTest :notifyMsgs="notifyMsgs"></NotifyAutoTest>
         <SwipeAutoTest></SwipeAutoTest>
         <LampAutoTest></LampAutoTest>
     </van-pull-refresh>
@@ -18,6 +18,9 @@
         components: {SwipeAutoTest, LampAutoTest, NotifyAutoTest},
         setup() {
             const loading = ref(false);
+            const resultData = [{title: '标题1', msg: '消息1'}, {title: '标题2', msg: '消息2'}]
+            const notifyMsgs = reactive(resultData);
+
             const onRefresh = () => {
                 setTimeout(() => {
                     Toast('刷新成功');
@@ -27,6 +30,7 @@
             return {
                 loading,
                 onRefresh,
+                notifyMsgs
             };
         }
     }
