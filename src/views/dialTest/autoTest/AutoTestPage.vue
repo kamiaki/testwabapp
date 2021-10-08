@@ -18,7 +18,20 @@
         components: {SwipeAutoTest, LampAutoTest, NotifyAutoTest},
         setup() {
             // 告警信息
-            const resultData = [{title: '标题1', msg: '消息1'}, {title: '标题2', msg: '消息2'}]
+            const resultData = [
+                {
+                    id: 'uuid',
+                    type: 'domain',
+                    state: 1,
+                    msg: '异常',
+                    time: '2021-10-08 09:39:57'
+                }, {
+                    id: 'uuid',
+                    type: 'domain',
+                    state: 0,
+                    msg: '恢复',
+                    time: '2021-10-08 09:49:57'
+                }]
             const notifyMsgs = reactive(resultData);
             // 指示灯信息
             const lampDatas = [{id: 'mobile', state: 0, msg: ''}
