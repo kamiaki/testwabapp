@@ -14,26 +14,28 @@
 </template>
 
 <script>
-    import {toRef, ref, reactive} from 'vue'
+    import {toRef, ref, reactive, computed} from 'vue'
     import {line} from "/@/dictionary/dataDictionary.js";
 
     export default {
         name: "NotifyAutoTest",
         props: ['notifyMsgs'],
         setup(props) {
-            const notifyMsgs = props.notifyMsgs
-            const msgList = reactive([])
-            for (let i in notifyMsgs) {
-                const name = line[notifyMsgs[i].type].name
-                const msg = notifyMsgs[i].msg
-                const time = notifyMsgs[i].time
-                const fullText = `${Number(i) + 1} ${name} ${msg} ${time}`
-                msgList.push(fullText)
-            }
-            console.info(msgList)
+            const msgList = computed(() => {
+                const tmpList = reactive([])
+                const notifyMsgs = props.notifyMsgs
+                for (let i in notifyMsgs) {
+                    const name = line[notifyMsgs[i].type].name
+                    const msg = notifyMsgs[i].msg
+                    const time = notifyMsgs[i].time
+                    const fullText = `${Number(i) + 1} ${name} ${msg} ${time}`
+                    tmpList.push(fullText)
+                }
+                return tmpList
+            })
+
             return {
-                msgList,
-                notifyMsgs
+                msgList
             }
         }
     }
