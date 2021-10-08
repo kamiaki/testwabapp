@@ -1,8 +1,8 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <NotifyAutoTest :notifyMsgs="notifyMsgs"></NotifyAutoTest>
-        <LampAutoTest :lampMsgs="lampMsgs"></LampAutoTest>
-        <SwipeAutoTest :echartMsgs="echartMsgs"></SwipeAutoTest>
+        <NotifyAutoTest style="margin: 5px" :notifyMsgs="notifyMsgs"></NotifyAutoTest>
+        <LampAutoTest style="margin: 5px" :lampMsgs="lampMsgs"></LampAutoTest>
+        <SwipeAutoTest style="margin: 5px" :echartMsgs="echartMsgs"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
@@ -21,10 +21,10 @@
             const resultData = [{title: '标题1', msg: '消息1'}, {title: '标题2', msg: '消息2'}]
             const notifyMsgs = reactive(resultData);
             // 指示灯信息
-            const lampDatas = [{title: '移动', state: 0, msg: ''}
-                , {title: '联通', state: 0, msg: ''}
-                , {title: '电信', state: 0, msg: ''}
-                , {title: '域名', state: 0, msg: ''}]
+            const lampDatas = [{id: 'mobile', state: 0, msg: ''}
+                , {id: 'unicom', state: 0, msg: ''}
+                , {id: 'telecom', state: 0, msg: ''}
+                , {id: 'domain', state: 0, msg: ''}]
             const lampMsgs = reactive(lampDatas)
             // 图表信息
             const echartDatas = {
