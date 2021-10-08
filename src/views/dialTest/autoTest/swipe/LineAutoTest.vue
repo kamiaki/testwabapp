@@ -8,7 +8,7 @@
 
     export default {
         name: "LineAutoTest",
-        props: ['lineData'],
+        props: ['echartProps'],
         setup(props) {
             let echarts = inject("ec");//引入
             let myChart = {}
@@ -24,11 +24,6 @@
             onBeforeUnmount(() => {
                 window.removeEventListener('resize', resize)
             })
-
-
-            return {
-                lineData: props.lineData
-            }
         }
     }
 </script>

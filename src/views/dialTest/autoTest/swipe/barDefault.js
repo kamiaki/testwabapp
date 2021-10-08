@@ -1,5 +1,10 @@
 export default {
-    option: function (echarts, echartsData) {
+    drawBar: function (echarts, myChart, echartsData) {
+        // 点击事件
+        myChart.on('click', 'series', function (params) {
+            alert(params)
+        })
+        // 配置项
         const option = {
             title : {
                 text: '近十次平均拨测结果', //主标题
@@ -112,6 +117,7 @@ export default {
                 show: true
             }
         }
-        return option
+        // 绘制
+        myChart.setOption(option, true)
     }
 }

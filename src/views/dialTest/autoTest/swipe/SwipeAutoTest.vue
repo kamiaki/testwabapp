@@ -1,14 +1,13 @@
 <template>
-    <van-swipe class="my-swipe"
-               :autoplay="10000"
+    <van-swipe :loop="false"
                indicator-color="white">
         <van-swipe-item>
-            <BarAutoTest :barData="barData"
+            <BarAutoTest :echartProps="echartProps"
                          :style="{width: '100%', height: '400px'}"
             ></BarAutoTest>
         </van-swipe-item>
         <van-swipe-item>
-            <LineAutoTest :lineData="lineData"
+            <LineAutoTest :echartProps="echartProps"
                           :style="{width: '100%', height: '400px'}"
             ></LineAutoTest>
         </van-swipe-item>
@@ -22,11 +21,11 @@
     export default {
         name: "SwipeAutoTest",
         components: {BarAutoTest, LineAutoTest},
-        props: ['echartMsgs'],
+        props: ['echartProps'],
         setup(props) {
+            console.info(props.echartProps)
             return {
-                barData: props.echartMsgs.bar,
-                lineData: props.echartMsgs.line
+                echartProps: props.echartProps
             }
         }
     }

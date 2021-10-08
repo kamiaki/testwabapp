@@ -2,7 +2,7 @@
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
         <NotifyAutoTest style="margin: 5px" :notifyProps="notifyProps"></NotifyAutoTest>
         <LampAutoTest style="margin: 5px" :lampProps="lampProps"></LampAutoTest>
-        <SwipeAutoTest style="margin: 5px" :echartMsgs="echartProps"></SwipeAutoTest>
+        <SwipeAutoTest style="margin: 5px" :echartProps="echartProps"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
@@ -13,6 +13,7 @@
     import SwipeAutoTest from "/@/views/dialTest/autoTest/swipe/SwipeAutoTest.vue";
     import LampAutoTest from "/@/views/dialTest/autoTest/LampAutoTest.vue";
     import NotifyAutoTest from "/@/views/dialTest/autoTest/NotifyAutoTest.vue";
+    import utils from 'aki_js_utils'
 
     export default {
         name: "AutoTestPage",
@@ -55,15 +56,22 @@
 
             // 图表信息
             const echartDatas = {
-                bar: {name: 'bar'},
-                line: {name: 'line'}
+                bar: {echartsData: {dataX: [0, 0, 0, 0]}},
+                line: {echartsData: {dataX: [0, 0, 0, 0]}}
             }
             const echartProps = reactive(echartDatas)
+            function setEchartsData() {
+                echartProps.bar.echartsData.dataX = [utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0)]
+            }
 
             // 下拉刷新
             const loading = ref(false);
             const onRefresh = () => {
                 setTimeout(() => {
+                    setEchartsData()
                     Toast('刷新成功');
                     loading.value = false;
                 }, 1000);
