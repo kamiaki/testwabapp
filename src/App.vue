@@ -14,7 +14,7 @@
     import * as echarts from 'echarts'
     import {ref, provide} from 'vue'
     import bgImage2 from '/@/assets/background/bg2.png'
-    import turnOnAndOff from '/@/hooks/turnOnAndOffTheTest'
+    import turnOnAndOff from '/@/hooks/useTurnOnAndOffTheTest'
 
     export default {
         name: 'App',
