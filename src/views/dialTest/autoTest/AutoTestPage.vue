@@ -2,7 +2,7 @@
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
         <NotifyAutoTest style="margin: 5px" :notifyProps="notifyProps"></NotifyAutoTest>
         <LampAutoTest style="margin: 5px" :lampProps="lampProps"></LampAutoTest>
-        <SwipeAutoTest style="margin: 5px" :echartMsgs="echartMsgs"></SwipeAutoTest>
+        <SwipeAutoTest style="margin: 5px" :echartMsgs="echartProps"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
@@ -58,7 +58,7 @@
                 bar: {name: 'bar'},
                 line: {name: 'line'}
             }
-            const echartMsgs = reactive(echartDatas)
+            const echartProps = reactive(echartDatas)
 
             // 下拉刷新
             const loading = ref(false);
@@ -73,7 +73,7 @@
                 onRefresh,
                 notifyProps,
                 lampProps,
-                echartMsgs
+                echartProps
             };
         }
     }
