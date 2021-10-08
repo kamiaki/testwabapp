@@ -12,13 +12,16 @@
         setup(props) {
             let echarts = inject("ec");//引入
             let myChart = {}
+            let echartsData = {dataX: [34, 15, 28, 11]}
+
             function resize() {
                 myChart.resize()
             }
+
             onMounted(() => {//需要获取到element,所以是onMounted的Hook
                 myChart = echarts.init(document.getElementById("myChart"));
                 // 绘制图表
-                myChart.setOption(barDefault.option(echarts), true);
+                myChart.setOption(barDefault.option(echarts, echartsData), true);
                 window.addEventListener('resize', resize)// 响应式大小
             });
             onBeforeUnmount(() => {

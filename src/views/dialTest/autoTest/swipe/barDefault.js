@@ -1,5 +1,5 @@
 export default {
-    option: function (echarts) {
+    option: function (echarts, echartsData) {
         const option = {
             title : {
                 text: '近十次平均拨测结果', //主标题
@@ -64,7 +64,7 @@ export default {
                 }
             },
             series: [{
-                data: [34, 15, 28, 11],
+                data: echartsData.dataX,
                 type: "bar",
                 barWidth: 30,
                 itemStyle: {
@@ -98,7 +98,7 @@ export default {
                 symbolOffset: [0, "50%"],
                 symbolSize: [30, 15]
             }, {
-                data: [34, 15, 28, 11],
+                data: echartsData.dataX,
                 type: "pictorialBar",
                 barMaxWidth: "20",
                 symbolPosition: "end",
