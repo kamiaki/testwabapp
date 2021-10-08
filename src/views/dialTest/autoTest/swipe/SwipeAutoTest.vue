@@ -1,12 +1,16 @@
 <template>
     <van-swipe class="my-swipe"
-               :autoplay="3000"
+               :autoplay="10000"
                indicator-color="white">
         <van-swipe-item>
-            <BarAutoTest :barData="barData"></BarAutoTest>
+            <BarAutoTest :barData="barData"
+                         :style="{width: '100%', height: '400px'}"
+            ></BarAutoTest>
         </van-swipe-item>
         <van-swipe-item>
-            <LineAutoTest :lineData="lineData"></LineAutoTest>
+            <LineAutoTest :lineData="lineData"
+                          :style="{width: '100%', height: '400px'}"
+            ></LineAutoTest>
         </van-swipe-item>
     </van-swipe>
 </template>

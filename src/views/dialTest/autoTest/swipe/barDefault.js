@@ -1,158 +1,117 @@
 export default {
     option: function (echarts) {
-        return {
-            backgroundColor: '#031d33',
-            animation: true,
+        const option = {
+            title : {
+                text: '近十次平均拨测结果', //主标题
+                x: 'center', //标题位置
+                y: 20,
+                textStyle: {
+                    color: '#ffffff'
+                }
+            },
+            backgroundColor: '#031245',
+            color: ["#63caff", "#3608FE"],
             grid: {
-                top: "5%",
-                bottom: "15%",
-                right: "5%"
+                containLabel: true,
+                left: 50,
+                right: 50,
+                bottom: 50,
+                top: 100
             },
             xAxis: {
-                data: ['xxx1', 'xxx2', 'xxx3', 'xxx4', 'xxx5'],
-                axisLine: {
-                    show: false //隐藏X轴轴线
+                axisLabel: {
+                    color: "#c0c3cd",
+                    fontSize: 14,
+                    interval: 0
                 },
-                axisTick: {
-                    show: false //隐藏X轴轴线
+                splitLine: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#384267",
+                        width: 1,
+                        type: "dashed"
+                    },
+                    show: true
+                },
+                data: ["移动", "联通", "电信", "域名"],
+                type: "category"
+            },
+            yAxis: {
+                axisLabel: {
+                    color: "#c0c3cd",
+                    fontSize: 14
                 },
                 splitLine: {
                     show: true,
                     lineStyle: {
-                        color: "rgba(77, 128, 254, 0.2)",
-                        width: 2
+                        color: "#384267",
+                        type: "dashed"
                     }
                 },
-                axisLabel: {
-                    show: true,
-                    margin: 14,
-                    fontSize: 16,
-                    textStyle: {
-                        color: "#65D5FF" //X轴文字颜色
-                    }
+                axisLine: {
+                    lineStyle: {
+                        color: "#384267",
+                        width: 1,
+                        type: "dashed"
+                    },
+                    show: true
+                },
+                name: "耗时/ms",
+                nameTextStyle: {
+                    color: '#ffffff'
                 }
             },
-            yAxis: [
-                {
-                    type: "value",
-                    gridIndex: 0,
-                    min: 0,
-                    max: 100,
-                    interval: 25,
-                    // splitNumber: 4,
-                    splitLine: {
-                        show: true,
-                        lineStyle: {
-                            color: "rgba(77, 128, 254, 0.2)",
-                            width: 2
-                        }
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLine: {
-                        show: true,
-                        lineStyle: {
-                            color: "rgba(77, 128, 254, 0.2)"
-                        }
-                    },
-                    axisLabel: {
-                        show: true,
-                        margin: 14,
-                        fontSize: 16,
-                        textStyle: {
-                            color: "#65D5FF"
-                        }
+            series: [{
+                data: [34, 15, 28, 11],
+                type: "bar",
+                barWidth: 30,
+                itemStyle: {
+                    color: {
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        type: "linear",
+                        global: false,
+                        colorStops: [{
+                            offset: 0,
+                            color: "#3A1BFD"
+                        }, {
+                            offset: 1,
+                            color: "#3BEFFD"
+                        }]
                     }
-                }
-            ],
-            series: [
-                {
-                    name: "DDDDDDDD",
-                    type: "bar",
-                    barWidth: 16,
-                    itemStyle: {
-                        normal: {
-                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                                {
-                                    offset: 0,
-                                    color: "rgba(146, 225, 255, 1)"
-                                },
-                                {
-                                    offset: 1,
-                                    color: "rgba(0, 151, 251, 1)"
-                                }
-                            ])
-                        }
-                    },
-                    data: [21, 43, 56, 32, 64],
-                    z: 10,
-                    zlevel: 0
                 },
-                {
-                    // 分隔
-                    type: "pictorialBar",
-                    itemStyle: {
-                        normal: {
-                            color: "#0F375F"
-                        }
-                    },
-                    symbolRepeat: "fixed",
-                    symbolMargin: 6,
-                    symbol: "rect",
-                    symbolClip: true,
-                    symbolSize: [18, 2],
-                    symbolPosition: "start",
-                    symbolOffset: [1, 1],
-                    data: [21, 43, 56, 32, 64],
-                    width: 2,
-                    z: 0,
-                    zlevel: 1
-                },
-                {
-                    name: "外框",
-                    type: "bar",
-                    barGap: "-110%", // 设置外框粗细
-                    data: [100, 100, 100, 100, 100, 100, 100],
-                    barWidth: 16,
-                    itemStyle: {
-                        normal: {
-                            color: "transparent", // 填充色
-                            // barBorderRadius: 0, //圆角半径
-                            label: {
-                                // 标签显示位置
-                                show: false,
-                                position: "top" // insideTop 或者横向的 insideLeft
-                            }
-                        }
-                    },
-                    z: 0
-                },
-                {
-                    name: "背影",
-                    type: "line",
-                    smooth: true, //平滑曲线显示
-                    showAllSymbol: false, //显示所有图形。
-                    symbolSize: 0,
-                    lineStyle: {
-                        width: 0
-                    },
-                    areaStyle: {
-                        color: "rgba(0, 151, 251, 0.1)"
-                    },
-                    data: [21, 43, 56, 32, 64],
-                    z: 5
+                label: {
+                    show: true,
+                    position: "top",
+                    distance: 10,
+                    color: "#fff"
                 }
-            ],
-            dataZoom: [
-                {
-                    type: "slider",
-                    show: false,
-                    xAxisIndex: [0],
-                    endValue: 4,
-                    startValue: 0
-                }
-            ]
+            }, {
+                data: [1, 1, 1, 1],
+                type: "pictorialBar",
+                barMaxWidth: "20",
+                symbol: "diamond",
+                symbolOffset: [0, "50%"],
+                symbolSize: [30, 15]
+            }, {
+                data: [34, 15, 28, 11],
+                type: "pictorialBar",
+                barMaxWidth: "20",
+                symbolPosition: "end",
+                symbol: "diamond",
+                symbolOffset: [0, "-50%"],
+                symbolSize: [30, 12],
+                zlevel: 2
+            }],
+            tooltip: {
+                trigger: "item",
+                show: true
+            }
         }
+        return option
     }
 }
