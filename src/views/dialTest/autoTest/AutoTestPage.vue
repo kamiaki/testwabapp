@@ -1,12 +1,13 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <NotifyAutoTest style="margin: 5px" :notifyMsgs="notifyMsgs"></NotifyAutoTest>
-        <LampAutoTest style="margin: 5px" :lampMsgs="lampMsgs"></LampAutoTest>
+        <NotifyAutoTest style="margin: 5px" :notifyProps="notifyProps"></NotifyAutoTest>
+        <LampAutoTest style="margin: 5px" :lampProps="lampProps"></LampAutoTest>
         <SwipeAutoTest style="margin: 5px" :echartMsgs="echartMsgs"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
 <script>
+    import {line} from "/@/dictionary/dataDictionary.js"
     import {ref, reactive, watch, computed} from 'vue'
     import {Toast} from 'vant'
     import SwipeAutoTest from "/@/views/dialTest/autoTest/swipe/SwipeAutoTest.vue";
@@ -18,7 +19,7 @@
         components: {SwipeAutoTest, LampAutoTest, NotifyAutoTest},
         setup() {
             // 告警信息
-            const resultData = [
+            const notifyData = [
                 {
                     id: 'uuid',
                     type: 'domain',
@@ -32,13 +33,26 @@
                     msg: '恢复',
                     time: '2021-10-08 09:49:57'
                 }]
-            const notifyMsgs = reactive(resultData);
+            for (let i in notifyData) {
+                const name = line[notifyData[i].type].name
+                const msg = notifyData[i].msg
+                const time = notifyData[i].time
+                const fullText = `${Number(i) + 1} ${name} ${msg} ${time}`
+                notifyData[i].fullText = fullText
+            }
+            let notifyProps = reactive({notifyData});
+
             // 指示灯信息
             const lampDatas = [{id: 'mobile', state: 0, msg: ''}
                 , {id: 'unicom', state: 0, msg: ''}
                 , {id: 'telecom', state: 0, msg: ''}
                 , {id: 'domain', state: 0, msg: ''}]
-            const lampMsgs = reactive(lampDatas)
+            for (let i in lampDatas) {
+                lampDatas[i].iconUrl = line[lampDatas[i].id].iconUrl
+                lampDatas[i].name = line[lampDatas[i].id].name + lampDatas[i].msg
+            }
+            let lampProps = reactive({lampDatas})
+
             // 图表信息
             const echartDatas = {
                 bar: {name: 'bar'},
@@ -57,8 +71,8 @@
             return {
                 loading,
                 onRefresh,
-                notifyMsgs,
-                lampMsgs,
+                notifyProps,
+                lampProps,
                 echartMsgs
             };
         }
