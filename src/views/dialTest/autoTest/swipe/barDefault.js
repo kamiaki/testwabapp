@@ -1,3 +1,5 @@
+import {line} from "/@/dictionary/dataDictionary.js"
+
 export default {
     drawBar: function (echarts, myChart, Data) {
         // 配置项
@@ -36,7 +38,10 @@ export default {
                     },
                     show: true
                 },
-                data: ["移动", "联通", "电信", "域名"],
+                data: [line.mobile.name,
+                    line.unicom.name,
+                    line.telecom.name,
+                    line.domain.name],
                 type: "category"
             },
             yAxis: {

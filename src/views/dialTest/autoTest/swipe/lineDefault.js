@@ -1,5 +1,4 @@
-
-
+import {line} from "/@/dictionary/dataDictionary.js"
 
 export default {
     drawEcharts: function (echarts, myChart, Data) {
@@ -68,12 +67,12 @@ export default {
             },
             legend: {
                 align: "left",
-                right: '5%',
-                top: '14%',
+                right: 50,
+                top: 60,
                 type: 'plain',
                 textStyle: {
                     color: '#7ec7ff',
-                    fontSize: 16
+                    fontSize: 12
                 },
                 // icon:'rect',
                 itemGap: 25,
@@ -82,28 +81,32 @@ export default {
 
                 data: [
                     {
-                        name: 'xxxx2'
+                        name: line.mobile.name
                     },
                     {
-                        name: 'xxxx3'
+                        name: line.unicom.name
                     },
                     {
-                        name: 'xxxx4'
+                        name: line.telecom.name
                     },
                     {
-                        name: 'xxxx5'
+                        name: line.domain.name
                     }
                 ]
             },
             grid: {
-                top: '18%',
-                left: '15%',
-                right: '5%',
-                bottom: '25%',
+                top: 100,
+                left: 50,
+                right: 50,
+                bottom: 100,
                 // containLabel: true
             },
             xAxis: [{
                 name: '(次)',
+                nameTextStyle: {
+                    color: '#7ec7ff',
+                    fontSize: 16
+                },
                 type: 'category',
                 boundaryGap: false,
                 axisLine: { //坐标轴轴线相关设置。数学上的x轴
@@ -172,7 +175,7 @@ export default {
                 },
             }],
             series: [{
-                name: 'xxxx2',
+                name: line.mobile.name,
                 type: 'line',
                 symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
                 showAllSymbol: true,
@@ -214,7 +217,7 @@ export default {
                 },
                 data: Data.mobile
             }, {
-                name: 'xxxx3',
+                name: line.unicom.name,
                 type: 'line',
                 symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
                 showAllSymbol: true,
@@ -223,12 +226,12 @@ export default {
                 lineStyle: {
                     normal: {
                         width: 5,
-                        color: "rgba(10,219,250,1)", // 线条颜色
+                        color: "rgb(25,183,223)", // 线条颜色
                     },
                     borderColor: 'rgba(0,0,0,.4)',
                 },
                 itemStyle: {
-                    color: "rgba(10,219,250,1)",
+                    color: "rgb(25,183,223)", // 线条颜色
                     borderColor: "#646ace",
                     borderWidth: 2
 
@@ -256,7 +259,7 @@ export default {
             }
                 ,
                 {
-                    name: 'xxxx4',
+                    name: line.telecom.name,
                     type: 'line',
                     symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
                     showAllSymbol: true,
@@ -265,12 +268,12 @@ export default {
                     lineStyle: {
                         normal: {
                             width: 5,
-                            color: "rgba(10,219,250,1)", // 线条颜色
+                            color: "rgb(25,200,223)", // 线条颜色
                         },
                         borderColor: 'rgba(0,0,0,.4)',
                     },
                     itemStyle: {
-                        color: "rgba(10,219,250,1)",
+                        color: "rgb(25,200,223)", // 线条颜色
                         borderColor: "#646ace",
                         borderWidth: 2
 
@@ -298,7 +301,7 @@ export default {
                 }
                 ,
                 {
-                    name: 'xxxx5',
+                    name: line.domain.name,
                     type: 'line',
                     symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
                     showAllSymbol: true,
@@ -307,12 +310,12 @@ export default {
                     lineStyle: {
                         normal: {
                             width: 5,
-                            color: "rgba(10,219,250,1)", // 线条颜色
+                            color: "rgb(25,223,216)", // 线条颜色
                         },
                         borderColor: 'rgba(0,0,0,.4)',
                     },
                     itemStyle: {
-                        color: "rgba(10,219,250,1)",
+                        color: "rgb(25,223,216)", // 线条颜色
                         borderColor: "#646ace",
                         borderWidth: 2
 
