@@ -1,5 +1,5 @@
 <template>
-    <TitleHead></TitleHead>
+<!--    <TitleHead></TitleHead>-->
     <router-view/>
     <FootNav></FootNav>
 </template>
