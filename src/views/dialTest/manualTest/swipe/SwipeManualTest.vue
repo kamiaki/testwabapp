@@ -1,6 +1,6 @@
 <template>
     <van-swipe class="my-swipe"
-               :autoplay="3000"
+               :autoplay="10000"
                indicator-color="white">
         <van-swipe-item>
             <BarHManualTest :manualTestData="manualTestData"

@@ -31,7 +31,7 @@
             //
             // 图表信息
             const echartData = {
-                bar: {
+                barV: {
                     dataX: [utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0),
@@ -52,7 +52,7 @@
 
             // 测试刷新数据
             function setEchartsData() {
-                manualTestData.echartData.bar.dataX = [utils.randomFlow(0, 30, 0),
+                manualTestData.echartData.barV.dataX = [utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0)]

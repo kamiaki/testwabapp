@@ -19,7 +19,7 @@
             onMounted(() => {
                 // 绘制图表
                 myChart = echarts.init(document.getElementById("myChartManualTestBarV"));
-                barVDefault.drawEcharts(echarts, myChart, props.manualTestData.echartData.bar)
+                barVDefault.drawEcharts(echarts, myChart, props.manualTestData.echartData.barV)
                 window.addEventListener('resize', resize)// 响应式大小
             });
 
@@ -28,7 +28,7 @@
             })
 
             watch(props.manualTestData, () => {
-                barVDefault.drawEcharts(echarts, myChart, props.manualTestData.echartData.bar)
+                barVDefault.drawEcharts(echarts, myChart, props.manualTestData.echartData.barV)
             })
         }
     }
