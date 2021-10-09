@@ -1,7 +1,7 @@
 import {line} from "/@/dictionary/dataDictionary.js"
 
 export default {
-    drawBar: function (echarts, myChart, Data) {
+    drawEcharts: function (echarts, myChart, Data) {
         // 配置项
         const option = {
             title : {

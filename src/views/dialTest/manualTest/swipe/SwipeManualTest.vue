@@ -3,17 +3,16 @@
                :autoplay="3000"
                indicator-color="white">
         <van-swipe-item>
-            <BarHManualTest></BarHManualTest>
+            <BarHManualTest :manualTestData="manualTestData"
+                            class="echartsDiv"
+                            :style="{width: '100%', height: '400px'}"></BarHManualTest>
         </van-swipe-item>
         <van-swipe-item>
-            <BarVManualTest></BarVManualTest>
+            <BarVManualTest :manualTestData="manualTestData"
+                            class="echartsDiv"
+                            :style="{width: '100%', height: '400px'}"></BarVManualTest>
         </van-swipe-item>
     </van-swipe>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 </template>
 
 <script>
@@ -23,10 +22,14 @@
     export default {
         name: "SwipeAutoTest",
         components: {BarHManualTest, BarVManualTest},
-        props: ['manualTestData']
+        props: ['manualTestData'],
+        setup(props){
+        }
     }
 </script>
 
 <style scoped>
-
+    .echartsDiv{
+        border-radius: 10px;overflow: hidden;
+    }
 </style>

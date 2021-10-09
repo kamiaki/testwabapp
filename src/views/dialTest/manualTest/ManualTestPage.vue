@@ -16,6 +16,7 @@
     import FormManualTest from '/@/views/dialTest/manualTest/FormManualTest.vue'
     import SwipeManualTest from '/@/views/dialTest/manualTest/swipe/SwipeManualTest.vue'
     import TableManualTest from '/@/views/dialTest/manualTest/TableManualTest.vue'
+    import utils from 'aki_js_utils'
 
     export default {
         name: "ManualTestPage",
@@ -27,9 +28,35 @@
                 threadCount: 1,
                 testCount: 2
             }
+            //
+            // 图表信息
+            const echartData = {
+                bar: {
+                    dataX: [utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0)]
+                },
+                line: {
+                    xLabel: [1, 2, 3, 4, 5, 6],
+                    mobile: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                    unicom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                    telecom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                    domain: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                }
+            }
 
             const manualTestData = reactive({
-                form: form
+                form: form,
+                echartData: echartData
             })
 
             const onRefresh = () => {
