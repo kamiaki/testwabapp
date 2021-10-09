@@ -1,8 +1,8 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <NotifyAutoTest style="margin: 5px" :notifyProps="notifyProps"></NotifyAutoTest>
-        <LampAutoTest style="margin: 5px" :lampProps="lampProps"></LampAutoTest>
-        <SwipeAutoTest style="margin: 5px" :echartProps="echartProps"></SwipeAutoTest>
+        <NotifyAutoTest style="margin: 5px" :autoTestData="autoTestData"></NotifyAutoTest>
+        <LampAutoTest style="margin: 5px" :autoTestData="autoTestData"></LampAutoTest>
+        <SwipeAutoTest style="margin: 5px" :autoTestData="autoTestData"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
@@ -41,27 +41,32 @@
                 const fullText = `${Number(i) + 1} ${name} ${msg} ${time}`
                 notifyData[i].fullText = fullText
             }
-            let notifyProps = reactive({notifyData});
-
             // 指示灯信息
-            const lampDatas = [{id: 'mobile', state: 0, msg: ''}
+            const lampData = [{id: 'mobile', state: 0, msg: ''}
                 , {id: 'unicom', state: 0, msg: ''}
                 , {id: 'telecom', state: 0, msg: ''}
                 , {id: 'domain', state: 0, msg: ''}]
-            for (let i in lampDatas) {
-                lampDatas[i].iconUrl = line[lampDatas[i].id].iconUrl
-                lampDatas[i].name = line[lampDatas[i].id].name + lampDatas[i].msg
+            for (let i in lampData) {
+                lampData[i].iconUrl = line[lampData[i].id].iconUrl
+                lampData[i].name = line[lampData[i].id].name + lampData[i].msg
             }
-            let lampProps = reactive({lampDatas})
-
             // 图表信息
-            const echartDatas = {
-                bar: {echartsData: {dataX: [0, 0, 0, 0]}},
-                line: {echartsData: {dataX: [0, 0, 0, 0]}}
+            const echartData = {
+                bar: {dataX: [0, 0, 0, 0]},
+                line: {dataX: [0, 0, 0, 0]}
             }
-            const echartProps = reactive(echartDatas)
+
+            const autoTestData = reactive(
+                {
+                    notifyData: notifyData,
+                    lampData: lampData,
+                    echartData: echartData
+                }
+            )
+
+            // 测试刷新数据
             function setEchartsData() {
-                echartProps.bar.echartsData.dataX = [utils.randomFlow(0, 30, 0),
+                autoTestData.echartData.bar.dataX = [utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0)]
@@ -79,9 +84,7 @@
             return {
                 loading,
                 onRefresh,
-                notifyProps,
-                lampProps,
-                echartProps
+                autoTestData
             };
         }
     }

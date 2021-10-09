@@ -8,7 +8,7 @@
 
     export default {
         name: "LineAutoTest",
-        props: ['echartProps'],
+        props: ['autoTestData'],
         setup(props) {
             let echarts = inject("ec");//引入
             let myChart = {}

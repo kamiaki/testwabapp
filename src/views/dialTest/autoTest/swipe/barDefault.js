@@ -1,5 +1,5 @@
 export default {
-    drawBar: function (echarts, myChart, echartsData) {
+    drawBar: function (echarts, myChart, Data) {
         // 点击事件
         myChart.on('click', 'series', function (params) {
             alert(params)
@@ -69,7 +69,7 @@ export default {
                 }
             },
             series: [{
-                data: echartsData.dataX,
+                data: Data.dataX,
                 type: "bar",
                 barWidth: 30,
                 itemStyle: {
@@ -103,7 +103,7 @@ export default {
                 symbolOffset: [0, "50%"],
                 symbolSize: [30, 15]
             }, {
-                data: echartsData.dataX,
+                data: Data.dataX,
                 type: "pictorialBar",
                 barMaxWidth: "20",
                 symbolPosition: "end",

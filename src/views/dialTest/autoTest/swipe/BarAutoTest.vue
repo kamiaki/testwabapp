@@ -8,7 +8,7 @@
 
     export default {
         name: "BarAutoTest",
-        props: ['echartProps'],
+        props: ['autoTestData'],
         setup(props) {
             let echarts = inject("ec");//引入
             let myChart = {}
@@ -16,11 +16,10 @@
             function resize() {
                 myChart.resize()
             }
-
             onMounted(() => {
                 // 绘制图表
                 myChart = echarts.init(document.getElementById("myChart"));
-                barDefault.drawBar(echarts, myChart, props.echartProps.bar.echartsData)
+                barDefault.drawBar(echarts, myChart, props.autoTestData.echartData.bar)
                 window.addEventListener('resize', resize)// 响应式大小
             });
 
@@ -28,8 +27,8 @@
                 window.removeEventListener('resize', resize)
             })
 
-            watch(props.echartProps, () => {
-                barDefault.drawBar(echarts, myChart, props.echartProps.bar.echartsData)
+            watch(props.autoTestData, () => {
+                barDefault.drawBar(echarts, myChart, props.autoTestData.echartData.bar)
             })
         }
     }

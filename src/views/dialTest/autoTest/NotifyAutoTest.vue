@@ -6,7 +6,7 @@
                 :autoplay="3000"
                 :show-indicators="false"
         >
-            <van-swipe-item v-for="item in notifyProps.notifyData" :key="item">
+            <van-swipe-item v-for="item in autoTestData.notifyData" :key="item">
                 {{item.fullText}}
             </van-swipe-item>
         </van-swipe>
@@ -16,10 +16,10 @@
 <script>
     export default {
         name: "NotifyAutoTest",
-        props: ['notifyProps'],
+        props: ['autoTestData'],
         setup(props) {
             return {
-                notifyProps: props.notifyProps
+                autoTestData: props.autoTestData
             }
         }
     }

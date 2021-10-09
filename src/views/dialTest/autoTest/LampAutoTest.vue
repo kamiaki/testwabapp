@@ -1,7 +1,7 @@
 <template>
     <van-grid gutter="5" :column-num="4">
         <van-grid-item
-                v-for="item in lampProps.lampDatas"
+                v-for="item in autoTestData.lampData"
                 :key="item">
             <van-image :src="item.iconUrl"/>
             <div> {{item.name}}</div>
@@ -12,10 +12,10 @@
 <script>
     export default {
         name: "LampAutoTest",
-        props: ['lampProps'],
+        props: ['autoTestData'],
         setup(props) {
             return {
-                lampProps: props.lampProps
+                autoTestData: props.autoTestData
             }
         }
     }
