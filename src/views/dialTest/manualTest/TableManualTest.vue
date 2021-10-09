@@ -41,6 +41,7 @@
         .van-col {
             text-align: center;
             border: 1px solid #000;
+            font-size: 12px;
         }
         .tableC{
             .van-col {
