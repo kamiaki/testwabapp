@@ -43,7 +43,7 @@
             }
             // 指示灯信息
             const lampData = [{id: 'mobile', state: 0, msg: ''}
-                , {id: 'unicom', state: 0, msg: ''}
+                , {id: 'unicom', state: 1, msg: ''}
                 , {id: 'telecom', state: 0, msg: ''}
                 , {id: 'domain', state: 0, msg: ''}]
             for (let i in lampData) {
