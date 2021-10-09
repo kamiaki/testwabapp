@@ -3,11 +3,13 @@
                indicator-color="white">
         <van-swipe-item>
             <BarAutoTest :autoTestData="autoTestData"
+                         class="echartsDiv"
                          :style="{width: '100%', height: '400px'}"
             ></BarAutoTest>
         </van-swipe-item>
         <van-swipe-item>
             <LineAutoTest :autoTestData="autoTestData"
+                          class="echartsDiv"
                           :style="{width: '100%', height: '400px'}"
             ></LineAutoTest>
         </van-swipe-item>
@@ -31,5 +33,7 @@
 </script>
 
 <style scoped>
-
+.echartsDiv{
+    border-radius: 10px;overflow: hidden;
+}
 </style>
