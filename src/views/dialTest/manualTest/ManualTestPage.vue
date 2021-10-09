@@ -5,8 +5,8 @@
                       loosing-text="释放即可拨测..."
                       loading-text="拨测中..."
     >
-        <TableManualTest></TableManualTest>
-        <SwipeManualTest :manualTestData="manualTestData"></SwipeManualTest>
+        <TableManualTest  style="margin:40px 5px" :manualTestData="manualTestData"></TableManualTest>
+        <SwipeManualTest  style="margin:40px 5px"  :manualTestData="manualTestData"></SwipeManualTest>
     </van-pull-refresh>
 </template>
 
@@ -28,7 +28,6 @@
                 threadCount: 1,
                 testCount: 2
             }
-            //
             // 图表信息
             const echartData = {
                 barV: {
@@ -44,9 +43,17 @@
                         utils.randomFlow(0, 30, 0)]
                 },
             }
+            // 表格
+            const tableData = [
+                {name: '移动网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                {name: '联通网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                {name: '电信网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                {name: '域名网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+            ]
             const manualTestData = reactive({
                 form: form,
-                echartData: echartData
+                echartData: echartData,
+                tableData: tableData
             })
 
 
@@ -60,6 +67,12 @@
                     utils.randomFlow(0, manualTestData.form.testCount, 0),
                     utils.randomFlow(0, manualTestData.form.testCount, 0),
                     utils.randomFlow(0, manualTestData.form.testCount, 0)]
+                manualTestData.tableData = [
+                    {name: '移动网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                    {name: '联通网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                    {name: '电信网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                    {name: '域名网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                ]
             }
 
             const onRefresh = () => {
