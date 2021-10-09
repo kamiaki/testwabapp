@@ -74,11 +74,8 @@ export default {
                     color: '#7ec7ff',
                     fontSize: 12
                 },
-                // icon:'rect',
-                itemGap: 25,
-                itemWidth: 18,
-                icon: 'path://M0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z',
-
+                itemGap: 5,
+                itemWidth: 10,
                 data: [
                     {
                         name: line.mobile.name
@@ -184,15 +181,11 @@ export default {
                 lineStyle: {
                     normal: {
                         width: 5,
-                        color: "rgba(25,163,223,1)", // 线条颜色
+                        color: "rgb(111,123,227)", // 线条颜色
                     },
-                    borderColor: 'rgba(0,0,0,.4)',
                 },
                 itemStyle: {
-                    color: "rgba(25,163,223,1)",
-                    borderColor: "#646ace",
-                    borderWidth: 2
-
+                    color: "rgb(111,123,227)", // 线条颜色
                 },
                 tooltip: {
                     show: true
@@ -226,15 +219,11 @@ export default {
                 lineStyle: {
                     normal: {
                         width: 5,
-                        color: "rgb(25,183,223)", // 线条颜色
+                        color: "rgb(111,126,227)", // 线条颜色
                     },
-                    borderColor: 'rgba(0,0,0,.4)',
                 },
                 itemStyle: {
-                    color: "rgb(25,183,223)", // 线条颜色
-                    borderColor: "#646ace",
-                    borderWidth: 2
-
+                    color: "rgb(111,126,227)", // 线条颜色
                 },
                 tooltip: {
                     show: true
@@ -268,15 +257,11 @@ export default {
                     lineStyle: {
                         normal: {
                             width: 5,
-                            color: "rgb(25,200,223)", // 线条颜色
+                            color: "rgb(111,214,227)", // 线条颜色
                         },
-                        borderColor: 'rgba(0,0,0,.4)',
                     },
                     itemStyle: {
-                        color: "rgb(25,200,223)", // 线条颜色
-                        borderColor: "#646ace",
-                        borderWidth: 2
-
+                        color: "rgb(111,214,227)", // 线条颜色
                     },
                     tooltip: {
                         show: true
@@ -310,15 +295,11 @@ export default {
                     lineStyle: {
                         normal: {
                             width: 5,
-                            color: "rgb(25,223,216)", // 线条颜色
+                            color: "rgb(111,227,163)", // 线条颜色
                         },
-                        borderColor: 'rgba(0,0,0,.4)',
                     },
                     itemStyle: {
-                        color: "rgb(25,223,216)", // 线条颜色
-                        borderColor: "#646ace",
-                        borderWidth: 2
-
+                        color: "rgb(111,227,163)", // 线条颜色
                     },
                     tooltip: {
                         show: true

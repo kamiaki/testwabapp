@@ -52,11 +52,13 @@
             }
             // 图表信息
             const echartData = {
-                bar: {dataX: [utils.randomFlow(0, 30, 0),
+                bar: {
+                    dataX: [utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0)]},
-                line:  {
+                        utils.randomFlow(0, 30, 0)]
+                },
+                line: {
                     xLabel: [1, 2, 3, 4, 5, 6],
                     mobile: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
@@ -102,7 +104,15 @@
                         utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
                 }
-
+                const lampData = [{id: 'mobile', state: utils.randomFlow(0, 1, 0), msg: ''}
+                    , {id: 'unicom', state: utils.randomFlow(0, 1, 0), msg: ''}
+                    , {id: 'telecom', state: utils.randomFlow(0, 1, 0), msg: ''}
+                    , {id: 'domain', state: utils.randomFlow(0, 1, 0), msg: ''}]
+                for (let i in lampData) {
+                    lampData[i].iconUrl = line[lampData[i].id].iconUrl
+                    lampData[i].name = line[lampData[i].id].name + lampData[i].msg
+                }
+                autoTestData.lampData = lampData
             }
 
             // 下拉刷新
