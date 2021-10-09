@@ -16,8 +16,6 @@
         name: "LampAutoTest",
         props: ['autoTestData'],
         setup(props) {
-
-
             return {
                 autoTestData: props.autoTestData
             }
@@ -35,14 +33,23 @@
 
     .item {
         flex: auto;
-        background: #07c160;
+        margin: 0 5px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+        transition: all 0.5s ease-in-out;
+    }
+
+    .item:hover{
+        transform: scale(1.05);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
     }
 
     .imgCss {
         background: no-repeat;
         background-size: 100% 100%;
-        width: 100%;
-        height: 100px;
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
     }
 
     .lampTest {
@@ -50,7 +57,7 @@
         height: 50px;
         line-height: 50px;
         text-align: center;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .normal {

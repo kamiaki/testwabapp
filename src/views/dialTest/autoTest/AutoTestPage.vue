@@ -1,8 +1,8 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <NotifyAutoTest style="margin: 5px" :autoTestData="autoTestData"></NotifyAutoTest>
-        <LampAutoTest style="margin: 5px" :autoTestData="autoTestData"></LampAutoTest>
-        <SwipeAutoTest style="margin: 5px" :autoTestData="autoTestData"></SwipeAutoTest>
+        <NotifyAutoTest style="margin:20px 5px" :autoTestData="autoTestData"></NotifyAutoTest>
+        <LampAutoTest style="margin:20px 5px" :autoTestData="autoTestData"></LampAutoTest>
+        <SwipeAutoTest style="margin:20px 5px" :autoTestData="autoTestData"></SwipeAutoTest>
     </van-pull-refresh>
 </template>
 
