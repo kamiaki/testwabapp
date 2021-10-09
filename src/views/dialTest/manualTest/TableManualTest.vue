@@ -2,14 +2,12 @@
     <div>
         <div style="text-align: center;font-size: 25px;">参数展示</div>
         <van-row style="margin: 5px 0 20px">
-            <van-col offset="2" span="10">
+            <van-col span="24">
                 <div>线程数: {{manualTestData.form.threadCount}} | 测试量: {{manualTestData.form.testCount}}</div>
-            </van-col>
-            <van-col span="10">
-                <div style="text-align: right">测试时间: {{'2021-10-08'}}</div>
+                <div>测试时间: {{'2021-10-08'}}</div>
             </van-col>
         </van-row>
-       <tableW>
+       <div class="tableW">
            <van-row class="tableH">
                <van-col span="6">网络类型</van-col>
                <van-col span="6">最大值(ms)</van-col>
@@ -22,7 +20,7 @@
                <van-col span="6">{{item.min}}</van-col>
                <van-col span="6">{{item.level}}</van-col>
            </van-row>
-       </tableW>
+       </div>
     </div>
 </template>
 
@@ -39,7 +37,7 @@
 </script>
 
 <style scoped lang="less">
-    tableW{
+    .tableW{
         .van-col {
             text-align: center;
             border: 1px solid #000;

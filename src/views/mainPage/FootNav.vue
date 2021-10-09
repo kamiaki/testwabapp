@@ -14,6 +14,7 @@
     import {ref} from 'vue';
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
+    import { Toast } from 'vant';
 
     export default {
         name: "FootNav",
@@ -30,7 +31,7 @@
                         router.push({path: '/MainPage/QueryPage'})
                         break;
                     case '更多':
-                        alert('此功能还未上线...')
+                        Toast('不..不好意思...真的没有了..')
                         store.state.vuexMain.tabbarActive = '拨测'
                         router.push({path: 'DialTestPage'})
                         break;

@@ -5,7 +5,7 @@
                       loosing-text="释放即可拨测..."
                       loading-text="拨测中..."
     >
-        <TableManualTest  style="margin:40px 5px" :manualTestData="manualTestData"></TableManualTest>
+        <TableManualTest  style="margin:0px 5px 40px" :manualTestData="manualTestData"></TableManualTest>
         <SwipeManualTest  style="margin:40px 5px"  :manualTestData="manualTestData"></SwipeManualTest>
     </van-pull-refresh>
 </template>
@@ -82,6 +82,10 @@
                     setEchartsData()
                 }, 1000);
             };
+
+            watch(manualTestData.form, ()=> {
+                setEchartsData()
+            })
 
             return {
                 loading,
