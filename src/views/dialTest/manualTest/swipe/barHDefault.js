@@ -1,123 +1,89 @@
 import {line} from "/@/dictionary/dataDictionary.js"
 
+
 export default {
     drawEcharts: function (echarts, myChart, Data) {
         // 配置项
         const option = {
             title : {
-                text: '手动拨测', //主标题
+                text: '各个网络类型的成功/失败比例', //主标题
                 x: 'center', //标题位置
                 y: 20,
                 textStyle: {
                     color: '#ffffff'
                 }
             },
-            backgroundColor: '#031245',
-            color: ["#63caff", "#3608FE"],
-            grid: {
-                containLabel: true,
-                left: 50,
-                right: 50,
-                bottom: 50,
-                top: 100
-            },
-            xAxis: {
-                axisLabel: {
-                    color: "#c0c3cd",
-                    fontSize: 14,
-                    interval: 0
+            backgroundColor: '#00043A',
+            tooltip: {
+                trigger: 'axis',
+                show: false,
+                axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
                 },
+            },
+            legend: {
+                show: false
+            },
+            grid: {
+                left: '3%',
+                right: '10%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
                 splitLine: {
                     show: false
                 },
-                axisLine: {
-                    lineStyle: {
-                        color: "#384267",
-                        width: 1,
-                        type: "dashed"
-                    },
-                    show: true
+                type: 'value',
+                show: false,
+            }],
+            yAxis: [{
+                splitLine: {
+                    show: false
                 },
+                axisLine: { //y轴
+                    show: false
+                },
+                type: 'category',
+                axisTick: {
+                    show: false
+                },
+                inverse: true,
                 data: [line.mobile.name,
                     line.unicom.name,
                     line.telecom.name,
                     line.domain.name],
-                type: "category"
-            },
-            yAxis: {
                 axisLabel: {
-                    color: "#c0c3cd",
-                    fontSize: 14
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#384267",
-                        type: "dashed"
-                    }
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: "#384267",
-                        width: 1,
-                        type: "dashed"
-                    },
-                    show: true
-                },
-                name: "平均总耗时/ms",
-                nameTextStyle: {
-                    color: '#ffffff'
+                    color: '#A7D6F4',
+                    fontSize: 14,
                 }
-            },
+            }],
             series: [{
-                data: Data.dataX,
-                type: "bar",
-                barWidth: 30,
-                itemStyle: {
-                    color: {
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        type: "linear",
-                        global: false,
-                        colorStops: [{
-                            offset: 0,
-                            color: "#3A1BFD"
-                        }, {
-                            offset: 1,
-                            color: "#3BEFFD"
-                        }]
-                    }
-                },
+                name: '标准化',
+                type: 'bar',
+                barWidth: 30, // 柱子宽度
                 label: {
                     show: true,
-                    position: "top",
-                    distance: 10,
-                    color: "#fff"
-                }
-            }, {
-                data: [1, 1, 1, 1],
-                type: "pictorialBar",
-                barMaxWidth: "20",
-                symbol: "diamond",
-                symbolOffset: [0, "50%"],
-                symbolSize: [30, 15]
-            }, {
-                data: Data.dataX,
-                type: "pictorialBar",
-                barMaxWidth: "20",
-                symbolPosition: "end",
-                symbol: "diamond",
-                symbolOffset: [0, "-50%"],
-                symbolSize: [30, 12],
-                zlevel: 2
-            }],
-            tooltip: {
-                trigger: "item",
-                show: true
-            }
-        }
+                    position: 'right', // 位置
+                    color: '#A7D6F4',
+                    fontSize: 14,
+                    distance: 15, // 距离
+                    formatter: '{c} 个' // 这里是数据展示的时候显示的数据
+                }, // 柱子上方的数值
+                itemStyle: {
+                    barBorderRadius: [0, 20, 20, 0], // 圆角（左上、右上、右下、左下）
+
+                    color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{
+                        offset: 0,
+                        color: '#51C5FD'
+                    }, {
+                        offset: 1,
+                        color: '#005BB1'
+                    }], false), // 渐变
+                },
+                data: Data.dataX
+            },]
+        };
         // 绘制
         myChart.setOption(option, true)
     }

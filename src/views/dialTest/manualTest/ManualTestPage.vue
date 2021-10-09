@@ -56,10 +56,10 @@
                     utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0),
                     utils.randomFlow(0, 30, 0)]
-                manualTestData.echartData.barH.dataX = [utils.randomFlow(0, 30, 0),
-                    utils.randomFlow(0, 30, 0),
-                    utils.randomFlow(0, 30, 0),
-                    utils.randomFlow(0, 30, 0)]
+                manualTestData.echartData.barH.dataX = [utils.randomFlow(0, manualTestData.form.testCount, 0),
+                    utils.randomFlow(0, manualTestData.form.testCount, 0),
+                    utils.randomFlow(0, manualTestData.form.testCount, 0),
+                    utils.randomFlow(0, manualTestData.form.testCount, 0)]
             }
 
             const onRefresh = () => {
