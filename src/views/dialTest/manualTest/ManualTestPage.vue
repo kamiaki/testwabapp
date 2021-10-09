@@ -37,32 +37,36 @@
                         utils.randomFlow(0, 30, 0),
                         utils.randomFlow(0, 30, 0)]
                 },
-                line: {
-                    xLabel: [1, 2, 3, 4, 5, 6],
-                    mobile: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                    unicom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                    telecom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                    domain: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                }
+                barH: {
+                    dataX: [utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0)]
+                },
             }
-
             const manualTestData = reactive({
                 form: form,
                 echartData: echartData
             })
 
+
+            // 测试刷新数据
+            function setEchartsData() {
+                manualTestData.echartData.bar.dataX = [utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0)]
+                manualTestData.echartData.barH.dataX = [utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0),
+                    utils.randomFlow(0, 30, 0)]
+            }
+
             const onRefresh = () => {
                 setTimeout(() => {
                     Toast(`线程数: ${manualTestData.form.threadCount}\r\n拨测数: ${manualTestData.form.testCount}\r\n拨测开始`);
                     loading.value = false;
+                    setEchartsData()
                 }, 1000);
             };
 

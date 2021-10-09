@@ -1,5 +1,5 @@
 <template>
-    <div id="myChartManualTestBar" :style="{width: '100%', height: '100%'}"></div>
+    <div id="myChartManualTestBarV" :style="{width: '100%', height: '100%'}"></div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
     import barVDefault from './barVDefault'
 
     export default {
-        name: "BarAutoTest",
+        name: "BarVManualTest",
         props: ['manualTestData'],
         setup(props) {
             let echarts = inject("ec");//引入
@@ -18,7 +18,7 @@
             }
             onMounted(() => {
                 // 绘制图表
-                myChart = echarts.init(document.getElementById("myChartManualTestBar"));
+                myChart = echarts.init(document.getElementById("myChartManualTestBarV"));
                 barVDefault.drawEcharts(echarts, myChart, props.manualTestData.echartData.bar)
                 window.addEventListener('resize', resize)// 响应式大小
             });
