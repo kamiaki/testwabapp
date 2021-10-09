@@ -30,7 +30,6 @@
             const tabbarActive = toRef(store.state.vuexMain, 'tabbarActive')
             const active = ref('auto');
             const onClickTab = function (data) {
-                console.info(data)
                 if ('manual' === data.name){
                     Toast('下拉即可拨测')
                 }

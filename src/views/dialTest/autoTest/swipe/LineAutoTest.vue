@@ -1,5 +1,5 @@
 <template>
-    <div id="myChart2" :style="{width: '100%', height: '100%'}"></div>
+    <div id="myChartAutoTestLine" :style="{width: '100%', height: '100%'}"></div>
 </template>
 
 <script>
@@ -19,7 +19,7 @@
 
             onMounted(() => {//需要获取到element,所以是onMounted的Hook
                 // 绘制图表
-                myChart = echarts.init(document.getElementById("myChart2"));
+                myChart = echarts.init(document.getElementById("myChartAutoTestLine"));
                 lineDefault.drawEcharts(echarts, myChart, props.autoTestData.echartData.line)
                 window.addEventListener('resize', resize)// 响应式大小
             });

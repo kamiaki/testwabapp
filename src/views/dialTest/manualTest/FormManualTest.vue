@@ -1,7 +1,7 @@
 <template>
     <van-dropdown-menu>
-        <van-dropdown-item teleport="body" v-model="value1" :options="option1"/>
-        <van-dropdown-item teleport="body" v-model="value2" :options="option2"/>
+        <van-dropdown-item teleport="body" v-model="manualTestData.form.threadCount" :options="option1"/>
+        <van-dropdown-item teleport="body" v-model="manualTestData.form.testCount" :options="option2"/>
     </van-dropdown-menu>
 </template>
 
@@ -10,9 +10,8 @@
 
     export default {
         name: "FormManualTest",
-        setup() {
-            const value1 = ref(1);
-            const value2 = ref(2);
+        props: ['manualTestData'],
+        setup(props) {
             const option1 = [
                 {text: '线程数 1', value: 1},
                 {text: '线程数 2', value: 2},
@@ -24,10 +23,9 @@
                 {text: '测试量 10', value: 10},
             ];
             return {
-                value1,
-                value2,
                 option1,
                 option2,
+                manualTestData: props.manualTestData,
             };
         }
     }

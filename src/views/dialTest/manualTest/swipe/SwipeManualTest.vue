@@ -17,12 +17,13 @@
 </template>
 
 <script>
-    import BarHManualTest from "/@/views/dialTest/manualTest/BarHManualTest.vue";
-    import BarVManualTest from "/@/views/dialTest/manualTest/BarVManualTest.vue";
+    import BarHManualTest from "/@/views/dialTest/manualTest/swipe/BarHManualTest.vue";
+    import BarVManualTest from "/@/views/dialTest/manualTest/swipe/BarVManualTest.vue";
 
     export default {
         name: "SwipeAutoTest",
-        components: {BarHManualTest, BarVManualTest}
+        components: {BarHManualTest, BarVManualTest},
+        props: ['manualTestData']
     }
 </script>
 
