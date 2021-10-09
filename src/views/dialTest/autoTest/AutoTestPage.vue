@@ -53,7 +53,13 @@
             // 图表信息
             const echartData = {
                 bar: {dataX: [0, 0, 0, 0]},
-                line: {dataX: [0, 0, 0, 0]}
+                line: {
+                    xLabel: [1, 2, 3, 4, 5, 6],
+                    mobile: ["40", "60", "22", "85", "50", "40"],
+                    unicom: [2, 3, 55, 11, 8, 3],
+                    telecom: ["20", "65", "12", "1", "30", "60"],
+                    domain: ["20", "50", "78", "65", "24", "60"]
+                }
             }
 
             const autoTestData = reactive(

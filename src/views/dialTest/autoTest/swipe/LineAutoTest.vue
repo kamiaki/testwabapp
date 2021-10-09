@@ -16,9 +16,9 @@
                 myChart.resize()
             }
             onMounted(() => {//需要获取到element,所以是onMounted的Hook
-                myChart = echarts.init(document.getElementById("myChart2"));
                 // 绘制图表
-                myChart.setOption(lineDefault.option(echarts), true);
+                myChart = echarts.init(document.getElementById("myChart2"));
+                lineDefault.drawEcharts(echarts, myChart, props.autoTestData.echartData.line)
                 window.addEventListener('resize', resize)// 响应式大小
             });
             onBeforeUnmount(() => {

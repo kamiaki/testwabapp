@@ -1,9 +1,5 @@
 export default {
     drawBar: function (echarts, myChart, Data) {
-        // 点击事件
-        myChart.on('click', 'series', function (params) {
-            alert(params)
-        })
         // 配置项
         const option = {
             title : {

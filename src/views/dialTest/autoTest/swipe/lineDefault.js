@@ -1,13 +1,10 @@
-let xLabel = [1, 2, 3, 4, 5, 6]
-let mobile = ["40", "60", "22", "85", "50", "40"]
-let unicom = [2, 3, 55, 11, 8, 3]
-let telecom = ["20", "65", "12", "1", "30", "60"]
-let domain = ["20", "50", "78", "65", "24", "60"]
+
 
 
 export default {
-    option: function (echarts) {
-        return {
+    drawEcharts: function (echarts, myChart, Data) {
+        // 配置项
+        const option = {
             title: {
                 text: '最新拨测耗时展示', //主标题
                 x: 'center', //标题位置
@@ -43,7 +40,7 @@ export default {
                     },
                 },
                 formatter: (p) => {
-      let dom = `<div style="color:#fff;position: relative;background: rgba(0,0,0,0.5)">
+                    let dom = `<div style="color:#fff;position: relative;background: rgba(0,0,0,0.5)">
         <div style="padding: 4px 8px 4px 14px;display: flex;
         justify-content: center;
         align-items: center;
@@ -134,7 +131,7 @@ export default {
                 axisTick: {
                     show: false,
                 },
-                data: xLabel
+                data: Data.xLabel
             }],
             yAxis: [{
                 name: '耗时/ms',
@@ -215,7 +212,7 @@ export default {
                         shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
                     }
                 },
-                data: mobile
+                data: Data.mobile
             }, {
                 name: 'xxxx3',
                 type: 'line',
@@ -255,7 +252,7 @@ export default {
                         shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
                     }
                 },
-                data: unicom
+                data: Data.unicom
             }
                 ,
                 {
@@ -297,7 +294,7 @@ export default {
                             shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
                         }
                     },
-                    data: telecom
+                    data: Data.telecom
                 }
                 ,
                 {
@@ -339,8 +336,10 @@ export default {
                             shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
                         }
                     },
-                    data: domain
+                    data: Data.domain
                 }]
         }
+        // 绘制图表
+        myChart.setOption(option, true)
     }
 }
