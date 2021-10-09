@@ -1,10 +1,21 @@
-let xLabel = ['3.26', '3.27', '3.28', '3.29', '3.30', '3.31']
-let goToSchool = ["40", "60", "22", "85", "50", "40"]
-let goOutSchool = ["20", "50", "12", "65", "30", "60"]
+let xLabel = [1, 2, 3, 4, 5, 6]
+let mobile = ["40", "60", "22", "85", "50", "40"]
+let unicom = [2, 3, 55, 11, 8, 3]
+let telecom = ["20", "65", "12", "1", "30", "60"]
+let domain = ["20", "50", "78", "65", "24", "60"]
+
 
 export default {
     option: function (echarts) {
         return {
+            title: {
+                text: '最新拨测耗时展示', //主标题
+                x: 'center', //标题位置
+                y: 20,
+                textStyle: {
+                    color: '#ffffff'
+                }
+            },
             backgroundColor: '#0e1c47',
             tooltip: {
                 trigger: 'axis',
@@ -32,39 +43,26 @@ export default {
                     },
                 },
                 formatter: (p) => {
-                    let dom = `<div style="width: 79px;
-	height: 50px;;color:#fff;position: relative;">
-        <svg style="position: absolute;top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);" class="svg" xmlns="http://www.w3.org/2000/svg" width="100" height="71" viewBox="0 0 84 55">
-      <defs>
-        <style>
-          .cls-1 {
-            fill: #07172c;
-            fill-opacity: 0.8;
-            stroke: #a7d8ff;
-            stroke-linejoin: round;
-            stroke-opacity: 0.2;
-            stroke-width: 1px;
-            fill-rule: evenodd;
-          }
-
-        </style>
-      </defs>
-      <path id="矩形_419" data-name="矩形 419" class="cls-1" d="M266,595h74v50H266V624.046L261,620l5-3.984V595Z"
-        transform="translate(-258.5 -592.5)" />
-    </svg>
+      let dom = `<div style="color:#fff;position: relative;background: rgba(0,0,0,0.5)">
         <div style="padding: 4px 8px 4px 14px;display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;position: relative;z-index: 1;">
-            <div style="margin-bottom: 4px;width:100%;display:${p[0] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
+            <div style="width:100%;height:100%;display:${p[0] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
                 <span style="font-size:14px;color:#7ec7ff;">${p[0] ? p[0].seriesName : ''}</span>
                 <span style="font-size:14px;color:#fff;">${p[0] ? p[0].data : ''}</span>
             </div>
             <div style="width:100%;height:100%;display:${p[1] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
                 <span style="font-size:14px;color:#7ec7ff;">${p[1] ? p[1].seriesName : ''}</span>
                 <span style="font-size:14px;color:#fff;">${p[1] ? p[1].data : ''}</span>
+            </div>
+            <div style="width:100%;height:100%;display:${p[2] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
+                <span style="font-size:14px;color:#7ec7ff;">${p[2] ? p[2].seriesName : ''}</span>
+                <span style="font-size:14px;color:#fff;">${p[2] ? p[2].data : ''}</span>
+            </div>
+            <div style="width:100%;height:100%;display:${p[3] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
+                <span style="font-size:14px;color:#7ec7ff;">${p[3] ? p[3].seriesName : ''}</span>
+                <span style="font-size:14px;color:#fff;">${p[3] ? p[3].data : ''}</span>
             </div>
         </div>
     </div>`
@@ -91,6 +89,12 @@ export default {
                     },
                     {
                         name: 'xxxx3'
+                    },
+                    {
+                        name: 'xxxx4'
+                    },
+                    {
+                        name: 'xxxx5'
                     }
                 ]
             },
@@ -102,6 +106,7 @@ export default {
                 // containLabel: true
             },
             xAxis: [{
+                name: '(次)',
                 type: 'category',
                 boundaryGap: false,
                 axisLine: { //坐标轴轴线相关设置。数学上的x轴
@@ -132,7 +137,7 @@ export default {
                 data: xLabel
             }],
             yAxis: [{
-                name: 'xxx1',
+                name: '耗时/ms',
                 nameTextStyle: {
                     color: "#7ec7ff",
                     fontSize: 16,
@@ -210,7 +215,7 @@ export default {
                         shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
                     }
                 },
-                data: goToSchool
+                data: mobile
             }, {
                 name: 'xxxx3',
                 type: 'line',
@@ -250,8 +255,92 @@ export default {
                         shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
                     }
                 },
-                data: goOutSchool
-            }]
+                data: unicom
+            }
+                ,
+                {
+                    name: 'xxxx4',
+                    type: 'line',
+                    symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
+                    showAllSymbol: true,
+                    symbolSize: 0,
+                    smooth: true,
+                    lineStyle: {
+                        normal: {
+                            width: 5,
+                            color: "rgba(10,219,250,1)", // 线条颜色
+                        },
+                        borderColor: 'rgba(0,0,0,.4)',
+                    },
+                    itemStyle: {
+                        color: "rgba(10,219,250,1)",
+                        borderColor: "#646ace",
+                        borderWidth: 2
+
+                    },
+                    tooltip: {
+                        show: true
+                    },
+                    areaStyle: { //区域填充样式
+                        normal: {
+                            //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: "rgba(10,219,250,.3)"
+                            },
+                                {
+                                    offset: 1,
+                                    color: "rgba(10,219,250, 0)"
+                                }
+                            ], false),
+                            shadowColor: 'rgba(10,219,250, 0.5)', //阴影颜色
+                            shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                        }
+                    },
+                    data: telecom
+                }
+                ,
+                {
+                    name: 'xxxx5',
+                    type: 'line',
+                    symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
+                    showAllSymbol: true,
+                    symbolSize: 0,
+                    smooth: true,
+                    lineStyle: {
+                        normal: {
+                            width: 5,
+                            color: "rgba(10,219,250,1)", // 线条颜色
+                        },
+                        borderColor: 'rgba(0,0,0,.4)',
+                    },
+                    itemStyle: {
+                        color: "rgba(10,219,250,1)",
+                        borderColor: "#646ace",
+                        borderWidth: 2
+
+                    },
+                    tooltip: {
+                        show: true
+                    },
+                    areaStyle: { //区域填充样式
+                        normal: {
+                            //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: "rgba(10,219,250,.3)"
+                            },
+                                {
+                                    offset: 1,
+                                    color: "rgba(10,219,250, 0)"
+                                }
+                            ], false),
+                            shadowColor: 'rgba(10,219,250, 0.5)', //阴影颜色
+                            shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                        }
+                    },
+                    data: domain
+                }]
         }
     }
 }
