@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div style="text-align: center;font-size: 25px;margin-top: 10px;">参数展示</div>
+        <div style="text-align: center;font-size: 20px;margin-top: 10px;">参数展示</div>
         <van-row style="margin: 10px 0 10px">
             <van-col span="24">
-                <div>线程数: {{manualTestData.form.threadCount}} | 测试量: {{manualTestData.form.testCount}}</div>
+                <div>线程数: {{manualTestData.form.threadCount}} 测试量: {{manualTestData.form.testCount}}</div>
                 <div>测试时间: {{'2021-10-08'}}</div>
             </van-col>
         </van-row>

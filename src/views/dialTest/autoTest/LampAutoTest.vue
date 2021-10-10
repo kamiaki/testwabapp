@@ -4,7 +4,7 @@
              v-for="item in autoTestData.lampData" :key="item">
             <div class="imgCss"
                  :style="{backgroundImage: 'url(' + item.iconUrl + ')'}"></div>
-            <div class="lampTest"
+            <div class="lampText"
             >{{item.name}}
             </div>
         </div>
@@ -47,17 +47,18 @@
     .imgCss {
         background: no-repeat;
         background-size: 100% 100%;
-        margin: 0 auto;
-        width: 80px;
-        height: 80px;
+        margin: 10px auto 0px;
+        width: 60px;
+        height: 60px;
     }
 
-    .lampTest {
+    .lampText {
         width: 100%;
         height: 50px;
         line-height: 50px;
         text-align: center;
-        font-size: 18px;
+        font-size: 14px;
+        font-weight: bold;
     }
 
     .normal {

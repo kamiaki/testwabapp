@@ -25,9 +25,10 @@ export default {
                 show: false
             },
             grid: {
-                left: '3%',
-                right: '10%',
-                bottom: '3%',
+                left: 50,
+                right: 100,
+                bottom: 0,
+                top: 50,
                 containLabel: true
             },
             xAxis: [{
