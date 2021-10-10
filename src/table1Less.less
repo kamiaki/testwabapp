@@ -1,0 +1,77 @@
+/*///////////////////////////////////////////////////////////////////一下是表格样式*/
+.table-wrapper-style1 ::v-deep(.el-table__body-wrapper::-webkit-scrollbar) {
+  width: 22px;
+}
+
+/*滚动条*/
+.table-wrapper-style1 ::v-deep(.el-table__body-wrapper::-webkit-scrollbar-thumb) {
+  background: rgba(16, 39, 134, 0.5);
+}
+
+/*滚动条*/
+.table-wrapper-style1 ::v-deep(.el-table__body-wrapper::-webkit-scrollbar-track ) {
+  background: rgba(9, 33, 128, 0.5);
+}
+
+/*表格背景色*/
+.table-wrapper-style1 ::v-deep(.el-table, .el-table__expanded-cell) {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/*表格表头 高度*/
+.table-wrapper-style1 ::v-deep(.el-table__header tr, .el-table__header th) {
+  padding: 0;
+  height: 45px;
+}
+
+/*表头*/
+.table-wrapper-style1 ::v-deep(.el-table th) {
+  background-color: rgba(16, 97, 179, 0.5) !important;
+  color: white !important;
+  border: 0 !important;
+}
+
+/*行 高度*/
+.table-wrapper-style1 ::v-deep(.el-table__body tr, .el-table__body td) {
+  padding: 0;
+  height: 40px;
+}
+
+/*行2*/
+.table-wrapper-style1 ::v-deep(.el-table td, .el-table th) {
+  padding: 0;
+}
+
+/*行2*/
+.table-wrapper-style1 ::v-deep(.el-table tr), .table-wrapper-style1 ::v-deep(.el-table--striped .el-table__body tr.el-table__row--striped td) {
+  background-color: rgba(16, 97, 179, 0.3) !important;
+  color: white !important;
+  border: 0 !important;
+  width: 100%;
+}
+
+/*去每一行记录下的横线*/
+.table-wrapper-style1 ::v-deep(table th), .table-wrapper-style1 ::v-deep(table td) {
+  border-bottom: none !important;
+}
+
+/*去每一行记录下的横线*/
+.table-wrapper-style1 ::v-deep(.el-table--border tr, td) {
+  border: none !important;
+}
+
+/*去最下面的横线*/
+.table-wrapper-style1 ::v-deep(.el-table::before) {
+  height: 0;
+}
+
+/*table内的高亮*/
+.table-wrapper-style1 ::v-deep(.el-table tbody tr:hover td ) {
+  background-color: rgb(79, 163, 213) !important
+}
+
+/*table内的高亮2*/
+.table-wrapper-style1 ::v-deep(.el-table--striped .el-table__body tr:hover td ) {
+  background-color: rgb(79, 163, 213) !important
+}
