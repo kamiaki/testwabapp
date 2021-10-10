@@ -1,5 +1,5 @@
 <template>
-    <van-tabs v-model:active="active" sticky
+    <van-tabs v-model:active="active" sticky swipeable
               @click-tab="onClickTab">
         <van-tab title="自动" name="auto">
             <AutoTestPage></AutoTestPage>
