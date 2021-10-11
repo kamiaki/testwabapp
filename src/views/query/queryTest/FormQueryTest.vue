@@ -1,32 +1,64 @@
 <template>
 
     <van-form @submit="onSubmit">
-
-        <van-cell title="选择日期区间" :value="date" @click="show = true"/>
-        <van-calendar v-model:show="show" teleport="body" type="range" @confirm="onConfirm"/>
-
-        <van-field
-                v-model="result"
-                is-link
-                readonly
-                name="picker"
-                label="网络类型"
-                placeholder="网络类型"
-                @click="showPicker = true"
-        />
-        <van-popup v-model:show="showPicker" position="bottom" teleport="body">
+        <van-row>
+            <van-col span="8">
+                <van-field
+                        v-model="myDate"
+                        is-link
+                        readonly
+                        name="myDate"
+                        label=""
+                        placeholder="选择日期区间"
+                        @click="showDateSelect = true"
+                />
+            </van-col>
+            <van-col span="6">
+                <van-field
+                        v-model="myType"
+                        is-link
+                        readonly
+                        name="myType"
+                        label=""
+                        placeholder="网络类型"
+                        @click="showTypeSelect = true"
+                />
+            </van-col>
+            <van-col span="6">
+                <van-field
+                        v-model="myState"
+                        is-link
+                        readonly
+                        name="myState"
+                        label=""
+                        placeholder="拨测状态"
+                        @click="showStateSelect = true"
+                />
+            </van-col>
+            <van-col span="4">
+                <van-button block type="primary" native-type="submit">
+                    查询
+                </van-button>
+            </van-col>
+        </van-row>
+        <!--日期选择器-->
+        <van-calendar v-model:show="showDateSelect" teleport="body" type="range" @confirm="onConfirmDate"/>
+        <!--类型选择器-->
+        <van-popup v-model:show="showTypeSelect" position="bottom" teleport="body">
             <van-picker
-                    :columns="columns"
-                    @confirm="onConfirm2"
-                    @cancel="showPicker = false"
+                    :columns="columnsType"
+                    @confirm="onConfirmType"
+                    @cancel="showTypeSelect = false"
             />
         </van-popup>
-
-        <div style="margin: 16px;">
-            <van-button round block type="primary" native-type="submit">
-                查询
-            </van-button>
-        </div>
+        <!--状态选择器-->
+        <van-popup v-model:show="showStateSelect" position="bottom" teleport="body">
+            <van-picker
+                    :columns="columnsState"
+                    @confirm="onConfirmState"
+                    @cancel="showStateSelect = false"
+            />
+        </van-popup>
     </van-form>
 
 </template>
@@ -37,39 +69,56 @@
     export default {
         name: "FormQueryTest",
         setup() {
-            const date = ref('');
-            const show = ref(false);
-
-            const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
-            const onConfirm = (values) => {
-                const [start, end] = values;
-                show.value = false;
-                date.value = `${formatDate(start)} - ${formatDate(end)}`;
+            // 日期选择
+            const myDate = ref('');
+            const showDateSelect = ref(false);
+            let start = undefined
+            let end = undefined
+            const formatDate = (myDate) => `${myDate.getMonth() + 1}/${myDate.getDate()}`;
+            const onConfirmDate = (values) => {
+                [start, end] = values;
+                showDateSelect.value = false;
+                myDate.value = `${formatDate(start)} - ${formatDate(end)}`;
+            };
+            // 类型选择
+            const myType = ref('');
+            const showTypeSelect = ref(false);
+            const columnsType = ['类型1', '类型2', '类型3'];
+            const onConfirmType = (value) => {
+                myType.value = value;
+                showTypeSelect.value = false;
+            };
+            // 状态
+            const myState = ref('');
+            const showStateSelect = ref(false);
+            const columnsState = ['状态1', '状态2', '状态3'];
+            const onConfirmState = (value) => {
+                myState.value = value;
+                showStateSelect.value = false;
             };
 
-            const result = ref('');
-            const showPicker = ref(false);
-            const columns = ['类型1', '类型2', '类型3'];
 
-            const onConfirm2 = (value) => {
-                result.value = value;
-                showPicker.value = false;
-            };
-
-
-            const onSubmit = (values) => {
-                console.log('submit', values);
-                console.log('date', date);
+            const onSubmit = (vals) => {
+                console.log('vals', vals);
+                console.log('start', start);
+                console.log('end', end);
+                console.log('myDate', myDate.value);
+                console.log('myType', myType.value);
+                console.log('myState', myState.value);
             };
 
             return {
-                date,
-                show,
-                onConfirm,
-                result,
-                columns,
-                onConfirm2,
-                showPicker,
+                myDate,
+                showDateSelect,
+                onConfirmDate,
+                myType,
+                columnsType,
+                onConfirmType,
+                showTypeSelect,
+                myState,
+                columnsState,
+                onConfirmState,
+                showStateSelect,
                 onSubmit,
             };
         }
