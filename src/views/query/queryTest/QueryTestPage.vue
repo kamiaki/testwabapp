@@ -5,8 +5,13 @@
             <img class="huaji" :src="huaji"/>
         </template>
 
-        <FormQueryTest @doSearch="refresh"></FormQueryTest>
-        <TableQueryTest :queryTestData="queryTestData"></TableQueryTest>
+        <div class="title">拨测结果统计</div>
+        <FormQueryTest @doSearch="refresh"
+                       style="margin: 10px auto; width: 95%;"
+        ></FormQueryTest>
+        <TableQueryTest :queryTestData="queryTestData"
+                        style="width: 95%; margin: 10px auto"
+        ></TableQueryTest>
     </van-pull-refresh>
 </template>
 
@@ -78,5 +83,11 @@
         height: 80px;
         margin-top: 8px;
         border-radius: 4px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 20px;
+        margin: 20px 0;
     }
 </style>

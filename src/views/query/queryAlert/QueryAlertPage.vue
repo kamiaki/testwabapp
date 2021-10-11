@@ -4,14 +4,17 @@
         <template #loading>
             <img class="huaji" :src="huaji"/>
         </template>
-        <FormQueryAlert></FormQueryAlert>
-        <TableQueryAlert :queryAlertData="queryAlertData"></TableQueryAlert>
+        <div class="title">告警信息统计</div>
+        <FormQueryAlert style="margin: 10px auto; width: 95%;"></FormQueryAlert>
+        <TableQueryAlert :queryAlertData="queryAlertData"
+                         style="width: 95%; margin: 10px auto"
+        ></TableQueryAlert>
     </van-pull-refresh>
 </template>
 
 <script>
     import {ref, reactive} from 'vue'
-    import { Toast } from 'vant'
+    import {Toast} from 'vant'
     import FormQueryAlert from '/@/views/query/queryAlert/FormQueryAlert.vue'
     import TableQueryAlert from '/@/views/query/queryAlert/TableQueryAlert.vue'
     import utils from 'aki_js_utils'
@@ -43,10 +46,10 @@
                 return tmp
             }
 
-            function refresh(){
+            function refresh() {
                 queryAlertData.tableData = createTestData()
             }
-            
+
             const loading = ref(false);
             const onRefresh = () => {
                 setTimeout(() => {
@@ -54,7 +57,7 @@
                     loading.value = false;
                 }, 1000);
             };
-           
+
 
             return {
                 loading,
@@ -72,5 +75,11 @@
         height: 80px;
         margin-top: 8px;
         border-radius: 4px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 20px;
+        margin: 20px 0;
     }
 </style>
