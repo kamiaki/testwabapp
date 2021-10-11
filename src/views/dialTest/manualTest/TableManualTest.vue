@@ -49,6 +49,6 @@
     .table-wrapper-style1 {
         border-radius: 5px;
         overflow: hidden;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     }
 </style>
