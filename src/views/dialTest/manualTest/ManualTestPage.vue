@@ -1,10 +1,14 @@
 <template>
     <FormManualTest :manualTestData="manualTestData"></FormManualTest>
-    <van-pull-refresh v-model="loading" @refresh="onRefresh"
-                      pulling-text="下拉即可拨测..."
-                      loosing-text="释放即可拨测..."
-                      loading-text="拨测中..."
-    >
+    <van-pull-refresh v-model="loading" @refresh="onRefresh">
+        <!-- 下拉提示，通过 scale 实现一个缩放效果 -->
+        <template #pulling="props">
+            <img class="huaji" :src="huaji"/>
+        </template>
+        <!-- 释放提示 -->
+        <template #loosing>
+            <img class="huaji" :src="huaji"/>
+        </template>
         <TableManualTest  style="margin:0px 5px 10px" :manualTestData="manualTestData"></TableManualTest>
         <SwipeManualTest  style="margin:10px 5px"  :manualTestData="manualTestData"></SwipeManualTest>
     </van-pull-refresh>
@@ -17,6 +21,7 @@
     import SwipeManualTest from '/@/views/dialTest/manualTest/swipe/SwipeManualTest.vue'
     import TableManualTest from '/@/views/dialTest/manualTest/TableManualTest.vue'
     import utils from 'aki_js_utils'
+    import huaji from '/@/assets/other/huaji.png'
 
     export default {
         name: "ManualTestPage",
@@ -90,7 +95,8 @@
             return {
                 loading,
                 onRefresh,
-                manualTestData
+                manualTestData,
+                huaji
             };
         }
     }

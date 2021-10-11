@@ -1,5 +1,4 @@
 <template>
-
     <van-form @submit="onSubmit">
         <van-row>
             <van-col span="10">

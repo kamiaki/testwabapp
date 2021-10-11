@@ -1,10 +1,4 @@
 <template>
-    <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <!-- 释放提示 -->
-        <template #loading>
-            <img class="huaji" :src="huaji"/>
-        </template>
-
         <div class="title">拨测结果统计</div>
         <FormQueryTest @doSearch="refresh"
                        style="margin: 10px auto; width: 95%;"
@@ -12,7 +6,6 @@
         <TableQueryTest :queryTestData="queryTestData"
                         style="width: 95%; margin: 10px auto"
         ></TableQueryTest>
-    </van-pull-refresh>
 </template>
 
 <script>
@@ -57,18 +50,8 @@
                 queryTestData.tableData = createTestData()
             }
 
-            const loading = ref(false);
-            const onRefresh = () => {
-                setTimeout(() => {
-                    Toast('刷新成功');
-                    loading.value = false;
-                    refresh()
-                }, 1000);
-            };
 
             return {
-                loading,
-                onRefresh,
                 queryTestData,
                 refresh,
                 huaji
@@ -78,13 +61,6 @@
 </script>
 
 <style scoped>
-    .huaji {
-        width: 80px;
-        height: 80px;
-        margin-top: 8px;
-        border-radius: 4px;
-    }
-
     .title {
         text-align: center;
         font-size: 20px;

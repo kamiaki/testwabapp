@@ -1,15 +1,9 @@
 <template>
-    <van-pull-refresh v-model="loading" @refresh="onRefresh">
-        <!-- 释放提示 -->
-        <template #loading>
-            <img class="huaji" :src="huaji"/>
-        </template>
-        <div class="title">告警信息统计</div>
-        <FormQueryAlert style="margin: 10px auto; width: 95%;"></FormQueryAlert>
-        <TableQueryAlert :queryAlertData="queryAlertData"
-                         style="width: 95%; margin: 10px auto"
-        ></TableQueryAlert>
-    </van-pull-refresh>
+    <div class="title">告警信息统计</div>
+    <FormQueryAlert style="margin: 10px auto; width: 95%;"></FormQueryAlert>
+    <TableQueryAlert :queryAlertData="queryAlertData"
+                     style="width: 95%; margin: 10px auto"
+    ></TableQueryAlert>
 </template>
 
 <script>
@@ -50,18 +44,8 @@
                 queryAlertData.tableData = createTestData()
             }
 
-            const loading = ref(false);
-            const onRefresh = () => {
-                setTimeout(() => {
-                    Toast('刷新成功');
-                    loading.value = false;
-                }, 1000);
-            };
-
 
             return {
-                loading,
-                onRefresh,
                 queryAlertData,
                 huaji
             };
@@ -70,13 +54,6 @@
 </script>
 
 <style scoped>
-    .huaji {
-        width: 80px;
-        height: 80px;
-        margin-top: 8px;
-        border-radius: 4px;
-    }
-
     .title {
         text-align: center;
         font-size: 20px;
