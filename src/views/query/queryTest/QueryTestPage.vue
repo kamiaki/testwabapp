@@ -1,5 +1,10 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
+        <!-- 释放提示 -->
+        <template #loading>
+            <img class="huaji" :src="huaji"/>
+        </template>
+
         <FormQueryTest @doSearch="refresh"></FormQueryTest>
         <TableQueryTest :queryTestData="queryTestData"></TableQueryTest>
     </van-pull-refresh>
@@ -11,6 +16,7 @@
     import FormQueryTest from '/@/views/query/queryTest/FormQueryTest.vue'
     import TableQueryTest from '/@/views/query/queryTest/TableQueryTest.vue'
     import utils from 'aki_js_utils'
+    import huaji from '/@/assets/other/huaji.png'
 
     export default {
         name: "QueryTestPage",
@@ -59,12 +65,18 @@
                 loading,
                 onRefresh,
                 queryTestData,
-                refresh
+                refresh,
+                huaji
             };
         }
     }
 </script>
 
 <style scoped>
-
+    .huaji {
+        width: 80px;
+        height: 80px;
+        margin-top: 8px;
+        border-radius: 4px;
+    }
 </style>

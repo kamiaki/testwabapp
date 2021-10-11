@@ -15,6 +15,7 @@
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
     import { Toast } from 'vant';
+    import doge from '/@/assets/other/doge.png'
 
     export default {
         name: "FootNav",
@@ -31,9 +32,10 @@
                         router.push({path: '/MainPage/QueryPage'})
                         break;
                     case '更多':
-                        Toast('不..不好意思...真的没有了..')
-                        store.state.vuexMain.tabbarActive = '拨测'
-                        router.push({path: 'DialTestPage'})
+                        Toast({
+                            message: '汪汪汪！',
+                            icon: doge,
+                        });
                         break;
                 }
             }

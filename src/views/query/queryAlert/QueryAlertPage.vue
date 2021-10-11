@@ -1,5 +1,9 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
+        <!-- 释放提示 -->
+        <template #loading>
+            <img class="huaji" :src="huaji"/>
+        </template>
         <FormQueryAlert></FormQueryAlert>
         <TableQueryAlert :queryAlertData="queryAlertData"></TableQueryAlert>
     </van-pull-refresh>
@@ -11,6 +15,7 @@
     import FormQueryAlert from '/@/views/query/queryAlert/FormQueryAlert.vue'
     import TableQueryAlert from '/@/views/query/queryAlert/TableQueryAlert.vue'
     import utils from 'aki_js_utils'
+    import huaji from '/@/assets/other/huaji.png'
 
     export default {
         name: "QueryAlertPage",
@@ -54,12 +59,18 @@
             return {
                 loading,
                 onRefresh,
-                queryAlertData
+                queryAlertData,
+                huaji
             };
         }
     }
 </script>
 
 <style scoped>
-
+    .huaji {
+        width: 80px;
+        height: 80px;
+        margin-top: 8px;
+        border-radius: 4px;
+    }
 </style>
