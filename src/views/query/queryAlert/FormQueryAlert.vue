@@ -37,7 +37,7 @@
             </van-col>
             <van-col span="2">
                 <van-button block type="primary" native-type="submit">
-                    查询
+                    <van-icon name="search" />
                 </van-button>
             </van-col>
         </van-row>
