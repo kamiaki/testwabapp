@@ -3,7 +3,7 @@ const tf = [
     prop: 'ip',
     label: 'IP地址',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.ip
     }
@@ -11,7 +11,7 @@ const tf = [
     prop: 'time',
     label: '时间',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.time
     }
@@ -19,7 +19,7 @@ const tf = [
     prop: 'totalTime',
     label: '总耗时(ms)',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.totalTime
     }
@@ -27,7 +27,7 @@ const tf = [
     prop: 'state',
     label: '状态',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.state
     }
@@ -35,7 +35,7 @@ const tf = [
     prop: 'type',
     label: '网络类型',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.type
     }
@@ -43,7 +43,7 @@ const tf = [
     prop: 'targetIp',
     label: '目标地址',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.targetIp
     }
@@ -51,7 +51,7 @@ const tf = [
     prop: 'successCount',
     label: '成功数',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.successCount
     }
@@ -59,7 +59,7 @@ const tf = [
     prop: 'failCount',
     label: '失败数',
     sortable: false,
-    width: '10%',
+    width: '100',
     formatter: (row, column) => {
       return row.failCount
     }
