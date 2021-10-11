@@ -1,11 +1,9 @@
 <template>
-        <div class="title">拨测结果统计</div>
-        <FormQueryTest @doSearch="refresh"
-                       style="margin: 10px auto; width: 95%;"
-        ></FormQueryTest>
-        <TableQueryTest :queryTestData="queryTestData"
-                        style="width: 95%; margin: 10px auto"
-        ></TableQueryTest>
+    <div class="title">拨测结果统计</div>
+    <FormQueryTest @doSearch="refresh" class="testCss"
+    ></FormQueryTest>
+    <TableQueryTest :queryTestData="queryTestData" class="testCss"
+    ></TableQueryTest>
 </template>
 
 <script>
@@ -45,7 +43,7 @@
                 return tmp
             }
 
-            function refresh(){
+            function refresh() {
                 queryTestData.tableData = createTestData()
             }
 
@@ -63,5 +61,13 @@
         text-align: center;
         font-size: 20px;
         margin: 20px 0;
+    }
+
+    .testCss {
+        margin: 10px auto;
+        width: 95%;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     }
 </style>

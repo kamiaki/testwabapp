@@ -1,10 +1,7 @@
 <template>
     <div class="title">告警信息统计</div>
-    <FormQueryAlert @doSearch="refresh"
-            style="margin: 10px auto; width: 95%;"></FormQueryAlert>
-    <TableQueryAlert :queryAlertData="queryAlertData"
-                     style="width: 95%; margin: 10px auto"
-    ></TableQueryAlert>
+    <FormQueryAlert class="alertCss" @doSearch="refresh"></FormQueryAlert>
+    <TableQueryAlert class="alertCss" :queryAlertData="queryAlertData"></TableQueryAlert>
 </template>
 
 <script>
@@ -31,7 +28,7 @@
                     tmp.push(
                         {
                             time: '2021-11-11',
-                            state:  utils.randomFlow(0, 1, 0),
+                            state: utils.randomFlow(0, 1, 0),
                             type: '移动网络',
                             targetIp: '11.11.11.11'
                         }
@@ -53,10 +50,17 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     .title {
         text-align: center;
         font-size: 20px;
         margin: 20px 0;
+    }
+
+    .alertCss {
+        margin: 10px auto; width: 95%;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     }
 </style>
