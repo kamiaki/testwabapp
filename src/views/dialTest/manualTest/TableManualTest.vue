@@ -10,10 +10,15 @@
 
         <div class="table-wrapper-style1">
             <el-table :data="propsManualTestData.tableData" stripe style="width: 100%">
-                <el-table-column label="网络类型" prop="name"/>
-                <el-table-column label="最大值(ms)" prop="max"/>
-                <el-table-column label="最小值(ms)" prop="min"/>
-                <el-table-column label="最小值(ms)" prop="level"/>
+                <el-table-column
+                        v-for="(obj, index) in tableFormat"
+                        :key="obj"
+                        :prop="obj.prop"
+                        :label="obj.label"
+                        :sortable="obj.sortable"
+                        :min-width="obj.width"
+                        :formatter="obj.formatter"
+                ></el-table-column>
             </el-table>
         </div>
 
@@ -22,12 +27,15 @@
 </template>
 
 <script>
+    import {tf} from './TableManualTestSetting.js'
+
     export default {
         name: "TableManualTest",
         props: ['manualTestData'],
         setup(props) {
             return {
-                propsManualTestData: props.manualTestData
+                propsManualTestData: props.manualTestData,
+                tableFormat: tf
             }
         }
     }
