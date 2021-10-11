@@ -4,13 +4,11 @@
                indicator-color="white">
         <van-swipe-item>
             <BarHManualTest :manualTestData="manualTestData"
-                            class="echartsDiv"
-                            :style="{width: '100%', height: '400px'}"></BarHManualTest>
+                            :style="{width: '100%', height: '350px'}"></BarHManualTest>
         </van-swipe-item>
         <van-swipe-item>
             <BarVManualTest :manualTestData="manualTestData"
-                            class="echartsDiv"
-                            :style="{width: '100%', height: '400px'}"></BarVManualTest>
+                            :style="{width: '100%', height: '350px'}"></BarVManualTest>
         </van-swipe-item>
     </van-swipe>
 </template>
@@ -29,7 +27,9 @@
 </script>
 
 <style scoped>
-    .echartsDiv{
-        border-radius: 10px;overflow: hidden;
+    .my-swipe {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     }
 </style>

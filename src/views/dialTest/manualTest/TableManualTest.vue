@@ -1,12 +1,14 @@
 <template>
     <div>
-        <div style="text-align: center;font-size: 20px;margin-top: 10px;">参数展示</div>
-        <van-row style="margin: 10px 0 10px">
-            <van-col span="24">
-                <div>线程数: {{manualTestData.form.threadCount}} 测试量: {{manualTestData.form.testCount}}</div>
-                <div>测试时间: {{'2021-10-08'}}</div>
-            </van-col>
-        </van-row>
+        <div style="margin: 10px auto; width: 90%;">
+            <div style="display: flex; justify-content: space-between">
+                <div style="text-align: left">
+                    线程数: {{manualTestData.form.threadCount}}
+                    测试量: {{manualTestData.form.testCount}}
+                </div>
+                <div style="text-align: right">测试时间: {{'2021-10-08'}}</div>
+            </div>
+        </div>
 
         <div class="table-wrapper-style1">
             <el-table :data="propsManualTestData.tableData" stripe style="width: 100%">
@@ -44,21 +46,9 @@
 <style scoped lang="less">
     @import "src/table1Less";
 
-    .tableW {
-        .van-col {
-            text-align: center;
-            border: 1px solid #000;
-            font-size: 12px;
-        }
-
-        .tableC {
-            .van-col {
-                background: #f3fffe;
-            }
-        }
-
-        .tableH {
-            background: #f7f7ff;
-        }
+    .table-wrapper-style1 {
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
     }
 </style>
