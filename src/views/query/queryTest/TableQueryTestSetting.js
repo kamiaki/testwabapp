@@ -29,8 +29,9 @@ const tf = [
     sortable: false,
     width: '100',
     formatter: (row, column) => {
-      return row.state
-    }
+      let stateStr = '正常'
+      if (1 === row.state) stateStr = '异常'
+      return stateStr    }
   },{
     prop: 'type',
     label: '网络类型',

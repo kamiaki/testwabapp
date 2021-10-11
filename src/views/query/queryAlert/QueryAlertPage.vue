@@ -1,6 +1,7 @@
 <template>
     <div class="title">告警信息统计</div>
-    <FormQueryAlert style="margin: 10px auto; width: 95%;"></FormQueryAlert>
+    <FormQueryAlert @doSearch="refresh"
+            style="margin: 10px auto; width: 95%;"></FormQueryAlert>
     <TableQueryAlert :queryAlertData="queryAlertData"
                      style="width: 95%; margin: 10px auto"
     ></TableQueryAlert>
@@ -12,7 +13,6 @@
     import FormQueryAlert from '/@/views/query/queryAlert/FormQueryAlert.vue'
     import TableQueryAlert from '/@/views/query/queryAlert/TableQueryAlert.vue'
     import utils from 'aki_js_utils'
-    import huaji from '/@/assets/other/huaji.png'
 
     export default {
         name: "QueryAlertPage",
@@ -31,7 +31,7 @@
                     tmp.push(
                         {
                             time: '2021-11-11',
-                            state: 0,
+                            state:  utils.randomFlow(0, 1, 0),
                             type: '移动网络',
                             targetIp: '11.11.11.11'
                         }
@@ -47,7 +47,7 @@
 
             return {
                 queryAlertData,
-                huaji
+                refresh
             };
         }
     }

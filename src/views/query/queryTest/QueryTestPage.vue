@@ -14,7 +14,6 @@
     import FormQueryTest from '/@/views/query/queryTest/FormQueryTest.vue'
     import TableQueryTest from '/@/views/query/queryTest/TableQueryTest.vue'
     import utils from 'aki_js_utils'
-    import huaji from '/@/assets/other/huaji.png'
 
     export default {
         name: "QueryTestPage",
@@ -35,7 +34,7 @@
                             ip: '11.11.11.11',
                             time: '2021-11-11',
                             totalTime: utils.randomFlow(1, 30, 0),
-                            state: 0,
+                            state: utils.randomFlow(0, 1, 0),
                             type: '移动网络',
                             targetIp: '11.11.11.11',
                             successCount: utils.randomFlow(0, 5, 0),
@@ -53,8 +52,7 @@
 
             return {
                 queryTestData,
-                refresh,
-                huaji
+                refresh
             };
         }
     }

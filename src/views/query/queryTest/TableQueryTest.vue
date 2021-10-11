@@ -2,7 +2,7 @@
     <div>
         <div class="table-wrapper-style1">
             <el-table :data="propsQueryTestData.tableData"
-                      height="800"
+                      height="400"
                       stripe style="width: 100%">
                 <el-table-column
                         v-for="(obj, index) in tableFormat"
