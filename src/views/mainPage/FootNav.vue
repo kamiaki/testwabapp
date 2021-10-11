@@ -4,9 +4,9 @@
             :placeholder="true"
             @change="change"
     >
-        <van-tabbar-item icon="home-o" name="拨测">拨测</van-tabbar-item>
-        <van-tabbar-item icon="search" name="查询">查询</van-tabbar-item>
-        <van-tabbar-item icon="friends-o" name="更多">更多</van-tabbar-item>
+        <van-tabbar-item icon="good-job-o" name="拨测">拨测</van-tabbar-item>
+        <van-tabbar-item icon="gold-coin-o" name="查询">查询</van-tabbar-item>
+        <van-tabbar-item icon="star-o" name="更多">更多</van-tabbar-item>
     </van-tabbar>
 </template>
 
