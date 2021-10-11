@@ -16,6 +16,32 @@
         name: "QueryAlertPage",
         components: {FormQueryAlert, TableQueryAlert},
         setup() {
+            // 表格
+            const tableData = createTestData()
+            const queryAlertData = reactive({
+                tableData: tableData
+            })
+
+            // 测试
+            function createTestData() {
+                const tmp = []
+                for (let i = 0; i < 20; i++) {
+                    tmp.push(
+                        {
+                            time: '2021-11-11',
+                            state: 0,
+                            type: '移动网络',
+                            targetIp: '11.11.11.11'
+                        }
+                    )
+                }
+                return tmp
+            }
+
+            function refresh(){
+                queryAlertData.tableData = createTestData()
+            }
+            
             const loading = ref(false);
             const onRefresh = () => {
                 setTimeout(() => {
@@ -23,18 +49,7 @@
                     loading.value = false;
                 }, 1000);
             };
-            // 表格
-            const tableData = [
-                {name: '移动网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-                {name: '联通网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-                {name: '电信网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-                {name: '域名网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-            ]
-            const queryAlertData = reactive(
-                {
-                    tableData: tableData
-                }
-            )
+           
 
             return {
                 loading,

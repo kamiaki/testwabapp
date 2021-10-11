@@ -1,4 +1,5 @@
 <template>
+    <div>告警信息统计</div>
     <div class="table-wrapper-style1">
         <el-table :data="propsQueryAlertData.tableData" stripe style="width: 100%">
             <el-table-column
@@ -16,8 +17,8 @@
 </template>
 
 <script>
-    import {tf} from './TableQueryAlertSetting.js'
     import {ref, reactive} from 'vue'
+    import {tf} from './TableQueryAlertSetting.js'
 
     export default {
         name: "TableQueryTest",

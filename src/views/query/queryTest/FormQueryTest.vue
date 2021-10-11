@@ -84,7 +84,7 @@
             // 类型选择
             const myType = ref('');
             const showTypeSelect = ref(false);
-            const columnsType = ['类型1', '类型2', '类型3'];
+            const columnsType = ['移动', '联通', '电信', '域名'];
             const onConfirmType = (value) => {
                 myType.value = value;
                 showTypeSelect.value = false;
@@ -92,7 +92,7 @@
             // 状态
             const myState = ref('');
             const showStateSelect = ref(false);
-            const columnsState = ['状态1', '状态2', '状态3'];
+            const columnsState = ['正常', '异常'];
             const onConfirmState = (value) => {
                 myState.value = value;
                 showStateSelect.value = false;

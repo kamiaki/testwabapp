@@ -1,37 +1,37 @@
 const tf = [
-  {
-    prop: 'name',
+  {prop: 'type',
     label: '网络类型',
     sortable: false,
-    width: '25%',
+    width: '100',
     formatter: (row, column) => {
-      return row.name
+      return row.type
     }
-  },  {
-    prop: 'max',
-    label: '最大值(ms)',
+  },{
+    prop: 'state',
+    label: '告警信息',
     sortable: false,
-    width: '25%',
+    width: '100',
     formatter: (row, column) => {
-      return row.max
-    }
-  },  {
-    prop: 'min',
-    label: '最小值(ms)',
-    sortable: false,
-    width: '25%',
-    formatter: (row, column) => {
-      return row.min
-    }
-  },  {
-    prop: 'level',
-    label: '最小值(ms)',
-    sortable: false,
-    width: '25%',
-    formatter: (row, column) => {
-      return row.level
+      return row.state
     }
   },
+  {
+    prop: 'targetIp',
+    label: '目标地址',
+    sortable: false,
+    width: '100',
+    formatter: (row, column) => {
+      return row.targetIp
+    }
+  },{
+    prop: 'time',
+    label: '告警时间',
+    sortable: true,
+    width: '100',
+    formatter: (row, column) => {
+      return row.time
+    }
+  }
 ]
 
 export default {tf}
