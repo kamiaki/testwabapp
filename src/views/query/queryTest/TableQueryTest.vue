@@ -1,6 +1,4 @@
 <template>
-    <div>表格</div>
-
     <div class="table-wrapper-style1">
         <el-table :data="propsQueryTestData.tableData" stripe style="width: 100%">
             <el-table-column
@@ -14,7 +12,6 @@
             ></el-table-column>
         </el-table>
     </div>
-
     <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5" />
 </template>
 

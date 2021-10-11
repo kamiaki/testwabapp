@@ -1,5 +1,5 @@
 <template>
-    <van-tabs v-model:active="active" sticky swipeable>
+    <van-tabs v-model:active="active" sticky>
         <van-tab title="拨测结果" name="test">
             <QueryTestPage></QueryTestPage>
         </van-tab>
