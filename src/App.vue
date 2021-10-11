@@ -28,6 +28,7 @@
 
 <style lang="less">
     body {
+        background: #eeeeee;
         color: #3e3e3e;
         font-family: 微软雅黑;
         font-weight: 600;
