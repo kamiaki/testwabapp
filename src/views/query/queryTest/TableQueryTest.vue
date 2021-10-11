@@ -1,4 +1,5 @@
 <template>
+    <div>拨测结果统计</div>
     <div class="table-wrapper-style1">
         <el-table :data="propsQueryTestData.tableData" stripe style="width: 100%">
             <el-table-column

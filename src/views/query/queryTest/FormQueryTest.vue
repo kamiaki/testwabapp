@@ -68,7 +68,8 @@
 
     export default {
         name: "FormQueryTest",
-        setup() {
+        emits: ['doSearch'],
+        setup(props, context) {
             // 日期选择
             const myDate = ref('');
             const showDateSelect = ref(false);
@@ -97,7 +98,6 @@
                 showStateSelect.value = false;
             };
 
-
             const onSubmit = (vals) => {
                 console.log('vals', vals);
                 console.log('start', start);
@@ -105,6 +105,7 @@
                 console.log('myDate', myDate.value);
                 console.log('myType', myType.value);
                 console.log('myState', myState.value);
+                context.emit('doSearch', vals)
             };
 
             return {

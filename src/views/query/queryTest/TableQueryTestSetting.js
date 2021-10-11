@@ -1,35 +1,67 @@
 const tf = [
   {
-    prop: 'name',
+    prop: 'ip',
+    label: 'IP地址',
+    sortable: false,
+    width: '10%',
+    formatter: (row, column) => {
+      return row.ip
+    }
+  },{
+    prop: 'time',
+    label: '时间',
+    sortable: false,
+    width: '10%',
+    formatter: (row, column) => {
+      return row.time
+    }
+  },{
+    prop: 'totalTime',
+    label: '总耗时(ms)',
+    sortable: false,
+    width: '10%',
+    formatter: (row, column) => {
+      return row.totalTime
+    }
+  },{
+    prop: 'state',
+    label: '状态',
+    sortable: false,
+    width: '10%',
+    formatter: (row, column) => {
+      return row.state
+    }
+  },{
+    prop: 'type',
     label: '网络类型',
     sortable: false,
-    width: '25%',
+    width: '10%',
     formatter: (row, column) => {
-      return row.name
+      return row.type
     }
-  },  {
-    prop: 'max',
-    label: '最大值(ms)',
+  },{
+    prop: 'targetIp',
+    label: '目标地址',
     sortable: false,
-    width: '25%',
+    width: '10%',
     formatter: (row, column) => {
-      return row.max
+      return row.targetIp
     }
-  },  {
-    prop: 'min',
-    label: '最小值(ms)',
+  },{
+    prop: 'successCount',
+    label: '成功数',
     sortable: false,
-    width: '25%',
+    width: '10%',
     formatter: (row, column) => {
-      return row.min
+      return row.successCount
     }
-  },  {
-    prop: 'level',
-    label: '最小值(ms)',
+  },{
+    prop: 'failCount',
+    label: '失败数',
     sortable: false,
-    width: '25%',
+    width: '10%',
     formatter: (row, column) => {
-      return row.level
+      return row.failCount
     }
   },
 ]
