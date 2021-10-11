@@ -1,5 +1,4 @@
 <template>
-
     <div class="table-wrapper-style1">
         <el-table :data="propsQueryAlertData.tableData" stripe style="width: 100%">
             <el-table-column
@@ -13,17 +12,20 @@
             ></el-table-column>
         </el-table>
     </div>
-
+    <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5" />
 </template>
 
 <script>
     import {tf} from './TableQueryAlertSetting.js'
+    import {ref, reactive} from 'vue'
 
     export default {
         name: "TableQueryTest",
         props: ['queryAlertData'],
         setup(props) {
+            const currentPage = ref(1);
             return {
+                currentPage,
                 propsQueryAlertData: props.queryAlertData,
                 tableFormat: tf
             }

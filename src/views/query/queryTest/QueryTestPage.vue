@@ -1,7 +1,7 @@
 <template>
     <van-pull-refresh v-model="loading" @refresh="onRefresh">
         <FormQueryTest></FormQueryTest>
-        <TableQueryTest></TableQueryTest>
+        <TableQueryTest :queryTestData="queryTestData"></TableQueryTest>
     </van-pull-refresh>
 </template>
 
@@ -10,6 +10,7 @@
     import { Toast } from 'vant'
     import FormQueryTest from '/@/views/query/queryTest/FormQueryTest.vue'
     import TableQueryTest from '/@/views/query/queryTest/TableQueryTest.vue'
+    import utils from 'aki_js_utils'
 
     export default {
         name: "QueryTestPage",
@@ -20,12 +21,26 @@
                 setTimeout(() => {
                     Toast('刷新成功');
                     loading.value = false;
-                    count.value++;
                 }, 1000);
             };
+
+            // 表格
+            const tableData = [
+                {name: '移动网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                {name: '联通网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                {name: '电信网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+                {name: '域名网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+            ]
+            const queryTestData = reactive(
+                {
+                    tableData: tableData
+                }
+            )
+
             return {
                 loading,
                 onRefresh,
+                queryTestData
             };
         }
     }
