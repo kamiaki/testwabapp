@@ -1,5 +1,5 @@
 <template>
-    <div>拨测结果统计</div>
+    <div class="title">拨测结果统计</div>
     <div class="table-wrapper-style1">
         <el-table :data="propsQueryTestData.tableData" stripe style="width: 100%">
             <el-table-column
@@ -13,11 +13,11 @@
             ></el-table-column>
         </el-table>
     </div>
-    <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5" />
+    <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5"/>
 </template>
 
 <script>
-    import { ref } from 'vue';
+    import {ref} from 'vue';
     import {tf} from './TableQueryTestSetting.js'
 
     export default {
@@ -25,7 +25,8 @@
         props: ['queryTestData'],
         setup(props) {
             const currentPage = ref(1);
-            return { currentPage ,
+            return {
+                currentPage,
                 propsQueryTestData: props.queryTestData,
                 tableFormat: tf
             };
@@ -35,4 +36,10 @@
 
 <style scoped lang="less">
     @import "src/table1Less";
+
+    .title {
+        text-align: center;
+        font-size: 20px;
+        margin: 20px 0;
+    }
 </style>

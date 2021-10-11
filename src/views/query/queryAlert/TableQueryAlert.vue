@@ -1,5 +1,5 @@
 <template>
-    <div>告警信息统计</div>
+    <div class="title">告警信息统计</div>
     <div class="table-wrapper-style1">
         <el-table :data="propsQueryAlertData.tableData" stripe style="width: 100%">
             <el-table-column
@@ -36,4 +36,9 @@
 
 <style scoped lang="less">
     @import "src/table1Less";
+    .title {
+        text-align: center;
+        font-size: 20px;
+        margin: 20px 0;
+    }
 </style>

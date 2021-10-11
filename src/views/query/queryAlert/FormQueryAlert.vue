@@ -2,7 +2,7 @@
 
     <van-form @submit="onSubmit">
         <van-row>
-            <van-col span="8">
+            <van-col span="10">
                 <van-field
                         v-model="myDate"
                         is-link
@@ -35,7 +35,7 @@
                         @click="showStateSelect = true"
                 />
             </van-col>
-            <van-col span="4">
+            <van-col span="2">
                 <van-button block type="primary" native-type="submit">
                     查询
                 </van-button>
