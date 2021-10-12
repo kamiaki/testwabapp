@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { getBaseUrl, httpCode } from './baseConfig'
 import store from '/@/vuex/vuexValues'// vuex
+import {Toast} from 'vant'
 
 // 进度条窗口 axios 配置参数 showLoading:true 然后dom加入Loading类，就可以使用了
 let elementMsgStack = []
@@ -26,7 +27,7 @@ const initAxios = axios.create({
  */
 initAxios.interceptors.request.use(config => {
   if (config.showLoading) {
-    alert('loading....')
+    Toast('loading....')
   }
   return config
 }, err => {
@@ -48,11 +49,11 @@ initAxios.interceptors.response.use(response => {
     if (err.response.status === 403) {
       if (!store.state.isTest) {
         msgText = '操作权限不足'
-        alert(msgText)
+        Toast(msgText)
       }
     } else {
       if (!store.state.isTest) {
-        alert(msgText)
+        Toast(msgText)
       }
     }
     return Promise.reject(err)
@@ -60,7 +61,7 @@ initAxios.interceptors.response.use(response => {
     let msgText
     if (!store.state.isTest) {
       msgText = '请求超时'
-      alert(msgText)
+      Toast(msgText)
     }
     return Promise.reject(new Error(msgText))
   }

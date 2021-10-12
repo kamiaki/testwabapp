@@ -13,10 +13,26 @@
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
     import apiTest from '/@/api/apiTest'
+    import apiAuth from '/@/api/apiAuth'
 
     export default {
         name: "TestMain",
         setup() {
+            apiAuth.getToken().then(token => {
+                console.info(token)
+                apiTest.getTestResultGraphicData({}, null,
+                    {
+                        headers: {
+                            'token': token
+                        }
+                    }
+                ).then(result => {
+                    console.info(result)
+                }).catch((e) => {
+                    alert(e)
+                })
+            })
+
             const router = useRouter()
             const store = useStore()
 
