@@ -19,9 +19,7 @@
 
     export default {
         name: "DialTestPage",
-        components: {
-            AutoTestPage, ManualTestPage
-        },
+        components: {AutoTestPage, ManualTestPage},
         setup() {
             const store = useStore()
             const tabbarActive = toRef(store.state.vuexMain, 'tabbarActive')
