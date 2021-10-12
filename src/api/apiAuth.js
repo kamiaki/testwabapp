@@ -3,7 +3,7 @@ import authorizationUtil from "/@/utils/authorizationUtil";
 import {Toast} from 'vant'
 
 // 读取大标题数据
-const getToken = async () => await post('/user/v1/login', null,
+const getToken = () => post('/user/v1/login', null,
     {
         params: null, showLoading: true, headers: {
             'userName': authorizationUtil.encryption('admin'),

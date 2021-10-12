@@ -13,30 +13,18 @@
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
     import apiTest from '/@/api/apiTest'
-    import apiAuth from '/@/api/apiAuth'
+    import apiDialTest from '/@/api/apiDialTest.js'
 
     export default {
         name: "TestMain",
         setup() {
-            apiAuth.getToken().then(token => {
-                console.info(token)
-                apiTest.getTestResultGraphicData({},
-                    {
-                        headers: {
-                            'Content-Type': 'application/json;charset:utf-8',
-                            'token': token
-                        }
-                    }
-                ).then(result => {
-                    console.info(result)
-                }).catch((e) => {
-                    alert(e)
-                })
+            apiDialTest.getTestResultGraphicData().then(res => {
+                console.info(res)
+            }).catch((e)=>{
+                console.info(e)
             })
-
             const router = useRouter()
             const store = useStore()
-
             function router1() {
                 store.state.vuexTest.testValue = new Date().getTime()
                 alert(store.state.vuexTest.testValue)

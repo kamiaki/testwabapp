@@ -14,11 +14,15 @@
     import LampAutoTest from "/@/views/dialTest/autoTest/LampAutoTest.vue";
     import NotifyAutoTest from "/@/views/dialTest/autoTest/NotifyAutoTest.vue";
     import utils from 'aki_js_utils'
+    import apiDialTest from '/@/api/apiDialTest.js'
+    import {useStore} from 'vuex'
 
     export default {
         name: "AutoTestPage",
         components: {SwipeAutoTest, LampAutoTest, NotifyAutoTest},
         setup() {
+            const store = useStore()
+
             // 告警信息
             const notifyData = [
                 {
@@ -84,25 +88,44 @@
             )
 
             // 测试刷新数据
-            function setEchartsData() {
-                autoTestData.echartData.bar.dataX = [utils.randomFlow(0, 30, 0),
-                    utils.randomFlow(0, 30, 0),
-                    utils.randomFlow(0, 30, 0),
-                    utils.randomFlow(0, 30, 0)]
-                autoTestData.echartData.line = {
-                    xLabel: [1, 2, 3, 4, 5, 6],
-                    mobile: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                    unicom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                    telecom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
-                    domain: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
-                        utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+            async function setEchartsData() {
+                if (store.state.isTest){
+                    autoTestData.echartData.bar.dataX = [utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0),
+                        utils.randomFlow(0, 30, 0)]
+                    autoTestData.echartData.line = {
+                        xLabel: [1, 2, 3, 4, 5, 6],
+                        mobile: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                        unicom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                        telecom: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                        domain: [utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0),
+                            utils.randomFlow(0, 30, 0), utils.randomFlow(0, 30, 0)],
+                    }
+                }else{
+                    await apiDialTest.getTestResultGraphicData().then(res => {
+                        autoTestData.echartData = res
+                    }).catch((e)=>{
+                        autoTestData.echartData = {
+                            bar: {
+                                dataX: [0,0,0,0]
+                            },
+                            line: {
+                                xLabel: [1, 2, 3, 4, 5, 6],
+                                mobile: [0, 0, 0, 0, 0, 0],
+                                unicom: [0, 0, 0, 0, 0, 0],
+                                telecom: [0, 0, 0, 0, 0, 0],
+                                domain: [0, 0, 0, 0, 0, 0]
+                            }
+                        }
+                    })
                 }
                 const lampData = [{id: 'mobile', state: utils.randomFlow(0, 1, 0), msg: ''}
                     , {id: 'unicom', state: utils.randomFlow(0, 1, 0), msg: ''}
