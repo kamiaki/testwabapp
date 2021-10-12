@@ -22,19 +22,19 @@ const getTestResultGraphicData = () => apiAuth.getToken().then(async token => {
         let obj = {
             bar: {
                 dataX: [
-                    domainNameData.aveTotalTimeConsuming,
                     mobileData.aveTotalTimeConsuming,
-                    telecomData.aveTotalTimeConsuming,
                     unicomData.aveTotalTimeConsuming,
+                    telecomData.aveTotalTimeConsuming,
+                    domainNameData.aveTotalTimeConsuming,
                 ]
             },
             line: {
                 xLabel: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                     , 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-                mobile: domainNameData.aveTotalTimeConsumingList
-                ,unicom: mobileData.aveTotalTimeConsumingList
+                mobile: mobileData.aveTotalTimeConsumingList
+                ,unicom: unicomData.aveTotalTimeConsumingList
                 ,telecom: telecomData.aveTotalTimeConsumingList
-                ,domain: unicomData.aveTotalTimeConsumingList
+                ,domain: domainNameData.aveTotalTimeConsumingList
             }
         }
         return Promise.resolve(obj)
