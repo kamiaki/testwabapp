@@ -1,17 +1,13 @@
 <template>
-    <van-config-provider :theme-vars="themeVars">
-
-        <van-tabs v-model:active="active" sticky swipeable
-                  @click-tab="onClickTab">
-            <van-tab title="自动" name="auto">
-                <AutoTestPage></AutoTestPage>
-            </van-tab>
-            <van-tab title="手动" name="manual">
-                <ManualTestPage></ManualTestPage>
-            </van-tab>
-        </van-tabs>
-
-    </van-config-provider>
+    <van-tabs v-model:active="active" sticky swipeable
+              @click-tab="onClickTab">
+        <van-tab title="自动" name="auto">
+            <AutoTestPage></AutoTestPage>
+        </van-tab>
+        <van-tab title="手动" name="manual">
+            <ManualTestPage></ManualTestPage>
+        </van-tab>
+    </van-tabs>
 </template>
 
 <script>
@@ -27,25 +23,14 @@
             AutoTestPage, ManualTestPage
         },
         setup() {
-
             const store = useStore()
             const tabbarActive = toRef(store.state.vuexMain, 'tabbarActive')
             const active = ref('auto');
             const onClickTab = function (data) {
-                if ('manual' === data.name) {
-                    Toast('下拉即可拨测')
-                }
+                if ('manual' === data.name) Toast('下拉即可拨测')
             };
-            onMounted(() => {
-                tabbarActive.value = '拨测'
-            })
-
-            // 样式
-            const themeVars = {
-                tabsNavBackgroundColor: '#ffffff'
-            };
-
-            return {active, onClickTab, themeVars};
+            onMounted(() => tabbarActive.value = '拨测')
+            return {active, onClickTab};
         }
     }
 </script>
