@@ -20,9 +20,10 @@
         setup() {
             apiAuth.getToken().then(token => {
                 console.info(token)
-                apiTest.getTestResultGraphicData({}, null,
+                apiTest.getTestResultGraphicData({},
                     {
                         headers: {
+                            'Content-Type': 'application/json;charset:utf-8',
                             'token': token
                         }
                     }
