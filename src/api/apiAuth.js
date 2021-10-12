@@ -13,7 +13,6 @@ const getToken = () => post('/user/v1/login', null,
             'passWord': 'CDD979CECA4A2741EC1318FE7AF7EC56',
         }
     }).then(result => {
-    console.info(authorizationUtil.encryption('admin'))
     if (result.success) {
         return Promise.resolve(result.token)
     } else {
