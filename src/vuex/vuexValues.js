@@ -4,7 +4,7 @@ import vuexMain from './vuexMain'
 
 const s = createStore({
     state: {
-        isTest: true, // 开启测试数据
+        isTest: false, // 开启测试数据
     },
     mutations: {},
     modules: {

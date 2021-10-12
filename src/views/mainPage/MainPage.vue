@@ -5,21 +5,14 @@
 </template>
 
 <script>
-    import {reactive} from 'vue'
     import TitleHead from '/@/views/mainPage/TitleHead.vue'
     import FootNav from '/@/views/mainPage/FootNav.vue'
 
     export default {
         name: "MainPage",
-        components: {
-            TitleHead, FootNav
-        },
-        setup(){
-            return {}
-        }
+        components: {TitleHead, FootNav}
     }
 </script>
 
 <style scoped>
-
 </style>

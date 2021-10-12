@@ -2,7 +2,6 @@
     <van-tabbar
             v-model="store.state.vuexMain.tabbarActive"
             :placeholder="true"
-            @change="change"
     >
         <van-tabbar-item icon="good-job-o" name="拨测">拨测</van-tabbar-item>
         <van-tabbar-item icon="gold-coin-o" name="查询">查询</van-tabbar-item>
@@ -11,10 +10,10 @@
 </template>
 
 <script>
-    import {ref} from 'vue';
+    import {watch} from 'vue'
     import {useRouter} from 'vue-router'
     import {useStore} from 'vuex'
-    import { Toast } from 'vant';
+    import {Toast} from 'vant';
     import doge from '/@/assets/other/doge.png'
 
     export default {
@@ -23,8 +22,8 @@
             const router = useRouter()
             const store = useStore()
 
-            function change(a) {
-                switch (a) {
+            watch(() => store.state.vuexMain.tabbarActive, () => {
+                switch (store.state.vuexMain.tabbarActive) {
                     case '拨测':
                         router.push({name: 'DialTestPage'})
                         break;
@@ -38,9 +37,9 @@
                         });
                         break;
                 }
-            }
+            })
 
-            return {change, store};
+            return {store};
         }
     }
 </script>

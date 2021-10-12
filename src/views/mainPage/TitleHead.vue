@@ -12,11 +12,17 @@
 </template>
 
 <script>
+    import {Toast} from 'vant';
+    import doge from '/@/assets/other/doge.png'
+
     export default {
         name: "TitlePage",
         setup() {
             const onClickRight = function () {
-                alert('此功能还未上线')
+                Toast({
+                    message: '汪汪汪汪汪！',
+                    icon: doge,
+                });
             };
             return {
                 onClickRight,
