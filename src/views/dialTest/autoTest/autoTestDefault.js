@@ -1,7 +1,11 @@
 import {reactive} from 'vue'
 import {line} from "/@/dictionary/dataDictionary.js"
 import utils from 'aki_js_utils'
+import apiDialTest from '/@/api/apiDialTest'
+import {Toast} from 'vant'
+import store from '/@/vuex/vuexValues'// vuex
 
+// 设置初始化数据
 const setDefaultAutoTestData = function () {
     const tmp = {
         notifyData: [{
@@ -33,8 +37,8 @@ const setDefaultAutoTestData = function () {
     const autoTestData = reactive(tmp)
     return autoTestData
 }
-
-const setTestAutoTestData = function (data) {
+// 设置测试数据
+const setTestAutoTestData = function (autoTestData) {
     // 告警信息
     const notifyData = []
     for (let i = 0; i < 10; i++) {
@@ -51,7 +55,7 @@ const setTestAutoTestData = function (data) {
         obj.fullText = fullText
         notifyData.push(obj)
     }
-    data.notifyData = notifyData
+    autoTestData.notifyData = notifyData
     // 指示灯信息
     const lampData = [
         {id: 'mobile', state: utils.randomFlow(0, 1, 0), msg: ''}
@@ -63,9 +67,9 @@ const setTestAutoTestData = function (data) {
         lampData[i].iconUrl = line[lampData[i].id].iconUrl
         lampData[i].name = line[lampData[i].id].name
     }
-    data.lampData = lampData
+    autoTestData.lampData = lampData
     // 图表信息
-    data.echartData = {
+    autoTestData.echartData = {
         bar: {
             dataX: [utils.randomFlow(0, 30, 0),
                 utils.randomFlow(0, 30, 0),
@@ -89,6 +93,25 @@ const setTestAutoTestData = function (data) {
         }
     }
 }
+// 设置真正数据
+const setAutoTestData = function (autoTestData) {
+    apiDialTest.getTestResultGraphicData().then(res => {
+        autoTestData.echartData = res
+        Toast('图表刷新成功!');
+    }).catch((e) => {
+        Toast(`图表刷新失败: ${e}`)
+    })
+}
 
-export default {setDefaultAutoTestData, setTestAutoTestData}
-export {setDefaultAutoTestData, setTestAutoTestData}
+export default function () {
+    const autoTestData = setDefaultAutoTestData()
+    // 测试刷新数据
+    const refreshAutoTestData = function () {
+        if (store.state.isTest) {
+            setTestAutoTestData(autoTestData)
+        } else {
+            setAutoTestData(autoTestData)
+        }
+    }
+    return {autoTestData, refreshAutoTestData}
+}
