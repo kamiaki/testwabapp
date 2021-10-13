@@ -4,7 +4,7 @@
 
 <script>
     import {inject, onMounted, onBeforeUnmount, watch} from "vue";
-    import barDefault from './barDefault'
+    import drawEcharts from './useBarDefault'
 
     export default {
         name: "BarAutoTest",
@@ -19,7 +19,7 @@
             onMounted(() => {
                 // 绘制图表
                 myChart = echarts.init(document.getElementById("myChartAutoTestBar"));
-                barDefault.drawBar(echarts, myChart, props.autoTestData.echartData.bar)
+                drawEcharts(echarts, myChart, props.autoTestData.echartData.bar)
                 window.addEventListener('resize', resize)// 响应式大小
             });
 
@@ -28,7 +28,7 @@
             })
 
             watch(props.autoTestData, () => {
-                barDefault.drawBar(echarts, myChart, props.autoTestData.echartData.bar)
+                drawEcharts(echarts, myChart, props.autoTestData.echartData.bar)
             })
         }
     }
