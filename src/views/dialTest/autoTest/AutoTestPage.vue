@@ -8,7 +8,6 @@
 
 <script>
     import {ref, reactive} from 'vue'
-    import {Toast} from 'vant'
     import SwipeAutoTest from "/@/views/dialTest/autoTest/swipe/SwipeAutoTest.vue";
     import LampAutoTest from "/@/views/dialTest/autoTest/LampAutoTest.vue";
     import NotifyAutoTest from "/@/views/dialTest/autoTest/NotifyAutoTest.vue";
@@ -23,8 +22,10 @@
             // 下拉刷新
             const loading = ref(false);
             const onRefresh = () => {
-                refreshAutoTestData()
-                loading.value = false;
+                setTimeout(() => {
+                    refreshAutoTestData()
+                    loading.value = false;
+                }, 1000);
             };
             return {
                 loading,
