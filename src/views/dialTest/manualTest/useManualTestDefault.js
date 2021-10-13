@@ -61,7 +61,7 @@ const setTestManualTestData = function (manualTestData) {
 }
 // 设置真正数据
 const setManualTestData = function (manualTestData) {
-    Toast('去后台查吧')
+    Toast(`线程数: ${manualTestData.form.threadCount}\r\n拨测数: ${manualTestData.form.testCount}\r\n拨测成功`);
 }
 
 export default function () {
