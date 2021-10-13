@@ -1,17 +1,16 @@
 <template>
     <div>
         <div style="margin: 10px auto; width: 90%;">
-            <div style="display: flex; justify-content: space-between">
-                <div style="text-align: left">
+            <div style="font-size: 10px;display: flex; justify-content: space-between">
+                <div>
                     线程数: {{manualTestData.form.threadCount}}
                     测试量: {{manualTestData.form.testCount}}
                 </div>
-                <div style="text-align: right">测试时间: {{'2021-10-08'}}</div>
+                <div>测试时间: {{dateTime}}</div>
             </div>
         </div>
-
         <div class="table-wrapper-style1">
-            <el-table :data="propsManualTestData.tableData" stripe style="width: 100%">
+            <el-table :data="manualTestData.tableData" stripe style="width: 100%">
                 <el-table-column
                         v-for="(obj, index) in tableFormat"
                         :key="obj"
@@ -30,14 +29,16 @@
 
 <script>
     import {tf} from './TableManualTestSetting.js'
-
+    import utils from 'aki_js_utils'
     export default {
         name: "TableManualTest",
         props: ['manualTestData'],
-        setup(props) {
+        setup({manualTestData}) {
+            const dateTime = utils.dateFormat(new Date(), 'yyyy-MM-dd HH:mm:ss')
             return {
-                propsManualTestData: props.manualTestData,
-                tableFormat: tf
+                tableFormat: tf,
+                dateTime,
+                manualTestData
             }
         }
     }

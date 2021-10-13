@@ -1,6 +1,6 @@
 <template>
-    <van-swipe class="my-swipe"
-               :autoplay="10000"
+    <van-swipe class="echartsDiv"
+               :loop="false"
                indicator-color="white">
         <van-swipe-item>
             <BarHManualTest :manualTestData="manualTestData"
@@ -18,16 +18,14 @@
     import BarVManualTest from "/@/views/dialTest/manualTest/swipe/BarVManualTest.vue";
 
     export default {
-        name: "SwipeAutoTest",
+        name: "SwipeManualTest",
         components: {BarHManualTest, BarVManualTest},
-        props: ['manualTestData'],
-        setup(props){
-        }
+        props: ['manualTestData']
     }
 </script>
 
 <style scoped>
-    .my-swipe {
+    .echartsDiv {
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);

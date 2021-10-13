@@ -9,7 +9,7 @@
         <template #loosing>
             <img class="huaji" :src="huaji"/>
         </template>
-        <TableManualTest  style="margin:0px 5px 10px" :manualTestData="manualTestData"></TableManualTest>
+        <TableManualTest  style="margin:10px 5px" :manualTestData="manualTestData"></TableManualTest>
         <SwipeManualTest  style="margin:10px 5px"  :manualTestData="manualTestData"></SwipeManualTest>
     </van-pull-refresh>
 </template>

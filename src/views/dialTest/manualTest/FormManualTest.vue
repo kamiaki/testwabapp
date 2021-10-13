@@ -6,12 +6,10 @@
 </template>
 
 <script>
-    import {ref} from 'vue';
-
     export default {
         name: "FormManualTest",
         props: ['manualTestData'],
-        setup(props) {
+        setup({manualTestData}) {
             const option1 = [
                 {text: '线程数 1', value: 1},
                 {text: '线程数 2', value: 2},
@@ -25,7 +23,7 @@
             return {
                 option1,
                 option2,
-                manualTestData: props.manualTestData,
+                manualTestData
             };
         }
     }
