@@ -7,7 +7,7 @@
                     :autoplay="3000"
                     :show-indicators="false"
             >
-                <van-swipe-item v-for="item in autoTestData.notifyData" :key="item">
+                <van-swipe-item v-for="item in notifyData" :key="item">
                     {{item.fullText}}
                 </van-swipe-item>
             </van-swipe>
@@ -16,15 +16,18 @@
 </template>
 
 <script>
+    import {toRefs} from 'vue'
+
     export default {
         name: "NotifyAutoTest",
-        props: ['autoTestData'],
-        setup({autoTestData}) {
+        props: ['notifyData'],
+        setup(props) {
             const themeVars = {
                 noticeBarHeight: '50px',
                 noticeBarFontSize: '18px'
             };
-            return {autoTestData, themeVars}
+            const {notifyData} = toRefs(props)
+            return {notifyData, themeVars}
         }
     }
 </script>
