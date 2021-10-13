@@ -68,12 +68,13 @@
     export default {
         name: "FormQueryTest",
         emits: ['doSearch'],
-        setup(props, context) {
+        props: ['formParms'],
+        setup({formParms}, context) {
             // 日期选择
             const myDate = ref('');
             const showDateSelect = ref(false);
-            let start = undefined
-            let end = undefined
+            let start = new Date()
+            let end = new Date()
             const formatDate = (myDate) => `${myDate.getMonth() + 1}/${myDate.getDate()}`;
             const onConfirmDate = (values) => {
                 [start, end] = values;
@@ -98,27 +99,29 @@
             };
 
             const onSubmit = (vals) => {
-                console.log('vals', vals);
-                console.log('start', start);
-                console.log('end', end);
-                console.log('myDate', myDate.value);
-                console.log('myType', myType.value);
-                console.log('myState', myState.value);
-                context.emit('doSearch', vals)
+                formParms.start = start.getTime()
+                formParms.end = end.getTime()
+                formParms.myType = vals.myType
+                formParms.myState = vals.myState
+                context.emit('doSearch')
             };
 
             return {
+                // 日期
                 myDate,
                 showDateSelect,
                 onConfirmDate,
+                // 网络类型
                 myType,
                 columnsType,
-                onConfirmType,
                 showTypeSelect,
+                onConfirmType,
+                // 状态
                 myState,
                 columnsState,
-                onConfirmState,
                 showStateSelect,
+                onConfirmState,
+                // 提交
                 onSubmit,
             };
         }

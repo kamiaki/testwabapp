@@ -1,7 +1,12 @@
 <template>
     <div class="title">告警信息统计</div>
-    <FormQueryAlert class="alertCss" @doSearch="refresh"></FormQueryAlert>
-    <TableQueryAlert class="alertCss" :queryAlertData="queryAlertData"></TableQueryAlert>
+    <FormQueryAlert class="alertCss"
+                    :formParms="formParms"
+                    @doSearch="refresh"
+    ></FormQueryAlert>
+    <TableQueryAlert class="alertCss"
+                     :formParms="formParms"
+                     :queryAlertData="queryAlertData"></TableQueryAlert>
 </template>
 
 <script>
@@ -19,6 +24,11 @@
             const tableData = createTestData()
             const queryAlertData = reactive({
                 tableData: tableData
+            })
+
+            const formParms = reactive({
+                start: 0, end: 0, myType: '', myState: '',
+                currentPage: 0, totalItems: 24, itemsPerPage: 5
             })
 
             // 测试
@@ -44,7 +54,8 @@
 
             return {
                 queryAlertData,
-                refresh
+                refresh,
+                formParms
             };
         }
     }
@@ -58,7 +69,8 @@
     }
 
     .alertCss {
-        margin: 10px auto; width: 95%;
+        margin: 10px auto;
+        width: 95%;
         border-radius: 5px;
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
