@@ -19,15 +19,12 @@
     export default {
         name: "NotifyAutoTest",
         props: ['autoTestData'],
-        setup(props) {
+        setup({autoTestData}) {
             const themeVars = {
                 noticeBarHeight: '50px',
                 noticeBarFontSize: '18px'
             };
-
-            return {
-                autoTestData: props.autoTestData, themeVars
-            }
+            return {autoTestData, themeVars}
         }
     }
 </script>

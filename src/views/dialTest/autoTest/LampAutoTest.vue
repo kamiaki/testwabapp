@@ -15,10 +15,8 @@
     export default {
         name: "LampAutoTest",
         props: ['autoTestData'],
-        setup(props) {
-            return {
-                autoTestData: props.autoTestData
-            }
+        setup({autoTestData}) {
+            return {autoTestData}
         }
     }
 </script>
@@ -39,7 +37,7 @@
         transition: all 0.5s ease-in-out;
     }
 
-    .item:hover{
+    .item:hover {
         transform: scale(1.05);
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
     }

@@ -23,10 +23,8 @@
         name: "SwipeAutoTest",
         components: {BarAutoTest, LineAutoTest},
         props: ['autoTestData'],
-        setup(props) {
-            return {
-                autoTestData: props.autoTestData
-            }
+        setup({autoTestData}) {
+            return {autoTestData}
         }
     }
 </script>
