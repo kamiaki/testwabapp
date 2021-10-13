@@ -18,6 +18,7 @@
         name: "AutoTestPage",
         components: {SwipeAutoTest, LampAutoTest, NotifyAutoTest},
         setup() {
+            // 获取数据 以及 刷新数据
             let {autoTestData, refreshAutoTestData} = autoTestDefault()
             // 下拉刷新
             const loading = ref(false);
