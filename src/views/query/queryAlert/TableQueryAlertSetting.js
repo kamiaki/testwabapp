@@ -13,7 +13,7 @@ const tf = [
     width: '100',
     formatter: (row, column) => {
       let stateStr = '恢复'
-      if (1 === row.state) stateStr = '异常'
+      if ('0' === String(row.state)) stateStr = '异常'
       return stateStr
     }
   },
