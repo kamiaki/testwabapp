@@ -8,7 +8,6 @@
 
 <script>
     import {ref, reactive} from 'vue'
-    import {Toast} from 'vant'
     import FormQueryTest from '/@/views/query/queryTest/FormQueryTest.vue'
     import TableQueryTest from '/@/views/query/queryTest/TableQueryTest.vue'
     import utils from 'aki_js_utils'

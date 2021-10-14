@@ -2,8 +2,7 @@
     <div class="title">告警信息统计</div>
     <FormQueryAlert class="alertCss"
                     :formParms="formParms"
-                    @doSearch="refresh"
-    ></FormQueryAlert>
+                    @doSearch="refresh"></FormQueryAlert>
     <TableQueryAlert class="alertCss"
                      :formParms="formParms"
                      :queryAlertData="queryAlertData"></TableQueryAlert>
