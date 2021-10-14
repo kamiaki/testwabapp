@@ -139,6 +139,7 @@ export default function () {
     }
     // 启动循环
     onMounted(() => {
+        refreshAutoTestData()
         loop()
     })
     // 结束循环
