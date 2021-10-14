@@ -102,7 +102,6 @@
                 formParms.end = end.getTime()
                 formParms.myType = vals.myType
                 formParms.myState = vals.myState
-                formParms.doSearchCount++
             };
 
             return {

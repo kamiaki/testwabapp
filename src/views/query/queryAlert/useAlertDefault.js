@@ -3,6 +3,16 @@ import utils from 'aki_js_utils'
 import {Toast} from 'vant'
 import store from '/@/vuex/vuexValues'// vuex
 
+// 设置初始化数据 form
+const setFormParms = function () {
+    // form
+    const formParms = reactive({
+        start: 0, end: 0, myType: '', myState: '',
+        currentPage: 0, totalItems: 100, itemsPerPage: 8
+    })
+    return formParms
+}
+
 // 设置初始化数据
 const setDefaultAlertData = function () {
     const tableDataTmp = []
@@ -19,7 +29,7 @@ const setDefaultAlertData = function () {
     return alertData
 }
 // 设置测试数据
-const setTestAlertData = function (alertData) {
+const setTestAlertData = function (formParms, alertData) {
     const tableDataTmp = []
     for (let i = 0; i < 20; i++) {
         tableDataTmp.push({
@@ -33,30 +43,20 @@ const setTestAlertData = function (alertData) {
 }
 
 // 设置真正数据
-const setAlertData = function (alertData) {
+const setAlertData = function (formParms, alertData) {
     Toast('查询后台数据了')
 }
 
 export default function () {
-    // form
-    const formParms = reactive({
-        doSearchCount: 0,
-        start: 0, end: 0, myType: '', myState: '',
-        currentPage: 0, totalItems: 24, itemsPerPage: 5
-    })
-
+    const formParms = setFormParms()
     const alertData = setDefaultAlertData()
     // 测试刷新数据
     const refreshAlertData = function () {
         if (store.state.isTest) {
-            setTestAlertData(alertData)
+            setTestAlertData(formParms, alertData)
         } else {
-            setAlertData(alertData)
+            setAlertData(formParms, alertData)
         }
     }
-    // watch
-    watch(() => [formParms.doSearchCount, formParms.currentPage], () => {
-        refreshAlertData()
-    })
     return {formParms, alertData, refreshAlertData}
 }
