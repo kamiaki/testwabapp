@@ -1,4 +1,4 @@
-import {reactive} from 'vue'
+import {reactive, onMounted, onBeforeUnmount} from 'vue'
 import {line} from "/@/dictionary/dataDictionary.js"
 import utils from 'aki_js_utils'
 import apiDialTest from '/@/api/apiDialTest'
@@ -118,6 +118,7 @@ const setAutoTestData = function (autoTestData) {
 }
 
 export default function () {
+    // 输出参数
     const autoTestData = setDefaultAutoTestData()
     // 测试刷新数据
     const refreshAutoTestData = function () {
@@ -127,5 +128,23 @@ export default function () {
             setAutoTestData(autoTestData)
         }
     }
+    // 循环
+    const loopTime = 5000
+    let loopNum = 0
+    const loop = function () {
+        loopNum = setTimeout(() => {
+            refreshAutoTestData()
+            loop()
+        }, loopTime)
+    }
+    // 启动循环
+    onMounted(() => {
+        loop()
+    })
+    // 结束循环
+    onBeforeUnmount(() => {
+        clearTimeout(loopNum)
+    })
+
     return {autoTestData, refreshAutoTestData}
 }
