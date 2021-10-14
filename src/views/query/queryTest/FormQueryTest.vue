@@ -104,7 +104,13 @@
                 if (start) formParms.start = utils.dateFormat(new Date(start), 'yyyy-MM-dd HH:mm:ss')
                 if (end) formParms.end = utils.dateFormat(new Date(end), 'yyyy-MM-dd HH:mm:ss')
                 formParms.myType = vals.myType
-                formParms.myState = vals.myState
+                let codeStr = ''
+                if ('成功' === vals.myType) {
+                    codeStr = '1'
+                } else if ('失败' === vals.myType) {
+                    codeStr = '0'
+                }
+                formParms.myState = codeStr
                 context.emit('doSearch')
             };
 

@@ -214,17 +214,11 @@ const activeTesting = (threads, count) => apiAuth.getToken().then(async token =>
 const selectResultByParamHavePaging = (formParms, testData) => apiAuth.getToken().then(async token => {
     let tableData = []
     let isSuccess = true
-    let codeStr = ''
-    if ('成功' === formParms.myState) {
-        codeStr = '1'
-    } else if ('失败' === formParms.myState) {
-        codeStr = '0'
-    }
     const params = {
         startTime: formParms.start,
         endTime: formParms.end,
         networkType: formParms.myType,
-        code: codeStr, // 0 失败 1 成功
+        code: formParms.myState, // 0 失败 1 成功
         page: formParms.currentPage,
         limit: formParms.itemsPerPage
     }
