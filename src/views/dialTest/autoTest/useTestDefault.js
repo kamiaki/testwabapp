@@ -129,7 +129,7 @@ export default function () {
         }
     }
     // 循环
-    const loopTime = 5000
+    const loopTime = 60 * 1000
     let loopNum = 0
     const loop = function () {
         loopNum = setTimeout(() => {
