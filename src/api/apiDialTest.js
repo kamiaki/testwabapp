@@ -116,6 +116,7 @@ const selectTodayAlarmHistory = () => apiAuth.getToken().then(async token => {
             const fullText = `${Number(i) + 1} ${name} ${serverIp} ${msg} ${time}`
             notifyData.push({fullText})
         }
+        if (!notifyData || notifyData.length <= 0) notifyData.push({fullText: '无告警'})
         return Promise.resolve(notifyData)
     } else {
         return Promise.reject(error)
