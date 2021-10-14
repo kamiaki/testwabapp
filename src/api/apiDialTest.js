@@ -281,7 +281,7 @@ const selectAlarmHistoryByParam = (formParms, alertData) => apiAuth.getToken().t
             const obj = tmpData[i]
             const objTable = {
                 time: obj.alarmTime,
-                state: obj.code,
+                state: obj.alarmType,
                 type: obj.targetName,
                 targetIp: obj.serverIp
             }

@@ -12,9 +12,7 @@ const tf = [
     sortable: false,
     width: '100',
     formatter: (row, column) => {
-      let stateStr = '恢复'
-      if ('0' === String(row.state)) stateStr = '异常'
-      return stateStr
+      return row.state
     }
   },
   {
