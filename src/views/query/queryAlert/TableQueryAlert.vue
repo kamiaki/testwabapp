@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="table-wrapper-style1">
-            <el-table :data="queryAlertData.tableData"
+            <el-table :data="alertData.tableData"
                       height="400"
                       stripe style="width: 100%">
                 <el-table-column
@@ -27,7 +27,7 @@
 
     export default {
         name: "TableQueryTest",
-        props: ['queryAlertData', 'formParms'],
+        props: ['alertData', 'formParms'],
         setup() {
             return {tableFormat: tf}
         }
