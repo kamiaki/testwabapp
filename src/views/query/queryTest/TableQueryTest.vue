@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="table-wrapper-style1">
-            <el-table :data="propsQueryTestData.tableData"
+            <el-table :data="testData.tableData"
                       height="400"
                       stripe style="width: 100%">
                 <el-table-column
@@ -15,8 +15,11 @@
                 ></el-table-column>
             </el-table>
         </div>
-        <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5"/>
-    </div>
+        <van-pagination
+                @change="changePagination"
+                v-model="formParms.currentPage"
+                :total-items="formParms.totalItems"
+                :items-per-page="formParms.itemsPerPage"/>    </div>
 </template>
 
 <script>
@@ -25,15 +28,14 @@
 
     export default {
         name: "TableQueryTest",
-        props: ['queryTestData'],
-        setup(props) {
-            const currentPage = ref(1);
-            return {
-                currentPage,
-                propsQueryTestData: props.queryTestData,
-                tableFormat: tf
-            };
-        },
+        props: ['testData', 'formParms'],
+        emits: ['changePagination'],
+        setup(props, context) {
+            function changePagination() {
+                context.emit('changePagination')
+            }
+            return {changePagination, tableFormat: tf}
+        }
     }
 </script>
 
