@@ -46,8 +46,10 @@
             </van-col>
         </van-row>
         <!--日期选择器-->
-        <van-calendar v-model:show="showDateSelect" teleport="body" type="range" @confirm="onConfirmDate"/>
-        <!--类型选择器-->
+        <van-calendar v-model:show="showDateSelect" teleport="body"
+                      :min-date="new Date(2018,1,1)"
+                      :max-date="new Date(2030,1,1)"
+                      type="range" @confirm="onConfirmDate"/>        <!--类型选择器-->
         <van-popup v-model:show="showTypeSelect" position="bottom" teleport="body">
             <van-picker
                     :columns="columnsType"
