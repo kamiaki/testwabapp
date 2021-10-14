@@ -38,7 +38,9 @@ const setAlertData = function (alertData) {
 }
 
 export default function () {
+    // form
     const formParms = reactive({
+        doSearchCount: 0,
         start: 0, end: 0, myType: '', myState: '',
         currentPage: 0, totalItems: 24, itemsPerPage: 5
     })
@@ -52,10 +54,9 @@ export default function () {
             setAlertData(alertData)
         }
     }
-
-    watch(() => formParms.currentPage, () => {
-        console.info('点击分页')
+    // watch
+    watch(() => [formParms.doSearchCount, formParms.currentPage], () => {
+        refreshAlertData()
     })
-
     return {formParms, alertData, refreshAlertData}
 }
