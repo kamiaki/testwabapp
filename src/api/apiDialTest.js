@@ -217,12 +217,16 @@ const selectResultByParamHavePaging = (formParms, testData) => apiAuth.getToken(
     let codeStr = ''
     if ('成功' === formParms.myState) {
         codeStr = '1'
-    }else if ('失败' === formParms.myState) {
+    } else if ('失败' === formParms.myState) {
         codeStr = '0'
     }
+    let startTime = ''
+    let endTime = ''
+    if (formParms.start) startTime = utils.dateFormat(new Date(formParms.start), 'yyyy-MM-dd HH:mm:ss')
+    if (formParms.end) endTime = utils.dateFormat(new Date(formParms.end), 'yyyy-MM-dd HH:mm:ss')
     const params = {
-        startTime: utils.dateFormat(new Date(formParms.start), 'yyyy-MM-dd HH:mm:ss'),
-        endTime: utils.dateFormat(new Date(formParms.end), 'yyyy-MM-dd HH:mm:ss'),
+        startTime: startTime,
+        endTime: endTime,
         networkType: formParms.myType,
         code: codeStr, // 0 失败 1 成功
         page: formParms.currentPage,
