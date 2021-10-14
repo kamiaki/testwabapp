@@ -1,6 +1,6 @@
 <template>
     <div class="flexRoot">
-        <div class="item" :class="item.state == 0 ? 'normal' : 'abnormal'"
+        <div class="item" :class="item.state === 'connect' ? 'normal' : 'abnormal'"
              v-for="item in autoTestData.lampData" :key="item">
             <div class="imgCss"
                  :style="{backgroundImage: 'url(' + item.iconUrl + ')'}"></div>

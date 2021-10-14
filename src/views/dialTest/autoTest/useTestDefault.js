@@ -3,7 +3,9 @@ import {line} from "/@/dictionary/dataDictionary.js"
 import utils from 'aki_js_utils'
 import apiDialTest from '/@/api/apiDialTest'
 import {Toast} from 'vant'
-import store from '/@/vuex/vuexValues'// vuex
+import store from '/@/vuex/vuexValues'
+import {findNetworkStatus} from "../../../api/apiDialTest";
+// vuex
 
 // 设置初始化数据
 const setDefaultAutoTestData = function () {
@@ -95,6 +97,13 @@ const setTestAutoTestData = function (autoTestData) {
 }
 // 设置真正数据
 const setAutoTestData = function (autoTestData) {
+    apiDialTest.findNetworkStatus().then(res => {
+        autoTestData.lampData = res
+        console.info(autoTestData.lampData)
+        Toast('网络状态指示灯刷新成功!');
+    }).catch((e) => {
+        Toast(`网络状态指示灯刷新失败: ${e}`)
+    })
     apiDialTest.getTestResultGraphicData().then(res => {
         autoTestData.echartData = res
         Toast('图表刷新成功!');
