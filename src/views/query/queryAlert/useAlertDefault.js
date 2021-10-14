@@ -12,7 +12,6 @@ const setFormParms = function () {
     })
     return formParms
 }
-
 // 设置初始化数据
 const setDefaultAlertData = function () {
     const tableDataTmp = []
