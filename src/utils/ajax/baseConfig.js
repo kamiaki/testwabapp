@@ -3,6 +3,7 @@
  */
 const getBaseUrl = () => {
   const URL_BASE_DEV = '/test' // 本地调试
+  // const URL_BASE_DEV = 'http://119.3.222.120:8081' // 本地调试
   const URL_BAES_PRO = '/test' // nginx发布
   let baseUrl
   let ENV = process.env.NODE_ENV
