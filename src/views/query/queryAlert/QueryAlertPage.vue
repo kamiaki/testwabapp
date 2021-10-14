@@ -19,17 +19,11 @@
         components: {FormQueryAlert, TableQueryAlert},
         setup() {
             // 表格
-            const {alertData, refreshAlertData} = useAlertDefault()
-
-            const formParms = reactive({
-                start: 0, end: 0, myType: '', myState: '',
-                currentPage: 0, totalItems: 24, itemsPerPage: 5
-            })
+            const {formParms, alertData, refreshAlertData} = useAlertDefault()
 
             function doSearch() {
                 refreshAlertData()
             }
-
 
             return {
                 formParms,

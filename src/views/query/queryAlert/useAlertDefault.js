@@ -1,4 +1,4 @@
-import {reactive} from 'vue'
+import {reactive, watch} from 'vue'
 import utils from 'aki_js_utils'
 import {Toast} from 'vant'
 import store from '/@/vuex/vuexValues'// vuex
@@ -38,6 +38,11 @@ const setAlertData = function (alertData) {
 }
 
 export default function () {
+    const formParms = reactive({
+        start: 0, end: 0, myType: '', myState: '',
+        currentPage: 0, totalItems: 24, itemsPerPage: 5
+    })
+
     const alertData = setDefaultAlertData()
     // 测试刷新数据
     const refreshAlertData = function () {
@@ -47,5 +52,10 @@ export default function () {
             setAlertData(alertData)
         }
     }
-    return {alertData, refreshAlertData}
+
+    watch(() => formParms.currentPage, () => {
+        console.info('点击分页')
+    })
+
+    return {formParms, alertData, refreshAlertData}
 }
