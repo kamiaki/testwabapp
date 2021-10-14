@@ -72,7 +72,6 @@ const setManualTestData = function (manualTestData) {
     }).catch((e) => {
         Toast(`自动刷新失败: ${e}`)
     })
-    Toast(`线程数: ${manualTestData.form.threadCount}\r\n拨测数: ${manualTestData.form.testCount}\r\n拨测成功`);
 }
 
 export default function () {

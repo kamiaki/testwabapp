@@ -1,6 +1,7 @@
 import {get, post} from '/@/utils/ajax/request'
 import apiAuth from '/@/api/apiAuth'
 import {line} from "/@/dictionary/dataDictionary.js"
+import utils from 'aki_js_utils'
 
 const getTestResultGraphicData = () => apiAuth.getToken().then(async token => {
     let result = null
@@ -191,7 +192,83 @@ const activeTesting = (threads, count) => apiAuth.getToken().then(async token =>
     return Promise.reject(`activeTesting, error: ${e}`)
 })
 
+//code: 0
+// count: 2017
+// data: Array(8)
+// 0:
+// authTimeConsuming: "0"
+// code: "1"
+// errorNum: "0"
+// id: 147946
+// maxTimeConsuming: ""
+// minTimeConsuming: ""
+// netTimeConsuming: "0"
+// nodeIp: "192.168.XXX.XXX"
+// serverIp: "117.161.XXX.XXX"
+// successNum: "10"
+// targetName: "移动网络"
+// time: "2021-10-14 17:38:50"
+// totalTimeConsuming: "73"
+// variance: ""
+// selectResultByParamHavePaging
+const selectResultByParamHavePaging = (formParms, testData) => apiAuth.getToken().then(async token => {
+    let tableData = []
+    let isSuccess = true
+    let codeStr = ''
+    if ('成功' === formParms.myState) {
+        codeStr = '1'
+    }else if ('失败' === formParms.myState) {
+        codeStr = '0'
+    }
+    const params = {
+        startTime: utils.dateFormat(new Date(formParms.start), 'yyyy-MM-dd HH:mm:ss'),
+        endTime: utils.dateFormat(new Date(formParms.end), 'yyyy-MM-dd HH:mm:ss'),
+        networkType: formParms.myType,
+        code: codeStr, // 0 失败 1 成功
+        page: formParms.currentPage,
+        limit: formParms.itemsPerPage
+    }
+    await post('/network/v1/selectResultByParamHavePaging', params, {
+        showLoading: true, headers: {
+            'Content-Type': 'application/json;charset:utf-8',
+            'token': token
+        }
+    }).then(r => {
+        formParms.totalItems = r.count
+        const tmpData = r.data
+        for (let i = 0; i < tmpData.length; i++) {
+            const obj = tmpData[i]
+            const objTable = {
+                ip: obj.nodeIp,
+                time: obj.time,
+                totalTime: obj.totalTimeConsuming,
+                state: obj.code,
+                type: obj.targetName,
+                targetIp: obj.serverIp,
+                successCount: obj.successNum,
+                failCount: obj.errorNum
+            }
+            tableData.push(objTable)
+        }
+        testData.tableData = tableData
+    }).catch((e) => {
+        isSuccess = false
+    })
+    if (isSuccess) {
+        return Promise.resolve({})
+    } else {
+        return Promise.reject('查询异常')
+    }
+}).catch((e) => {
+    return Promise.reject(`activeTesting, error: ${e}`)
+})
 
 // 对外暴露方法
-export default {getTestResultGraphicData, findNetworkStatus, selectTodayAlarmHistory, activeTesting}
-export {getTestResultGraphicData, findNetworkStatus, selectTodayAlarmHistory, activeTesting}
+export default {
+    getTestResultGraphicData, findNetworkStatus,
+    selectTodayAlarmHistory, activeTesting, selectResultByParamHavePaging
+}
+export {
+    getTestResultGraphicData, findNetworkStatus,
+    selectTodayAlarmHistory, activeTesting, selectResultByParamHavePaging
+}

@@ -37,7 +37,7 @@
             </van-col>
             <van-col span="2">
                 <van-button block type="primary" native-type="submit">
-                    <van-icon name="search" />
+                    <van-icon name="search"/>
                 </van-button>
             </van-col>
         </van-row>
@@ -85,7 +85,7 @@
             // 类型选择
             const myType = ref('');
             const showTypeSelect = ref(false);
-            const columnsType = ['移动', '联通', '电信', '域名'];
+            const columnsType = ['', '移动网络', '联通网络', '电信网络', '域名网络'];
             const onConfirmType = (value) => {
                 myType.value = value;
                 showTypeSelect.value = false;
@@ -93,7 +93,7 @@
             // 状态
             const myState = ref('');
             const showStateSelect = ref(false);
-            const columnsState = ['正常', '异常'];
+            const columnsState = ['', '成功', '失败'];
             const onConfirmState = (value) => {
                 myState.value = value;
                 showStateSelect.value = false;
