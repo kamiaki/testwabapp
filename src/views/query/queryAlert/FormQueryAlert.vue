@@ -69,6 +69,7 @@
 
 <script>
     import {ref} from 'vue';
+    import utils from 'aki_js_utils'
 
     export default {
         name: "FormQueryTest",
@@ -78,8 +79,8 @@
             // 日期选择
             const myDate = ref('');
             const showDateSelect = ref(false);
-            let start = new Date()
-            let end = new Date()
+            let start = ''
+            let end = ''
             const formatDate = (myDate) => `${myDate.getMonth() + 1}/${myDate.getDate()}`;
             const onConfirmDate = (values) => {
                 [start, end] = values;
@@ -89,7 +90,7 @@
             // 类型选择
             const myType = ref('');
             const showTypeSelect = ref(false);
-            const columnsType = ['移动', '联通', '电信', '域名'];
+            const columnsType = ['', '移动网络', '联通网络', '电信网络', '域名网络'];
             const onConfirmType = (value) => {
                 myType.value = value;
                 showTypeSelect.value = false;
@@ -97,7 +98,7 @@
             // 状态
             const myState = ref('');
             const showStateSelect = ref(false);
-            const columnsState = ['恢复', '异常'];
+            const columnsState = ['', '恢复', '异常'];
             const onConfirmState = (value) => {
                 myState.value = value;
                 showStateSelect.value = false;
@@ -114,16 +115,22 @@
                 formParms.end = ''
                 formParms.myType = ''
                 formParms.myState = ''
-                formParms.currentPage = 0
+                formParms.currentPage = 1
                 formParms.totalItems = 0
                 formParms.itemsPerPage = 20
             }
 
             const onSubmit = (vals) => {
-                formParms.start = start.getTime()
-                formParms.end = end.getTime()
+                if (start) formParms.start = utils.dateFormat(new Date(start), 'yyyy-MM-dd HH:mm:ss')
+                if (end) formParms.end = utils.dateFormat(new Date(end), 'yyyy-MM-dd HH:mm:ss')
                 formParms.myType = vals.myType
-                formParms.myState = vals.myState
+                let codeStr = ''
+                if ('恢复' === vals.myType) {
+                    codeStr = '1'
+                } else if ('异常' === vals.myType) {
+                    codeStr = '0'
+                }
+                formParms.myState = codeStr
                 context.emit('doSearch')
             };
 

@@ -261,13 +261,21 @@ const selectResultByParamHavePaging = (formParms, testData) => apiAuth.getToken(
 const selectAlarmHistoryByParam = (formParms, alertData) => apiAuth.getToken().then(async token => {
     let tableData = []
     let isSuccess = true
+    // const params2 = {
+    //     startTime: formParms.start,
+    //     endTime: formParms.end,
+    //     networkType: formParms.myType,
+    //     code: formParms.myState, // 0 失败 1 成功
+    //     page: formParms.currentPage,
+    //     limit: formParms.itemsPerPage
+    // }
     const params = {
-        startTime: formParms.start,
-        endTime: formParms.end,
-        networkType: formParms.myType,
-        code: formParms.myState, // 0 失败 1 成功
-        page: formParms.currentPage,
-        limit: formParms.itemsPerPage
+        alarmType: '',
+        endTime: '',
+        limit: 10,
+        page: 1, // 0 失败 1 成功
+        startTime: '',
+        targetName: ''
     }
     await get('/alarmHistory/selectAlarmHistoryByParam', params, {
         showLoading: true, headers: {
