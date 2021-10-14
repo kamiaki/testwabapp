@@ -2,7 +2,7 @@
 
     <van-form @submit="onSubmit">
         <van-row>
-            <van-col span="10">
+            <van-col span="8">
                 <van-field
                         v-model="myDate"
                         is-link
@@ -36,13 +36,21 @@
                 />
             </van-col>
             <van-col span="2">
+                <van-button block type="primary" @click="empty">
+                    <van-icon name="replay"/>
+                </van-button>
+            </van-col>
+            <van-col span="2">
                 <van-button block type="primary" native-type="submit">
                     <van-icon name="search"/>
                 </van-button>
             </van-col>
         </van-row>
         <!--日期选择器-->
-        <van-calendar v-model:show="showDateSelect" teleport="body" type="range" @confirm="onConfirmDate"/>
+        <van-calendar v-model:show="showDateSelect" teleport="body"
+                      :min-date="new Date(2018,1,1)"
+                      :max-date="new Date(2030,1,1)"
+                      type="range" @confirm="onConfirmDate"/>
         <!--类型选择器-->
         <van-popup v-model:show="showTypeSelect" position="bottom" teleport="body">
             <van-picker
@@ -100,6 +108,21 @@
                 showStateSelect.value = false;
             };
 
+            const empty = function () {
+                start = ''
+                end = ''
+                myDate.value = ''
+                myType.value = ''
+                myState.value = ''
+                formParms.start = ''
+                formParms.end = ''
+                formParms.myType = ''
+                formParms.myState = ''
+                formParms.currentPage = 0
+                formParms.totalItems = 0
+                formParms.itemsPerPage = 20
+            }
+
             const onSubmit = (vals) => {
                 if (start) formParms.start = utils.dateFormat(new Date(start), 'yyyy-MM-dd HH:mm:ss')
                 if (end) formParms.end = utils.dateFormat(new Date(end), 'yyyy-MM-dd HH:mm:ss')
@@ -119,6 +142,7 @@
                 myDate,
                 showDateSelect,
                 onConfirmDate,
+                empty,
                 //
                 myType,
                 columnsType,
