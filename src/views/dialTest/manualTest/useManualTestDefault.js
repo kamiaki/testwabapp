@@ -2,6 +2,7 @@ import {reactive, watch} from 'vue'
 import utils from 'aki_js_utils'
 import {Toast} from 'vant'
 import store from '/@/vuex/vuexValues'// vuex
+import apiDialTest from '/@/api/apiDialTest'
 
 // 设置初始化数据
 const setDefaultManualTestData = function () {
@@ -53,14 +54,22 @@ const setTestManualTestData = function (manualTestData) {
     }
     // 表格
     manualTestData.tableData = [
-        {name: '移动网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-        {name: '联通网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-        {name: '电信网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
-        {name: '域名网络',max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+        {name: '移动网络', max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+        {name: '联通网络', max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+        {name: '电信网络', max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
+        {name: '域名网络', max: utils.randomFlow(20, 30, 0), min: utils.randomFlow(0, 20, 0), level: '网络通畅'},
     ]
 }
 // 设置真正数据
 const setManualTestData = function (manualTestData) {
+    apiDialTest.activeTesting(
+        manualTestData.form.threadCount,
+        manualTestData.form.testCount
+    ).then(res => {
+        Toast('自动刷新成功!');
+    }).catch((e) => {
+        Toast(`自动刷新失败: ${e}`)
+    })
     Toast(`线程数: ${manualTestData.form.threadCount}\r\n拨测数: ${manualTestData.form.testCount}\r\n拨测成功`);
 }
 
@@ -75,7 +84,7 @@ export default function () {
         }
     }
     // watch
-    watch(manualTestData.form, ()=> {
+    watch(manualTestData.form, () => {
         refreshManualTestData()
     })
     return {manualTestData, refreshManualTestData}

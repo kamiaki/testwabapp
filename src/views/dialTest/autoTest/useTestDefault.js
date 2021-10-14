@@ -4,7 +4,7 @@ import utils from 'aki_js_utils'
 import apiDialTest from '/@/api/apiDialTest'
 import {Toast} from 'vant'
 import store from '/@/vuex/vuexValues'
-import {findNetworkStatus} from "../../../api/apiDialTest";
+
 // vuex
 
 // 设置初始化数据

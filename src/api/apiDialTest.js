@@ -1,4 +1,4 @@
-import {get} from '/@/utils/ajax/request'
+import {get, post} from '/@/utils/ajax/request'
 import apiAuth from '/@/api/apiAuth'
 import {line} from "/@/dictionary/dataDictionary.js"
 
@@ -81,7 +81,7 @@ const findNetworkStatus = () => apiAuth.getToken().then(async token => {
         return Promise.reject(error)
     }
 }).catch((e) => {
-    return Promise.reject(`getTestResultGraphicData, error: ${e}`)
+    return Promise.reject(`findNetworkStatus, error: ${e}`)
 })
 
 // 通知告警信息
@@ -120,9 +120,36 @@ const selectTodayAlarmHistory = () => apiAuth.getToken().then(async token => {
         return Promise.reject(error)
     }
 }).catch((e) => {
-    return Promise.reject(`getTestResultGraphicData, error: ${e}`)
+    return Promise.reject(`selectTodayAlarmHistory, error: ${e}`)
 })
 
+//
+const activeTesting = (threads, count) => apiAuth.getToken().then(async token => {
+    let result = {}
+    let isSuccess = true
+    for (let i in line) {
+        let params = {targetName: line[i].targetName, threads: threads, count: count}
+        await post('/network/v1/activeTesting', params, {
+            showLoading: true, headers: {
+                'Content-Type': 'application/json;charset:utf-8',
+                'token': token
+            }
+        }).then(r => {
+            result[line[i].id] = r
+        }).catch((e) => {
+            isSuccess = false
+        })
+    }
+    if (isSuccess) {
+        return Promise.resolve(result)
+    } else {
+        return Promise.reject('查询异常')
+    }
+}).catch((e) => {
+    return Promise.reject(`activeTesting, error: ${e}`)
+})
+
+
 // 对外暴露方法
-export default {getTestResultGraphicData, findNetworkStatus, selectTodayAlarmHistory}
-export {getTestResultGraphicData, findNetworkStatus, selectTodayAlarmHistory}
+export default {getTestResultGraphicData, findNetworkStatus, selectTodayAlarmHistory, activeTesting}
+export {getTestResultGraphicData, findNetworkStatus, selectTodayAlarmHistory, activeTesting}
