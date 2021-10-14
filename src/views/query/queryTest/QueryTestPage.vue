@@ -1,12 +1,13 @@
 <template>
     <div class="title">拨测结果统计</div>
     <FormQueryTest class="testCss"
-                    @doSearch="doSearch"
-                    :formParms="formParms"></FormQueryTest>
+                   @doSearch="doSearch"
+                   :formParms="formParms"
+                   :testData="testData"></FormQueryTest>
     <TableQueryTest class="testCss"
-                     @changePagination="changePagination"
-                     :formParms="formParms"
-                     :testData="testData"></TableQueryTest>
+                    @changePagination="changePagination"
+                    :formParms="formParms"
+                    :testData="testData"></TableQueryTest>
 </template>
 
 <script>
@@ -20,7 +21,6 @@
         setup() {
             // 表单数据, 查询结果, 搜索方法, 分页切换方法
             const {formParms, testData, doSearch, changePagination} = useTestDefault()
-
             return {
                 formParms,
                 testData,

@@ -78,8 +78,8 @@
     export default {
         name: "FormQueryTest",
         emits: ['doSearch'],
-        props: ['formParms'],
-        setup({formParms}, context) {
+        props: ['testData', 'formParms'],
+        setup({testData, formParms}, context) {
             // 日期选择
             const myDate = ref('');
             const showDateSelect = ref(false);
@@ -109,6 +109,7 @@
             };
 
             const empty = function () {
+                testData.tableData = []
                 start = ''
                 end = ''
                 myDate.value = ''
