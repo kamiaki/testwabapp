@@ -65,6 +65,7 @@
 
 <script>
     import {ref} from 'vue';
+    import utils from 'aki_js_utils'
 
     export default {
         name: "FormQueryTest",
@@ -74,8 +75,8 @@
             // 日期选择
             const myDate = ref('');
             const showDateSelect = ref(false);
-            let start = undefined
-            let end = undefined
+            let start = ''
+            let end = ''
             const formatDate = (myDate) => `${myDate.getMonth() + 1}/${myDate.getDate()}`;
             const onConfirmDate = (values) => {
                 [start, end] = values;
@@ -100,8 +101,8 @@
             };
 
             const onSubmit = (vals) => {
-                if (start) formParms.start = start.getTime()
-                if (end) formParms.end = end.getTime()
+                if (start) formParms.start = utils.dateFormat(new Date(start), 'yyyy-MM-dd HH:mm:ss')
+                if (end) formParms.end = utils.dateFormat(new Date(end), 'yyyy-MM-dd HH:mm:ss')
                 formParms.myType = vals.myType
                 formParms.myState = vals.myState
                 context.emit('doSearch')

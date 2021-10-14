@@ -8,7 +8,7 @@ import apiDialTest from '/@/api/apiDialTest'
 const setFormParms = function () {
     // form
     const formParms = reactive({
-        start: 0, end: 0, myType: '', myState: '',
+        start: '', end: '', myType: '', myState: '',
         currentPage: 0, totalItems: 0, itemsPerPage: 20
     })
     return formParms
