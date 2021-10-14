@@ -261,21 +261,13 @@ const selectResultByParamHavePaging = (formParms, testData) => apiAuth.getToken(
 const selectAlarmHistoryByParam = (formParms, alertData) => apiAuth.getToken().then(async token => {
     let tableData = []
     let isSuccess = true
-    // const params2 = {
-    //     startTime: formParms.start,
-    //     endTime: formParms.end,
-    //     networkType: formParms.myType,
-    //     code: formParms.myState, // 0 失败 1 成功
-    //     page: formParms.currentPage,
-    //     limit: formParms.itemsPerPage
-    // }
     const params = {
-        alarmType: '',
-        endTime: '',
-        limit: 10,
-        page: 1, // 0 失败 1 成功
-        startTime: '',
-        targetName: ''
+        alarmType: formParms.myState,
+        endTime: formParms.end,
+        limit: formParms.itemsPerPage,
+        page: formParms.currentPage,
+        startTime: formParms.start,
+        targetName: formParms.myType
     }
     await get('/alarmHistory/selectAlarmHistoryByParam', params, {
         showLoading: true, headers: {
@@ -288,7 +280,7 @@ const selectAlarmHistoryByParam = (formParms, alertData) => apiAuth.getToken().t
         for (let i = 0; i < tmpData.length; i++) {
             const obj = tmpData[i]
             const objTable = {
-                time: obj.time,
+                time: obj.alarmTime,
                 state: obj.code,
                 type: obj.targetName,
                 targetIp: obj.serverIp
