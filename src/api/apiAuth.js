@@ -19,7 +19,6 @@ const getToken = () => post('/user/v1/login', null,
         return Promise.reject(`error: ${result.message}`)
     }
 }).catch((e) => {
-    console.info(e)
     Toast(`获取token异常${e}`)
 })
 
