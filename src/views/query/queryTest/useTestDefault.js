@@ -1,4 +1,4 @@
-import {reactive, watch} from 'vue'
+import {reactive, watch, onMounted} from 'vue'
 import utils from 'aki_js_utils'
 import {Toast} from 'vant'
 import store from '/@/vuex/vuexValues'// vuex
@@ -71,5 +71,9 @@ export default function () {
     function changePagination() {
         refreshTestData()
     }
+    // 启动循环
+    onMounted(() => {
+        refreshTestData()
+    })
     return {formParms, testData, doSearch, changePagination}
 }
