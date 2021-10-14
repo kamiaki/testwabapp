@@ -257,12 +257,58 @@ const selectResultByParamHavePaging = (formParms, testData) => apiAuth.getToken(
     return Promise.reject(`activeTesting, error: ${e}`)
 })
 
+//
+const selectAlarmHistoryByParam = (formParms, alertData) => apiAuth.getToken().then(async token => {
+    let tableData = []
+    let isSuccess = true
+    const params = {
+        startTime: formParms.start,
+        endTime: formParms.end,
+        networkType: formParms.myType,
+        code: formParms.myState, // 0 失败 1 成功
+        page: formParms.currentPage,
+        limit: formParms.itemsPerPage
+    }
+    await get('/alarmHistory/selectAlarmHistoryByParam', params, {
+        showLoading: true, headers: {
+            'Content-Type': 'application/json;charset:utf-8',
+            'token': token
+        }
+    }).then(r => {
+        formParms.totalItems = r.count
+        const tmpData = r.data
+        for (let i = 0; i < tmpData.length; i++) {
+            const obj = tmpData[i]
+            const objTable = {
+                time: obj.time,
+                state: obj.code,
+                type: obj.targetName,
+                targetIp: obj.serverIp
+            }
+            tableData.push(objTable)
+        }
+        alertData.tableData = tableData
+    }).catch((e) => {
+        isSuccess = false
+    })
+    if (isSuccess) {
+        return Promise.resolve({})
+    } else {
+        return Promise.reject('查询异常')
+    }
+}).catch((e) => {
+    return Promise.reject(`activeTesting, error: ${e}`)
+})
+
+
 // 对外暴露方法
 export default {
     getTestResultGraphicData, findNetworkStatus,
-    selectTodayAlarmHistory, activeTesting, selectResultByParamHavePaging
+    selectTodayAlarmHistory, activeTesting, selectResultByParamHavePaging,
+    selectAlarmHistoryByParam
 }
 export {
     getTestResultGraphicData, findNetworkStatus,
-    selectTodayAlarmHistory, activeTesting, selectResultByParamHavePaging
+    selectTodayAlarmHistory, activeTesting, selectResultByParamHavePaging,
+    selectAlarmHistoryByParam
 }

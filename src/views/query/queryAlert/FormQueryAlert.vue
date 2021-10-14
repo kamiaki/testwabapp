@@ -1,7 +1,7 @@
 <template>
     <van-form @submit="onSubmit">
         <van-row>
-            <van-col span="10">
+            <van-col span="8">
                 <van-field
                         v-model="myDate"
                         is-link
@@ -33,6 +33,11 @@
                         placeholder="拨测状态"
                         @click="showStateSelect = true"
                 />
+            </van-col>
+            <van-col span="2">
+                <van-button block type="primary" @click="empty">
+                    <van-icon name="replay"/>
+                </van-button>
             </van-col>
             <van-col span="2">
                 <van-button block type="primary" native-type="submit">
@@ -68,8 +73,8 @@
     export default {
         name: "FormQueryTest",
         emits: ['doSearch'],
-        props: ['formParms'],
-        setup({formParms}, context) {
+        props: ['formParms', 'alertData'],
+        setup({formParms, alertData}, context) {
             // 日期选择
             const myDate = ref('');
             const showDateSelect = ref(false);
@@ -98,6 +103,22 @@
                 showStateSelect.value = false;
             };
 
+            const empty = function () {
+                alertData.tableData = []
+                start = ''
+                end = ''
+                myDate.value = ''
+                myType.value = ''
+                myState.value = ''
+                formParms.start = ''
+                formParms.end = ''
+                formParms.myType = ''
+                formParms.myState = ''
+                formParms.currentPage = 0
+                formParms.totalItems = 0
+                formParms.itemsPerPage = 20
+            }
+
             const onSubmit = (vals) => {
                 formParms.start = start.getTime()
                 formParms.end = end.getTime()
@@ -123,6 +144,7 @@
                 onConfirmState,
                 // 提交
                 onSubmit,
+                empty
             };
         }
     }

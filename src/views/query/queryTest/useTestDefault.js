@@ -71,7 +71,7 @@ export default function () {
     function changePagination() {
         refreshTestData()
     }
-    // 启动循环
+    // 启动
     onMounted(() => {
         refreshTestData()
     })

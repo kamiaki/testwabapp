@@ -1,7 +1,8 @@
-import {reactive, watch} from 'vue'
+import {reactive, watch, onMounted} from 'vue'
 import utils from 'aki_js_utils'
 import {Toast} from 'vant'
 import store from '/@/vuex/vuexValues'// vuex
+import apiDialTest from '/@/api/apiDialTest'
 
 // 设置初始化数据 form
 const setFormParms = function () {
@@ -43,7 +44,11 @@ const setTestAlertData = function (formParms, alertData) {
 
 // 设置真正数据
 const setAlertData = function (formParms, alertData) {
-    Toast('查询后台数据了')
+    apiDialTest.selectAlarmHistoryByParam(formParms, alertData).then(res => {
+        Toast('查询成功!');
+    }).catch((e) => {
+        Toast(`查询失败: ${e}`)
+    })
 }
 
 export default function () {
@@ -66,5 +71,9 @@ export default function () {
     function changePagination() {
         refreshAlertData()
     }
+    // 启动循环
+    onMounted(() => {
+        refreshAlertData()
+    })
     return {formParms, alertData, doSearch, changePagination}
 }
