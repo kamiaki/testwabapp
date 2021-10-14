@@ -67,6 +67,7 @@
 
     export default {
         name: "FormQueryTest",
+        emits: ['doSearch'],
         props: ['formParms'],
         setup({formParms}, context) {
             // 日期选择
@@ -102,6 +103,7 @@
                 formParms.end = end.getTime()
                 formParms.myType = vals.myType
                 formParms.myState = vals.myState
+                context.emit('doSearch')
             };
 
             return {

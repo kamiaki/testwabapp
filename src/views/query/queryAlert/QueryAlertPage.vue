@@ -1,8 +1,10 @@
 <template>
     <div class="title">告警信息统计</div>
     <FormQueryAlert class="alertCss"
+                    @doSearch="doSearch"
                     :formParms="formParms"></FormQueryAlert>
     <TableQueryAlert class="alertCss"
+                     @changePagination="changePagination"
                      :formParms="formParms"
                      :alertData="alertData"></TableQueryAlert>
 </template>
@@ -17,17 +19,14 @@
         name: "QueryAlertPage",
         components: {FormQueryAlert, TableQueryAlert},
         setup() {
-            // 表格
-            const {formParms, alertData, refreshAlertData} = useAlertDefault()
-
-            function doSearch() {
-                refreshAlertData()
-            }
+            // 表单数据, 查询结果, 搜索方法, 分页切换方法
+            const {formParms, alertData, doSearch, changePagination} = useAlertDefault()
 
             return {
                 formParms,
                 alertData,
                 doSearch,
+                changePagination
             };
         }
     }

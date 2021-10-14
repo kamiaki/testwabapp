@@ -15,7 +15,9 @@
                 ></el-table-column>
             </el-table>
         </div>
-        <van-pagination v-model="formParms.currentPage"
+        <van-pagination
+                @change="changePagination"
+                v-model="formParms.currentPage"
                         :total-items="formParms.totalItems"
                         :items-per-page="formParms.itemsPerPage"/>
     </div>
@@ -28,8 +30,12 @@
     export default {
         name: "TableQueryTest",
         props: ['alertData', 'formParms'],
-        setup() {
-            return {tableFormat: tf}
+        emits: ['changePagination'],
+        setup(props, context) {
+            function changePagination() {
+                context.emit('changePagination')
+            }
+            return {changePagination, tableFormat: tf}
         }
     }
 </script>

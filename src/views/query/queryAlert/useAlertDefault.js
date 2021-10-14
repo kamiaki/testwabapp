@@ -58,5 +58,14 @@ export default function () {
             setAlertData(formParms, alertData)
         }
     }
-    return {formParms, alertData, refreshAlertData}
+    // 点击搜索
+    function doSearch() {
+        refreshAlertData()
+        formParms.currentPage = 0
+    }
+    // 点击分页
+    function changePagination() {
+        refreshAlertData()
+    }
+    return {formParms, alertData, doSearch, changePagination}
 }
