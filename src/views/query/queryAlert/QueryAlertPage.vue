@@ -11,7 +11,6 @@
 
 <script>
     import {ref, reactive} from 'vue'
-    import {Toast} from 'vant'
     import FormQueryAlert from '/@/views/query/queryAlert/FormQueryAlert.vue'
     import TableQueryAlert from '/@/views/query/queryAlert/TableQueryAlert.vue'
     import utils from 'aki_js_utils'
@@ -22,9 +21,7 @@
         setup() {
             // 表格
             const tableData = createTestData()
-            const queryAlertData = reactive({
-                tableData: tableData
-            })
+            const queryAlertData = reactive({tableData})
 
             const formParms = reactive({
                 start: 0, end: 0, myType: '', myState: '',
