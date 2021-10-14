@@ -97,9 +97,14 @@ const setTestAutoTestData = function (autoTestData) {
 }
 // 设置真正数据
 const setAutoTestData = function (autoTestData) {
+    apiDialTest.selectTodayAlarmHistory().then(res => {
+        autoTestData.notifyData = res
+        Toast('告警通知刷新成功!');
+    }).catch((e) => {
+        Toast(`告警通知刷新失败: ${e}`)
+    })
     apiDialTest.findNetworkStatus().then(res => {
         autoTestData.lampData = res
-        console.info(autoTestData.lampData)
         Toast('网络状态指示灯刷新成功!');
     }).catch((e) => {
         Toast(`网络状态指示灯刷新失败: ${e}`)
