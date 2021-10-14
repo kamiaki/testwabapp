@@ -25,7 +25,7 @@ const tf = [
     }
   },  {
     prop: 'level',
-    label: '最小值(ms)',
+    label: '网络波动级别',
     sortable: false,
     width: '25%',
     formatter: (row, column) => {

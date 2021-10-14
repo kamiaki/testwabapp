@@ -66,6 +66,8 @@ const setManualTestData = function (manualTestData) {
         manualTestData.form.threadCount,
         manualTestData.form.testCount
     ).then(res => {
+        manualTestData.tableData = res.tableData
+        manualTestData.echartData = res.echartData
         Toast('自动刷新成功!');
     }).catch((e) => {
         Toast(`自动刷新失败: ${e}`)

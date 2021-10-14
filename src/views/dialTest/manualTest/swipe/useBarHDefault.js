@@ -34,6 +34,8 @@ export default function (echarts, myChart, Data) {
             splitLine: {
                 show: false
             },
+            // splitNumber: 10,
+            // max: 10,
             type: 'value',
             show: false,
         }],

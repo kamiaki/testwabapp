@@ -123,9 +123,27 @@ const selectTodayAlarmHistory = () => apiAuth.getToken().then(async token => {
     return Promise.reject(`selectTodayAlarmHistory, error: ${e}`)
 })
 
-//
+//domain:
+// authTimeConsuming: "0"
+// code: "1"
+// errorNum: "0"
+// maxTimeConsuming: "60"
+// minTimeConsuming: "34"
+// netTimeConsuming: "0"
+// nodeIp: "192.168.XXX.XXX"
+// serverIp: "ma1.chnctid.XXX.XXX"
+// successNum: "2"
+// targetName: "域名网络"
+// time: "2021-10-14 15:31:22"
+// totalTimeConsuming: "47"
+// variance: "13.0"
+// [[Prototype]]: Object
 const activeTesting = (threads, count) => apiAuth.getToken().then(async token => {
-    let result = {}
+    let tableData = []
+    let tmp = {}
+    let arrayIndex = 0 // 数组计数
+    let barV = {dataX: [0, 0, 0, 0]}
+    let barH = {dataX: [0, 0, 0, 0]}
     let isSuccess = true
     for (let i in line) {
         let params = {targetName: line[i].targetName, threads: threads, count: count}
@@ -135,13 +153,37 @@ const activeTesting = (threads, count) => apiAuth.getToken().then(async token =>
                 'token': token
             }
         }).then(r => {
-            result[line[i].id] = r
+            let targetName = r.targetName
+            let maxTimeConsuming = r.maxTimeConsuming
+            let minTimeConsuming = r.minTimeConsuming
+            let variance = r.variance
+            let varianceStr = ''
+            if (variance < 0) {
+                varianceStr = '网络异常'
+            } else if (variance >= 0 && variance < 100) {
+                varianceStr = '网络通畅'
+            } else if (variance >= 100 && variance < 200) {
+                varianceStr = '网络质量较好'
+            } else if (variance >= 200 && variance < 400) {
+                varianceStr = '网络质量一般'
+            } else if (variance >= 400 && variance < 500) {
+                varianceStr = '网络质量较差'
+            } else if (variance > 500) {
+                varianceStr = '网络质量差'
+            }
+            let tableObj = {name: targetName, max: maxTimeConsuming, min: minTimeConsuming, level: varianceStr}
+            tableData.push(tableObj)
+            barH.dataX[arrayIndex] = r.successNum
+            barV.dataX[arrayIndex] = r.totalTimeConsuming
         }).catch((e) => {
             isSuccess = false
         })
+        arrayIndex++
     }
+    tmp.echartData = {barH, barV}
+    tmp.tableData = tableData
     if (isSuccess) {
-        return Promise.resolve(result)
+        return Promise.resolve(tmp)
     } else {
         return Promise.reject('查询异常')
     }
