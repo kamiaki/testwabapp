@@ -29,7 +29,7 @@ const tf = [
         sortable: false,
         width: '100',
         formatter: (row, column) => {
-            let stateStr = '正常'
+            let stateStr = '成功'
             if ('0' === String(row.state)) stateStr = '失败'
             return stateStr
         }
