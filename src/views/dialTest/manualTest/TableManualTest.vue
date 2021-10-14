@@ -6,7 +6,7 @@
                     线程数: {{manualTestData.form.threadCount}}
                     测试量: {{manualTestData.form.testCount}}
                 </div>
-                <div>测试时间: {{dateTime}}</div>
+                <div>测试时间: {{dateTimeStr}}</div>
             </div>
         </div>
         <div class="table-wrapper-style1">
@@ -29,15 +29,13 @@
 
 <script>
     import {tf} from './TableManualTestSetting.js'
-    import utils from 'aki_js_utils'
+
     export default {
         name: "TableManualTest",
-        props: ['manualTestData'],
+        props: ['manualTestData', 'dateTimeStr'],
         setup({manualTestData}) {
-            const dateTime = utils.dateFormat(new Date(), 'yyyy-MM-dd HH:mm:ss')
             return {
                 tableFormat: tf,
-                dateTime,
                 manualTestData
             }
         }

@@ -9,7 +9,7 @@
         <template #loosing>
             <img class="huaji" :src="huaji"/>
         </template>
-        <TableManualTest  style="margin:10px 5px" :manualTestData="manualTestData"></TableManualTest>
+        <TableManualTest  style="margin:10px 5px" :dateTimeStr="dateTimeStr" :manualTestData="manualTestData"></TableManualTest>
         <SwipeManualTest  style="margin:10px 5px"  :manualTestData="manualTestData"></SwipeManualTest>
     </van-pull-refresh>
 </template>
@@ -21,11 +21,13 @@
     import TableManualTest from '/@/views/dialTest/manualTest/TableManualTest.vue'
     import huaji from '/@/assets/other/huaji.png'
     import useManualTestDefault from './useManualTestDefault'
+    import utils from 'aki_js_utils'
 
     export default {
         name: "ManualTestPage",
         components: {FormManualTest, SwipeManualTest, TableManualTest},
         setup() {
+            const dateTimeStr = ref('xxxx-xx-xx xx:xx:xx')
             const loading = ref(false);
             // 获取数据 以及 刷新数据
             let {manualTestData, refreshManualTestData} = useManualTestDefault()
@@ -33,6 +35,7 @@
             const onRefresh = () => {
                 setTimeout(() => {
                     refreshManualTestData()
+                    dateTimeStr.value = utils.dateFormat(new Date(), 'yyyy-MM-dd HH:mm:ss')
                     loading.value = false;
                 }, 1000);
             };
@@ -41,7 +44,8 @@
                 loading,
                 onRefresh,
                 manualTestData,
-                huaji
+                huaji,
+                dateTimeStr
             };
         }
     }
