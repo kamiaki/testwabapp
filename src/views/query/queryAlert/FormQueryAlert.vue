@@ -125,9 +125,9 @@
                 if (end) formParms.end = utils.dateFormat(new Date(end), 'yyyy-MM-dd HH:mm:ss')
                 formParms.myType = vals.myType
                 let codeStr = ''
-                if ('恢复' === vals.myType) {
+                if ('恢复' === vals.myState) {
                     codeStr = '1'
-                } else if ('异常' === vals.myType) {
+                } else if ('异常' === vals.myState) {
                     codeStr = '0'
                 }
                 formParms.myState = codeStr
