@@ -1,9 +1,9 @@
 <template>
     <div class="title">拨测结果统计</div>
-    <FormQueryTest class="alertCss"
+    <FormQueryTest class="testCss"
                     @doSearch="doSearch"
                     :formParms="formParms"></FormQueryTest>
-    <TableQueryTest class="alertCss"
+    <TableQueryTest class="testCss"
                      @changePagination="changePagination"
                      :formParms="formParms"
                      :testData="testData"></TableQueryTest>
