@@ -34,7 +34,7 @@
                 setTimeout(() => {
                     refreshManualTestData()
                     loading.value = false;
-                }, 1000);
+                }, 1);
             };
 
             return {
