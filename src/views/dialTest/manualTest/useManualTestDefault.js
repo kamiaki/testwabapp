@@ -71,9 +71,9 @@ const setManualTestData = function (manualTestData) {
     ).then(res => {
         manualTestData.tableData = res.tableData
         manualTestData.echartData = res.echartData
-        Toast('自动刷新成功!');
+        Toast('手动拨测成功!');
     }).catch((e) => {
-        Toast(`自动刷新失败: ${e}`)
+        Toast(`手动拨测失败: ${e}`)
     })
 }
 
