@@ -96,6 +96,7 @@ export default function (echarts, myChart, Data) {
             // containLabel: true
         },
         xAxis: [{
+            name: '(次)',
             type: "category",
             boundaryGap: false,
             axisLabel: {
