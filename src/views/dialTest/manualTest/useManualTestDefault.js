@@ -28,6 +28,7 @@ const setDefaultManualTestData = function () {
         {name: '域名网络', max: 0, min: 0, level: '网络通畅'},
     ]
     const tmp = {
+        dateTimeStr: '',
         form: form,
         echartData: echartData,
         tableData: tableData
@@ -37,6 +38,7 @@ const setDefaultManualTestData = function () {
 }
 // 设置测试数据
 const setTestManualTestData = function (manualTestData) {
+    manualTestData.dateTimeStr = utils.dateFormat(new Date(), 'yyyy-MM-dd HH:mm:ss')
     // 图表信息
     manualTestData.echartData = {
         barV: {
@@ -62,6 +64,7 @@ const setTestManualTestData = function (manualTestData) {
 }
 // 设置真正数据
 const setManualTestData = function (manualTestData) {
+    manualTestData.dateTimeStr = utils.dateFormat(new Date(), 'yyyy-MM-dd HH:mm:ss')
     apiDialTest.activeTesting(
         manualTestData.form.threadCount,
         manualTestData.form.testCount

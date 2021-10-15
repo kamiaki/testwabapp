@@ -6,7 +6,7 @@
                     线程数: {{manualTestData.form.threadCount}}
                     测试量: {{manualTestData.form.testCount}}
                 </div>
-                <div>测试时间: {{dateTimeStr}}</div>
+                <div>测试时间: {{manualTestData.dateTimeStr}}</div>
             </div>
         </div>
         <div class="table-wrapper-style1">
@@ -32,7 +32,7 @@
 
     export default {
         name: "TableManualTest",
-        props: ['manualTestData', 'dateTimeStr'],
+        props: ['manualTestData'],
         setup({manualTestData}) {
             return {
                 tableFormat: tf,
