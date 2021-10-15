@@ -3,7 +3,7 @@ const tf = [
         prop: 'ip',
         label: 'IP地址',
         sortable: false,
-        width: '100',
+        width: '150',
         formatter: (row, column) => {
             return row.ip
         }
@@ -11,7 +11,7 @@ const tf = [
         prop: 'time',
         label: '时间',
         sortable: false,
-        width: '100',
+        width: '180',
         formatter: (row, column) => {
             return row.time
         }
@@ -45,7 +45,7 @@ const tf = [
         prop: 'targetIp',
         label: '目标地址',
         sortable: false,
-        width: '100',
+        width: '150',
         formatter: (row, column) => {
             return row.targetIp
         }

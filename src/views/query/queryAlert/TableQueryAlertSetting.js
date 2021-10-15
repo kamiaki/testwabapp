@@ -19,7 +19,7 @@ const tf = [
     prop: 'targetIp',
     label: '目标地址',
     sortable: false,
-    width: '100',
+    width: '150',
     formatter: (row, column) => {
       return row.targetIp
     }
@@ -27,7 +27,7 @@ const tf = [
     prop: 'time',
     label: '告警时间',
     sortable: true,
-    width: '100',
+    width: '200',
     formatter: (row, column) => {
       return row.time
     }
