@@ -1,6 +1,6 @@
 <template>
     <van-config-provider :theme-vars="themeVars">
-        <van-notice-bar left-icon="volume-o" :scrollable="false">
+        <van-notice-bar class="xxx" left-icon="volume-o" :scrollable="false">
             <van-swipe
                     vertical
                     class="notice-swipe"
@@ -36,5 +36,8 @@
     .notice-swipe {
         height: 40px;
         line-height: 40px;
+    }
+    .xxx{
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     }
 </style>
