@@ -1,69 +1,44 @@
 import {line} from "/@/dictionary/dataDictionary.js"
 
+let bgColor = "#fff";
+let color = [
+    "#0090FF",
+    "#36CE9E",
+    "#FFC005",
+    "#8B5CFF",
+    "#FF515A",
+    "#00CA69"
+];
+const hexToRgba = (hex, opacity) => {
+    let rgbaColor = "";
+    let reg = /^#[\da-f]{6}$/i;
+    if (reg.test(hex)) {
+        rgbaColor = `rgba(${parseInt("0x" + hex.slice(1, 3))},${parseInt(
+            "0x" + hex.slice(3, 5)
+        )},${parseInt("0x" + hex.slice(5, 7))},${opacity})`;
+    }
+    return rgbaColor;
+}
+
 export default function (echarts, myChart, Data) {
-    // 配置项
+    let names = [line.mobile.name, line.unicom.name, line.telecom.name, line.domain.name]
+    let xAxisData = Data.xLabel;
+    let yAxisData0 = Data.mobile;
+    let yAxisData1 = Data.unicom;
+    let yAxisData2 = Data.telecom;
+    let yAxisData3 = Data.domain;
+
     const option = {
         title: {
             text: '最新拨测耗时展示', //主标题
             x: 'center', //标题位置
-            y: 20,
+            y: 18,
             textStyle: {
-                color: '#ffffff'
+                color: '#000000'
             }
         },
-        backgroundColor: '#0e1c47',
-        tooltip: {
-            trigger: 'axis',
-            backgroundColor: 'transparent',
-            axisPointer: {
-                lineStyle: {
-                    color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0,
-                            color: 'rgba(126,199,255,0)' // 0% 处的颜色
-                        }, {
-                            offset: 0.5,
-                            color: 'rgba(126,199,255,1)' // 100% 处的颜色
-                        }, {
-                            offset: 1,
-                            color: 'rgba(126,199,255,0)' // 100% 处的颜色
-                        }],
-                        global: false // 缺省为 false
-                    }
-                },
-            },
-            formatter: (p) => {
-                let dom = `<div style="color:#fff;position: relative;background: rgba(0,0,0,0.5)">
-        <div style="padding: 4px 8px 4px 14px;display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;position: relative;z-index: 1;">
-            <div style="width:100%;height:100%;display:${p[0] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
-                <span style="font-size:14px;color:#7ec7ff;">${p[0] ? p[0].seriesName : ''}</span>
-                <span style="font-size:14px;color:#fff;">${p[0] ? p[0].data : ''}</span>
-            </div>
-            <div style="width:100%;height:100%;display:${p[1] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
-                <span style="font-size:14px;color:#7ec7ff;">${p[1] ? p[1].seriesName : ''}</span>
-                <span style="font-size:14px;color:#fff;">${p[1] ? p[1].data : ''}</span>
-            </div>
-            <div style="width:100%;height:100%;display:${p[2] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
-                <span style="font-size:14px;color:#7ec7ff;">${p[2] ? p[2].seriesName : ''}</span>
-                <span style="font-size:14px;color:#fff;">${p[2] ? p[2].data : ''}</span>
-            </div>
-            <div style="width:100%;height:100%;display:${p[3] ? 'flex' : 'none'};justify-content:space-between;align-items:center;">
-                <span style="font-size:14px;color:#7ec7ff;">${p[3] ? p[3].seriesName : ''}</span>
-                <span style="font-size:14px;color:#fff;">${p[3] ? p[3].data : ''}</span>
-            </div>
-        </div>
-    </div>`
-                return dom
-            }
-        },
+        backgroundColor: bgColor,
+        color: color,
         legend: {
             align: "left",
             right: 50,
@@ -90,238 +65,234 @@ export default function (echarts, myChart, Data) {
                 }
             ]
         },
+        tooltip: {
+            trigger: "axis",
+            formatter: function (params) {
+                let html = '';
+                params.forEach(v => {
+                    console.log(v)
+                    html += `<div style="color: #666;font-size: 14px;line-height: 24px">
+                <span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color[v.componentIndex]};"></span>
+                ${v.seriesName}.${v.name}
+                <span style="color:${color[v.componentIndex]};font-weight:700;font-size: 18px">${v.value}</span>
+                万元`;
+                })
+
+
+                return html
+            },
+            extraCssText: 'background: #fff; border-radius: 0;box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);color: #333;',
+            axisPointer: {
+                type: 'shadow',
+                shadowStyle: {
+                    color: '#ffffff',
+                    shadowColor: 'rgba(225,225,225,1)',
+                    shadowBlur: 5
+                }
+            }
+        },
         grid: {
             top: 100,
-            left: 50,
-            right: 50,
-            bottom: 100,
+            left: 40,
+            right: 40,
+            bottom: 50,
             // containLabel: true
         },
         xAxis: [{
-            name: '(次)',
-            nameTextStyle: {
-                color: '#7ec7ff',
-                fontSize: 16
-            },
-            type: 'category',
+            type: "category",
             boundaryGap: false,
-            axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                show: true,
-                lineStyle: {
-                    color: '#233653'
-                },
-            },
-            axisLabel: { //坐标轴刻度标签的相关设置
+            axisLabel: {
+                formatter: '{value}',
                 textStyle: {
-                    color: '#7ec7ff',
-                    padding: 16,
-                    fontSize: 14
-                },
-                formatter: function (data) {
-                    return data
+                    color: "#333"
                 }
-            },
-            splitLine: {
-                show: true,
-                lineStyle: {
-                    color: '#192a44'
-                },
-            },
-            axisTick: {
-                show: false,
-            },
-            data: Data.xLabel
-        }],
-        yAxis: [{
-            name: '耗时/ms',
-            nameTextStyle: {
-                color: "#7ec7ff",
-                fontSize: 16,
-                padding: 10
-            },
-            min: 0,
-            splitLine: {
-                show: true,
-                lineStyle: {
-                    color: '#192a44'
-                },
             },
             axisLine: {
-                show: true,
                 lineStyle: {
-                    color: "#233653"
+                    color: "#D9D9D9"
                 }
-
             },
+            data: xAxisData
+        }],
+        yAxis: [{
+            type: "value",
+            name: '耗时/ms',
             axisLabel: {
-                show: true,
                 textStyle: {
-                    color: '#7ec7ff',
-                    padding: 16
-                },
-                formatter: function (value) {
-                    if (value === 0) {
-                        return value
-                    }
-                    return value
+                    color: "#666"
                 }
+            },
+            nameTextStyle: {
+                color: "#666",
+                fontSize: 12,
+                lineHeight: 40
+            },
+            splitLine: {
+                lineStyle: {
+                    type: "dashed",
+                    color: "#E9E9E9"
+                }
+            },
+            axisLine: {
+                show: false
             },
             axisTick: {
-                show: false,
-            },
+                show: false
+            }
         }],
         series: [{
-            name: line.mobile.name,
-            type: 'line',
-            symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
-            showAllSymbol: true,
-            symbolSize: 0,
+            name: names[0],
+            type: "line",
             smooth: true,
+            showSymbol: false,
+            zlevel: 3,
             lineStyle: {
                 normal: {
-                    width: 5,
-                    color: "rgb(111,123,227)", // 线条颜色
-                },
-            },
-            itemStyle: {
-                color: "rgb(111,123,227)", // 线条颜色
-            },
-            tooltip: {
-                show: true
-            },
-            areaStyle: { //区域填充样式
-                normal: {
-                    //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: "rgba(25,163,223,.3)"
-
-
-                    },
-                        {
-                            offset: 1,
-                            color: "rgba(25,163,223, 0)"
-                        }
-                    ], false),
-                    shadowColor: 'rgba(25,163,223, 0.5)', //阴影颜色
-                    shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                    color: color[0],
+                    shadowBlur: 3,
+                    shadowColor: hexToRgba(color[0], 0.5),
+                    shadowOffsetY: 8
                 }
             },
-            data: Data.mobile
-        }, {
-            name: line.unicom.name,
-            type: 'line',
-            symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
-            showAllSymbol: true,
-            symbolSize: 0,
-            smooth: true,
-            lineStyle: {
+            areaStyle: {
                 normal: {
-                    width: 5,
-                    color: "rgb(111,126,227)", // 线条颜色
-                },
-            },
-            itemStyle: {
-                color: "rgb(111,126,227)", // 线条颜色
-            },
-            tooltip: {
-                show: true
-            },
-            areaStyle: { //区域填充样式
-                normal: {
-                    //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: "rgba(10,219,250,.3)"
-                    },
-                        {
-                            offset: 1,
-                            color: "rgba(10,219,250, 0)"
-                        }
-                    ], false),
-                    shadowColor: 'rgba(10,219,250, 0.5)', //阴影颜色
-                    shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-                }
-            },
-            data: Data.unicom
-        }
-            ,
-            {
-                name: line.telecom.name,
-                type: 'line',
-                symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
-                showAllSymbol: true,
-                symbolSize: 0,
-                smooth: true,
-                lineStyle: {
-                    normal: {
-                        width: 5,
-                        color: "rgb(111,214,227)", // 线条颜色
-                    },
-                },
-                itemStyle: {
-                    color: "rgb(111,214,227)", // 线条颜色
-                },
-                tooltip: {
-                    show: true
-                },
-                areaStyle: { //区域填充样式
-                    normal: {
-                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    color: new echarts.graphic.LinearGradient(
+                        0,
+                        0,
+                        0,
+                        1,
+                        [{
                             offset: 0,
-                            color: "rgba(10,219,250,.3)"
+                            color: hexToRgba(color[0], 0.3)
                         },
                             {
                                 offset: 1,
-                                color: "rgba(10,219,250, 0)"
+                                color: hexToRgba(color[0], 0.1)
                             }
-                        ], false),
-                        shadowColor: 'rgba(10,219,250, 0.5)', //阴影颜色
-                        shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                        ],
+                        false
+                    ),
+                    shadowColor: hexToRgba(color[0], 0.1),
+                    shadowBlur: 10
+                }
+            },
+            data: yAxisData0
+        },
+            {
+                name: names[1],
+                type: "line",
+                smooth: true,
+                showSymbol: false,
+                zlevel: 3,
+                lineStyle: {
+                    normal: {
+                        color: color[1],
+                        shadowBlur: 3,
+                        shadowColor: hexToRgba(color[1], 0.5),
+                        shadowOffsetY: 8
                     }
                 },
-                data: Data.telecom
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0,
+                            0,
+                            0,
+                            1,
+                            [{
+                                offset: 0,
+                                color: hexToRgba(color[1], 0.3)
+                            },
+                                {
+                                    offset: 1,
+                                    color: hexToRgba(color[1], 0.1)
+                                }
+                            ],
+                            false
+                        ),
+                        shadowColor: hexToRgba(color[1], 0.1),
+                        shadowBlur: 10
+                    }
+                },
+                data: yAxisData1
+            },
+            {
+                name: names[2],
+                type: "line",
+                smooth: true,
+                showSymbol: false,
+                zlevel: 3,
+                lineStyle: {
+                    normal: {
+                        color: color[2],
+                        shadowBlur: 3,
+                        shadowColor: hexToRgba(color[2], 0.5),
+                        shadowOffsetY: 8
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0,
+                            0,
+                            0,
+                            1,
+                            [{
+                                offset: 0,
+                                color: hexToRgba(color[2], 0.3)
+                            },
+                                {
+                                    offset: 1,
+                                    color: hexToRgba(color[2], 0.1)
+                                }
+                            ],
+                            false
+                        ),
+                        shadowColor: hexToRgba(color[2], 0.1),
+                        shadowBlur: 10
+                    }
+                },
+                data: yAxisData2
+            }, {
+                name: names[3],
+                type: "line",
+                smooth: true,
+                showSymbol: false,
+                zlevel: 3,
+                lineStyle: {
+                    normal: {
+                        color: color[3],
+                        shadowBlur: 3,
+                        shadowColor: hexToRgba(color[3], 0.5),
+                        shadowOffsetY: 8
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0,
+                            0,
+                            0,
+                            1,
+                            [{
+                                offset: 0,
+                                color: hexToRgba(color[3], 0.3)
+                            },
+                                {
+                                    offset: 1,
+                                    color: hexToRgba(color[3], 0.1)
+                                }
+                            ],
+                            false
+                        ),
+                        shadowColor: hexToRgba(color[3], 0.1),
+                        shadowBlur: 10
+                    }
+                },
+                data: yAxisData3
             }
-            ,
-            {
-                name: line.domain.name,
-                type: 'line',
-                symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
-                showAllSymbol: true,
-                symbolSize: 0,
-                smooth: true,
-                lineStyle: {
-                    normal: {
-                        width: 5,
-                        color: "rgb(111,227,163)", // 线条颜色
-                    },
-                },
-                itemStyle: {
-                    color: "rgb(111,227,163)", // 线条颜色
-                },
-                tooltip: {
-                    show: true
-                },
-                areaStyle: { //区域填充样式
-                    normal: {
-                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            offset: 0,
-                            color: "rgba(10,219,250,.3)"
-                        },
-                            {
-                                offset: 1,
-                                color: "rgba(10,219,250, 0)"
-                            }
-                        ], false),
-                        shadowColor: 'rgba(10,219,250, 0.5)', //阴影颜色
-                        shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-                    }
-                },
-                data: Data.domain
-            }]
-    }
+        ]
+    };
     // 绘制图表
     myChart.setOption(option, true)
 }
