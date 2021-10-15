@@ -99,19 +99,16 @@ const setTestAutoTestData = function (autoTestData) {
 const setAutoTestData = function (autoTestData) {
     apiDialTest.selectTodayAlarmHistory().then(res => {
         autoTestData.notifyData = res
-        Toast('告警通知刷新成功!');
     }).catch((e) => {
         Toast(`告警通知刷新失败: ${e}`)
     })
     apiDialTest.findNetworkStatus().then(res => {
         autoTestData.lampData = res
-        Toast('网络状态指示灯刷新成功!');
     }).catch((e) => {
         Toast(`网络状态指示灯刷新失败: ${e}`)
     })
     apiDialTest.getTestResultGraphicData().then(res => {
         autoTestData.echartData = res
-        Toast('图表刷新成功!');
     }).catch((e) => {
         Toast(`图表刷新失败: ${e}`)
     })

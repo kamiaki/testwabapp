@@ -45,7 +45,6 @@ const setTestAlertData = function (formParms, alertData) {
 // 设置真正数据
 const setAlertData = function (formParms, alertData) {
     apiDialTest.selectAlarmHistoryByParam(formParms, alertData).then(res => {
-        Toast('查询成功!');
     }).catch((e) => {
         Toast(`查询失败: ${e}`)
     })

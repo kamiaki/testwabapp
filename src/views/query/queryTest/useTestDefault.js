@@ -45,7 +45,6 @@ const setTestTestData = function (formParms, testData) {
 // 设置真正数据
 const setTestData = function (formParms, testData) {
     apiDialTest.selectResultByParamHavePaging(formParms, testData).then(res => {
-        Toast('查询成功!');
     }).catch((e) => {
         Toast(`查询失败: ${e}`)
     })

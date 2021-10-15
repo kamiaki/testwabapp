@@ -27,7 +27,7 @@ const initAxios = axios.create({
  */
 initAxios.interceptors.request.use(config => {
   if (config.showLoading) {
-    Toast('loading....')
+    // Toast('loading....')
   }
   return config
 }, err => {
