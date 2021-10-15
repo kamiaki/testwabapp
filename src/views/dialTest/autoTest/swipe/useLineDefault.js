@@ -70,15 +70,12 @@ export default function (echarts, myChart, Data) {
             formatter: function (params) {
                 let html = '';
                 params.forEach(v => {
-                    console.log(v)
                     html += `<div style="color: #666;font-size: 14px;line-height: 24px">
                 <span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color[v.componentIndex]};"></span>
-                ${v.seriesName}.${v.name}
+                ${v.seriesName}
                 <span style="color:${color[v.componentIndex]};font-weight:700;font-size: 18px">${v.value}</span>
-                万元`;
+                ms`;
                 })
-
-
                 return html
             },
             extraCssText: 'background: #fff; border-radius: 0;box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);color: #333;',

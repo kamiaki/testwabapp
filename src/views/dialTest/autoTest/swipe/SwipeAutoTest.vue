@@ -33,6 +33,6 @@
     .echartsDiv {
         border-radius: 10px;
         overflow: hidden;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     }
 </style>
