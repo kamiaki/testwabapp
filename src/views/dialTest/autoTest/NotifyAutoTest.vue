@@ -38,6 +38,6 @@
         line-height: 40px;
     }
     .xxx{
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     }
 </style>
