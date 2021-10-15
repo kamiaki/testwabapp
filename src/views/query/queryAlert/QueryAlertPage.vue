@@ -42,7 +42,7 @@
     }
 
     .alertCss {
-        margin: 10px auto;
+        margin: 20px auto;
         width: 95%;
         border-radius: 5px;
         overflow: hidden;
