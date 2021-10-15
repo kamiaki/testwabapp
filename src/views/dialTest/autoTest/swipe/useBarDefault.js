@@ -8,10 +8,10 @@ export default function (echarts, myChart, Data) {
             x: 'center', //标题位置
             y: 20,
             textStyle: {
-                color: '#ffffff'
+                color: '#000000'
             }
         },
-        backgroundColor: '#031245',
+        backgroundColor: '#ffffff',
         color: ["#63caff", "#3608FE"],
         grid: {
             containLabel: true,
@@ -22,7 +22,7 @@ export default function (echarts, myChart, Data) {
         },
         xAxis: {
             axisLabel: {
-                color: "#c0c3cd",
+                color: "#666666",
                 fontSize: 14,
                 interval: 0
             },
@@ -31,9 +31,9 @@ export default function (echarts, myChart, Data) {
             },
             axisLine: {
                 lineStyle: {
-                    color: "#384267",
+                    color: "#d0dbff",
                     width: 1,
-                    type: "dashed"
+                    type: "solid"
                 },
                 show: true
             },
@@ -45,27 +45,27 @@ export default function (echarts, myChart, Data) {
         },
         yAxis: {
             axisLabel: {
-                color: "#c0c3cd",
+                color: "#424242",
                 fontSize: 14
             },
             splitLine: {
-                show: true,
+                show: false,
                 lineStyle: {
-                    color: "#384267",
-                    type: "dashed"
+                    color: "#c3c9e8",
+                    type: "solid"
                 }
             },
             axisLine: {
                 lineStyle: {
-                    color: "#384267",
+                    color: "#d0dbff",
                     width: 1,
-                    type: "dashed"
+                    type: "solid"
                 },
                 show: true
             },
             name: "耗时/ms",
             nameTextStyle: {
-                color: '#ffffff'
+                color: '#000000'
             }
         },
         series: [{
@@ -93,7 +93,7 @@ export default function (echarts, myChart, Data) {
                 show: true,
                 position: "top",
                 distance: 10,
-                color: "#fff"
+                color: "#828282"
             }
         }, {
             data: [1, 1, 1, 1],
